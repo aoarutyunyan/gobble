@@ -1,36 +1,15 @@
 // server/models/Event.js
 const mongoose = require('mongoose')
+const mongooseTypes = mongoose.Schema.Types
+
 let EventSchema = new mongoose.Schema(
     {
-        title: {
-            type: mongoose.Schema.Types.String,
-            required: true,
-        },
-        time: {
-            type: mongoose.Schema.Types.Date,
-            required: true,
-        },
-        tags: {
-            type: [{
-                tag: mongoose.Schema.Types.String
-            }],
-            required: true,
-        },
-        chefs: {
-            type: [{
-                chef: mongoose.Schema.Types.ObjectId
-            }],
-            required: true,
-        },
-        host: {
-            type: mongoose.Schema.Types.ObjectId
-        },
-        dishes: {
-            type: [{
-                dish: mongoose.Schema.Types.ObjectId
-            }],
-            required: false,
-       },
+        title: String,
+        time: mongooseTypes.Date,
+        tags: [{ type: String }],
+        chefs: [{ type: mongooseTypes.ObjectId }],
+        host: mongooseTypes.ObjectId,
+        dishes: [{ type: mongooseTypes.ObjectId }],
     }
 );
 

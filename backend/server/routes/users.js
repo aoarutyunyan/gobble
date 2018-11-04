@@ -20,10 +20,15 @@ router.post('/', function(req, res) {
       incomingReviews: req.body.IncomingReviews,
       outgoingReviews: req.body.OutgoingReviews,  
     });
-    
-    User.create(givenUser).then(user => {
-      res.json(user)
+
+    givenUser.save(function(err, user) {
+        if (err) throw err;
+        res.json(user);
     });
+    
+    //User.create(givenUser).then(user => {
+    //  res.json(user)
+    //});
 });
 
 module.exports = router;

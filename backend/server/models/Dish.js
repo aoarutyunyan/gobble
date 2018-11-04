@@ -1,14 +1,16 @@
 // server/models/Dish.js
 const mongoose = require('mongoose')
+const mongooseTypes = mongoose.Schema.Types
+
 let DishSchema = new mongoose.Schema(
     {
         name: {
-            type: mongoose.Schema.Types.String,
+            type: mongooseTypes.String,
             required: true,
         },
         tags: {
             type: [{
-                tag: mongoose.Schema.Types.String
+                tag: mongooseTypes.String
             }],
             required: true,
         },

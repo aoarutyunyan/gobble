@@ -1,23 +1,13 @@
 // server/models/Review.js
 const mongoose = require('mongoose')
+const mongooseTypes = mongoose.Schema.Types
+
 let ReviewSchema = new mongoose.Schema(
     {
-        rating: {
-            type: mongoose.Schema.Types.Number,
-            required: true,
-        },
-        event: {
-            type: mongoose.Schema.Types.ObjectId,
-            required: true,
-        },
-        reviewer: {
-            type: mongoose.Schema.Types.ObjectId,
-            required: true,
-        },
-        reviewee: {
-            type: mongoose.Schema.Types.ObjectId,
-            required: true,
-        },
+        rating: Number,
+        event: mongooseTypes.ObjectId,
+        reviewer: mongooseTypes.ObjectId,
+        reviewee: mongooseTypes.ObjectId,
     }
 );
 
