@@ -18,7 +18,7 @@ The server will be running on localhost:4000/.
 ## Recommendation Engine
 To recommend chefs to users, we will use a simple user-based collaborative filtering algorithm.
 
-Given ratings in the form of `userId, chefId, rating` from Kafka stream, 
+Given a stream of ratings in the form of `userId, chefId, rating`, output `userId: [recommendedChefIds]` for each user.
 
 The process at a high level is:
 * compute sorted pairwise cosine similarity matrix between users
@@ -26,9 +26,9 @@ The process at a high level is:
 * get top N rated chefs from those K similar users
 * recommend those chefs
 
-We cache the pariwise similarities and each time a new rating is added, so instead of recomputing the entire matrix (a very expensive operation), we update the similarities that only need updating, an O(n) operations in terms of number of users. Though ours is O(n log(n)) because updating a value in a sorted list is O(log(n)) complexity, and we need to keep our similarity list for each user sorted because we need to recompute the top K similar users.
+We cache the pariwise similarities so each time a new rating is added, instead of recomputing the entire matrix (a very expensive operation), we update the similarities that only need updating, an O(n) operations in terms of number of users. Though ours is O(n log(n)) because updating a value in a sorted list is O(log(n)) complexity, and we need to keep our similarity list for each user sorted because we need to recompute the top K similar users.
 
-We also use sparse matricies for our calculations because user-based collaborative filtering is bound to be a sparse problem.
+We also use sparse matrices for our calculations because user-based collaborative filtering is bound to be a sparse problem.
 
 ### Setup
 TODO: set up `docker-compose.yml` for Python, Kafka, and Redis containers
