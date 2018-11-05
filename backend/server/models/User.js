@@ -13,17 +13,23 @@ let UserSchema = new mongoose.Schema(
     }
 );
 
-UserSchema.methods.getUser = function (_name) {
-    User.find({'name': _name}).then((user) => {
+UserSchema.statics.getUser = function (_name) {
+    this.find({'name': _name}).then((user) => {
         return user
     })
 };
 
-UserSchema.statics.getUserByID = function (_id) {
-    this.findById(_id, function(err, user) {
-        if (err) throw(err);
-        return user
-    });
+UserSchema.statics.getUserByID = function (id) {
+  return (User.findById(id, function(err, user) {
+    if (err) throw err;
+    return user
+  }))
+};
+
+UserSchema.methods.updateUser = function (id, change) {
+    this.findByIdAndUpdate(id, change, function(err, user) {
+      if (err) throw err;
+    })
 };
 
 UserSchema.methods.writeReview = function (_review) {
@@ -45,11 +51,3 @@ UserSchema.methods.receiveReview = function (_review) {
 
 var User = mongoose.model('User', UserSchema)
 module.exports = User
-
-var getUserByID = function (_id) {
-    User.findById(_id, function(err, user) {
-        if (err) throw(err);
-        return user
-    });
-};
-    

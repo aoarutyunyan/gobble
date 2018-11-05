@@ -19,22 +19,20 @@ router.post('/', function(req, res) {
       rating: req.body.Rating,
       event: req.body.Event,
       reviewer: req.body.Reviewer,
-      reviewee: req.body.Reviewee,  
+      reviewee: req.body.Reviewee,
     });
-    
+
     givenReview.save(function(err, review) {
         if (err) throw err;
-        
-        User.findById(review.reviewer, function(err, reviewer) {
-            if (err) throw(err);
-            reviewer.writeReview(review);
+
+        User.getUserByID(review.reviewer).then((reviewer) => {
+          reviewer.writeReview(review);
+        })
+
+        User.getUserByID(review.reviewee).then((reviewee) => {
+          reviewee.receiveReview(reviewee);
         });
 
-        User.findById(review.reviewee, function(err, reviewee) {
-            if (err) throw(err);
-            reviewee.receiveReview(reviewee);
-        });
-        
         res.json(review);
     });
 });

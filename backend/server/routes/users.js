@@ -18,17 +18,13 @@ router.post('/', function(req, res) {
       name: req.body.Name,
       events: req.body.Events,
       incomingReviews: req.body.IncomingReviews,
-      outgoingReviews: req.body.OutgoingReviews,  
+      outgoingReviews: req.body.OutgoingReviews,
     });
 
     givenUser.save(function(err, user) {
         if (err) throw err;
         res.json(user);
     });
-    
-    //User.create(givenUser).then(user => {
-    //  res.json(user)
-    //});
 });
 
 module.exports = router;
