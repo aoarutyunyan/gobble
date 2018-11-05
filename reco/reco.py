@@ -4,6 +4,7 @@ import scipy.sparse as sp
 from sklearn.metrics.pairwise import cosine_similarity
 from sortedcontainers import SortedList
 import time
+import json
 
 # sort by val
 class KeyValPair:
@@ -14,13 +15,20 @@ class KeyValPair:
   def __lt__(self, other):
     return self.val < other.val
 
+  def __eq__(self, other):
+    return self.val == other.val
+  
+  def is_equal_to(self, some_id):
+    return self.key == some_id
+
   def __repr__(self):
     return '(id: {} val: {})'.format(self.key, self.val)
 
 class ChefRecommendationEngine:
 
-  def __init__(self):
-    df_ratings = pd.read_csv('./ratings.csv')
+  def __init__(self, r):
+    self.redis_cache = r
+    df_ratings = pd.read_csv('./ratings2.csv')
 
     self.user_id_set = set(df_ratings['user_id'].unique().tolist())
     self.max_user_id = df_ratings['user_id'].max() + 10000
@@ -42,7 +50,7 @@ class ChefRecommendationEngine:
 
     self.recs = {} # {user_id: [chef_id1, chef_id2, ..., chef_id20]}
     self.update_recs()
-    # print(self.recs)
+    print(self.recs)
 
   def compute_similarity(self):
     '''
@@ -53,8 +61,10 @@ class ChefRecommendationEngine:
     for user_i in self.user_id_set:
       for user_j in (self.user_id_set - set([user_i])):
         sim = cosine_similarity(self.sparse_ratings_matrix[user_i], self.sparse_ratings_matrix[user_j])[0][0]
-
-        self.similarity_cache[user_i] = {user_j: sim}
+        if user_i in self.similarity_cache:
+          self.similarity_cache[user_i].update({user_j: sim})
+        else:
+          self.similarity_cache[user_i] = {user_j: sim}
 
         if user_i in self.similarity_matrix:
           self.similarity_matrix[user_i].add(KeyValPair(user_j, sim))
@@ -65,18 +75,19 @@ class ChefRecommendationEngine:
   def recompute_similarity(self, user_id, chef_id, rating):
 
     is_old_user = user_id in self.similarity_matrix
+    print(is_old_user)
     self.similarity_matrix[user_id] = SortedList([])
 
     for user_j in (self.user_id_set - set([user_id])):
       sim = cosine_similarity(self.sparse_ratings_matrix[user_id], self.sparse_ratings_matrix[user_j])[0][0]
       if is_old_user:
         prev_sim = self.similarity_cache[user_j][user_id]
-        init_index = self.similarity_matrix[user_j].index(prev_sim)
-        count = self.similarity_matrix[user_j].index(prev_sim)
+        init_index = self.similarity_matrix[user_j].index(KeyValPair(user_id, prev_sim))
+        count = self.similarity_matrix[user_j].count(KeyValPair(user_id, prev_sim))
 
         index = 0
         for sim_pair in self.similarity_matrix[user_j].islice(init_index, count):
-          if sim_pair.isEqualTo(user_id):
+          if sim_pair.is_equal_to(user_id):
             index += init_index
             break
           index += 1
@@ -84,11 +95,17 @@ class ChefRecommendationEngine:
         self.similarity_matrix[user_j].pop(index)
         self.similarity_matrix[user_j].add(KeyValPair(user_id, sim))
         self.similarity_matrix[user_id].add(KeyValPair(user_j, sim))
+        self.similarity_cache[user_j][user_id] = sim
+        self.similarity_cache[user_id][user_j] = sim
       else:
         self.similarity_matrix[user_j].add(KeyValPair(user_id, sim))
-        self.similarity_cache[user_j] = {user_id: sim}
+        self.similarity_cache[user_j].update({user_id: sim})
         self.similarity_matrix[user_id].add(KeyValPair(user_j, sim))
-        self.similarity_cache[user_id] = {user_j: sim}
+
+        if user_id in self.similarity_cache:
+          self.similarity_cache[user_id].update({user_j: sim})
+        else:
+          self.similarity_cache[user_id] = {user_j: sim}
 
   def get_top_similar_users(self, user_id, k):
     '''
@@ -124,13 +141,15 @@ class ChefRecommendationEngine:
       sim_users = self.get_top_similar_users(user_id, 10)
       top_recs = self.get_top_recs(user_id, sim_users, 10)
 
+      self.redis_cache.set(str(user_id), json.dumps(list(map(int, top_recs))))
       self.recs[user_id] = top_recs
 
 
   def get_top_recs(self, user_id, sim_users, n):
     '''
     Given user_id with its top k similar users, return top n
-    chefs with highest predicted rating.
+    chefs with highest predicted ratings. Does not filter out
+    chefs that the user has already rated.
     '''
     
     summation = None
@@ -143,7 +162,6 @@ class ChefRecommendationEngine:
     length = len(sim_users)
     summation = summation/length
 
-    # TODO: tell backend to remove ratings
     rated_chefs = summation[0].nonzero()[1] # list of chef ids with non-zero ratings
 
     sorted_chefs = SortedList([])
@@ -155,14 +173,14 @@ class ChefRecommendationEngine:
     return top_chefs
 
 
-start = time.time()
-x = ChefRecommendationEngine()
-end = time.time()
-print(end - start)
-print(x.recs)
+# start = time.time()
+# x = ChefRecommendationEngine()
+# end = time.time()
+# print(end - start)
+# print(x.recs)
 
-start = time.time()
-x.receive_new_rating(32, 22, 2)
-end = time.time()
-print(end - start)
-print(x.recs)
+# start = time.time()
+# x.receive_new_rating(32, 22, 2)
+# end = time.time()
+# print(end - start)
+# print(x.recs)
