@@ -1,15 +1,38 @@
 import React, { Component } from 'react';
-import PrimarySearchAppBar from './header_footer/PrimarySearchAppBar';
+import { Link } from 'react-router-dom';
+import { Navbar, Nav, NavItem } from 'react-bootstrap';
+// import PrimarySearchAppBar from './components/header_footer/PrimarySearchAppBar';
+import Routes from './routes/Routes';
+import { LinkContainer } from 'react-router-bootstrap';
 import './App.css';
 
-export default class App extends Component {
+class App extends Component {
   render() {
     return (
-      <div className="App">
-      
-      <PrimarySearchAppBar/>
+      <div className='App container'>
+        <Navbar fluid collapseOnSelect>
+          <Navbar.Header>
+            <Navbar.Brand>
+              <Link to='/'>Gobble</Link>
+              {/* <PrimarySearchAppBar/> */}
+              </Navbar.Brand>
+              <Navbar.Toggle />
+          </Navbar.Header>
+          <Navbar.Collapse>
+            <Nav pullRight>
+              <LinkContainer to="/signup">
+                <NavItem>Signup</NavItem>
+              </LinkContainer>
+              <LinkContainer to="/login">
+                <NavItem>Login</NavItem>
+              </LinkContainer>
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
+        <Routes />
       </div>
     );
   }
 }
 
+export default App;
