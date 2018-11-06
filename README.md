@@ -26,7 +26,7 @@ The process at a high level is:
 * get top N rated chefs from those K similar users
 * recommend those chefs
 
-We cache the pariwise similarities so each time a new rating is added, instead of recomputing the entire matrix (a very expensive operation), we update the similarities that only need updating, an O(n) operations in terms of number of users. Though ours is O(n log(n)) because updating a value in a sorted list is O(log(n)) complexity, and we need to keep our similarity list for each user sorted because we need to recompute the top K similar users.
+We cache the pariwise similarities so each time a new rating is added, instead of recomputing the entire matrix (a very expensive operation), we update the similarities that only need updating.
 
 We also use sparse matrices for our calculations because user-based collaborative filtering is bound to be a sparse problem.
 

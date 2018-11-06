@@ -37,7 +37,7 @@ class ChefRecommendationEngine:
     self.max_chef_id = df_ratings['chef_id'].max() + 10000
 
     
-    self.ratings_matrix = sp.dok_matrix((self.max_user_id+10000, self.max_chef_id+10000), dtype=np.int8)
+    self.ratings_matrix = sp.dok_matrix((self.max_user_id+1, self.max_chef_id+1), dtype=np.int8)
 
     for index, row in df_ratings.iterrows():
       self.ratings_matrix[row['user_id'], row['chef_id']] = row['rating']
@@ -73,7 +73,9 @@ class ChefRecommendationEngine:
           
     
   def recompute_similarity(self, user_id, chef_id, rating):
-
+    '''
+    Recompute similarity matrix of only the entries that use user_id.
+    '''
     is_old_user = user_id in self.similarity_matrix
     print(is_old_user)
     self.similarity_matrix[user_id] = SortedList([])
