@@ -34,3 +34,20 @@ We also use sparse matrices for our calculations because user-based collaborativ
 TODO: set up `docker-compose.yml` for Python, Kafka, and Redis containers
 
 Or you can install Kafka, Redis, and Python 3.6 and `pip install -r requirements.txt` and run it locally.
+
+## Frontend Setup
+Run
+
+```bash
+cd frontend
+npm install
+npm install react-bootstrap
+npm install react-router-dom
+npm install react-router-bootstrap
+npm start
+```
+React-router-bootstrap:
+* Implemented to allow React Router to route page to required link without refreshing the browser
+
+Will be running on localhost:3000.
+
