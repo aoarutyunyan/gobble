@@ -8,5 +8,5 @@ export default () =>
   <Switch>
     <Route path="/" exact component={Home} />  {/*Home is set as the root*/}
     <Route path="/login" exact component={Login} />  {/*Routes to Login.js on click*/}
-    <Route component={NotFound} />  {/* temp page until register form is completed */}
+    <Route component={NotFound} />  {/* temp page until register form is completed this is where signup button goes for now*/}
   </Switch>;

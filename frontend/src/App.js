@@ -13,20 +13,21 @@ class App extends Component {
         <Navbar fluid collapseOnSelect>
           <Navbar.Header>
             <Navbar.Brand>
-              <Link to='/'>Gobble</Link> {/*route to home page see Routes.js*/}
+              <Link to='/'>Gobble</Link> {/* Route to home page if Gobble is clicked in navbar  */}
               {/* <PrimarySearchAppBar/> */}
               </Navbar.Brand>
               <Navbar.Toggle />
           </Navbar.Header>
           <Navbar.Collapse>
             <Nav pullRight>
-              <LinkContainer to="/signup">
-                <NavItem>Signup</NavItem> {/*route to signup form see Routes.js*/}
+              <LinkContainer to="/signup"> 
+              {/* Route to signup page when signup is clicked */}
+                <NavItem>Signup</NavItem>
               </LinkContainer>
-              <LinkContainer to="/login">
-                <NavItem>Login</NavItem>  {/*route to login form see Routes.js*/}
+              <LinkContainer to="/login">  
+              {/* Route to login page when login is clicked see Login.js */}
+                <NavItem>Login</NavItem>
               </LinkContainer>
-              {/* Currently no route to the user/chef page, waiting on login auth to complete */}
             </Nav>
           </Navbar.Collapse>
         </Navbar>
