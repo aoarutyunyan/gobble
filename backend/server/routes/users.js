@@ -16,15 +16,18 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res) {
     givenUser = new User({
       name: req.body.Name,
+      password: req.body.Password,
       events: req.body.Events,
       incomingReviews: req.body.IncomingReviews,
       outgoingReviews: req.body.OutgoingReviews,
     });
 
-    givenUser.save(function(err, user) {
-        if (err) throw err;
-        res.json(user);
-    });
+    if (req.body.Name && req.body.Password && req.body.PasswordConf) {
+      givenUser.save(function(err, user) {
+          if (err) throw err;
+          res.json(user);
+      });
+    }
 });
 
 module.exports = router;

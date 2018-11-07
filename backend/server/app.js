@@ -3,8 +3,10 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
+var session = require('express-session');
+var MongoStore = require('connect-mongo')(session);
+var mongoose = require('mongoose');
+var bodyParser = require('body-parser');
 const url = 'mongodb://localhost:27017/gobble'
 
 mongoose.connect(url, function (err, db) {
@@ -16,6 +18,8 @@ mongoose.connect(url, function (err, db) {
 });
 
 var indexRouter = require('./routes/index');
+var loginRouter = require('./routes/login');
+var registerRouter = require('./routes/register');
 var usersRouter = require('./routes/users');
 var eventsRouter = require('./routes/events');
 var reviewsRouter = require('./routes/reviews');
@@ -33,7 +37,19 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//use sessions for tracking logins
+app.use(session({
+  secret: 'work hard',
+  resave: true,
+  saveUninitialized: false,
+  store: new MongoStore({
+    mongooseConnection: mongoose.connection
+  })
+}));
+
 app.use('/', indexRouter);
+app.use('/login', loginRouter);
+app.use('/register', registerRouter);
 app.use('/users', usersRouter);
 app.use('/events', eventsRouter);
 app.use('/reviews', reviewsRouter);
