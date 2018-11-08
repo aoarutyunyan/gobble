@@ -3,8 +3,11 @@ Discussion 1B
 
 ## Docker Setup
 1. Download Docker and Docker Compose (if you're on a Mac it's included)
-2. `cd gobble`
-3. `docker-compose up`
+```bash
+cd gobble
+docker-compose build
+docker-compose up
+```
 
 React frontend will be open on `localhost:3000` and includes hot-reloading.
 

@@ -124,7 +124,7 @@ class ChefRecommendationEngine:
       self.user_id_set.add(user_id)
       self.chef_id_set.add(chef_id)
 
-      self.ratings_matrix.resize((self.max_user_id+10000, self.max_chef_id+10000))
+      self.ratings_matrix.resize((self.max_user_id+1, self.max_chef_id+1))
       self.ratings_matrix[user_id, chef_id] = rating
       unseen_entry = True
     else:
