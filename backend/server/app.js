@@ -7,7 +7,11 @@ var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
-const url = 'mongodb://localhost:27017/gobble'
+
+const uri = 'db:27017';
+const username = 'root';
+const pass = 'example';
+const url = `mongodb://${username}:${pass}@${uri}`;
 
 mongoose.connect(url, function (err, db) {
  if (err) {
