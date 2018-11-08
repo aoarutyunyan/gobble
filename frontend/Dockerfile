@@ -1,3 +1,4 @@
+# Credit to https://github.com/McMenemy/GoDoRP for frontend Dockerfile
 FROM node:latest
 
 # if left blank app will run with dev settings
