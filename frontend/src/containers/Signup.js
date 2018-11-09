@@ -15,7 +15,7 @@ export default class Login extends Component {
   }
 
   validateForm() {
-    return this.state.email.length > 0 && this.state.password.length > 0 && this.state.password == this.state.confirmPassword;
+    return this.state.email.length > 0 && this.state.password.length > 0 && this.state.password === this.state.confirmPassword;
   }
 
   handleChange = event => {
