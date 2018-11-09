@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
-import "./Login.css";
+import "./Login_Register.css";
 
-export default class Login extends Component {
+export default class Register extends Component {
   constructor(props) {
     super(props);
 
@@ -30,7 +30,7 @@ export default class Login extends Component {
 
   render() {
     return (
-      <div className="Login">
+      <div className="Register">
         <form onSubmit={this.handleSubmit}>
           <FormGroup controlId="name" bsSize="large">
             <ControlLabel>Name</ControlLabel>
@@ -45,7 +45,6 @@ export default class Login extends Component {
           <FormGroup controlId="email" bsSize="large">
             <ControlLabel>Email</ControlLabel>
             <FormControl
-              autoFocus
               type="email"
               value={this.state.email}
               onChange={this.handleChange}
