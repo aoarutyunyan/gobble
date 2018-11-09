@@ -7,6 +7,7 @@ var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
+var cors = require('cors');
 
 const uri = 'db:27017';
 const username = 'root';
@@ -30,6 +31,7 @@ var reviewsRouter = require('./routes/reviews');
 var dishesRouter = require('./routes/dishes');
 
 var app = express();
+app.use(cors());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
