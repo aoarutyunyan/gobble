@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
-import user from './user_reducer';
+import { reducer as formReducer } from 'redux-form';
+import user from './auth';
 
 const rootReducer = combineReducers({
-    user
+    user,
+    form: formReducer
 });
 
 export default rootReducer;
