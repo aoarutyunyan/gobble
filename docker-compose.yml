@@ -6,6 +6,8 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
+    logging:
+      driver: none
 
   backend:
     build:
@@ -25,6 +27,6 @@ services:
       args:
         app_env: ${APP_ENV}
     volumes:
-      - ./frontend/src:/frontend/src 
+      - ./frontend/src:/frontend/src
     ports:
       - "3000:3000"
