@@ -11,6 +11,12 @@ docker-compose up
 # if you're having trouble
 docker-compose build --no-cache
 docker-compose up
+
+# or you get the bcrypt ELF error
+docker ps # get <backend_id>
+docker exec -it <backend_id> bash
+npm uninstall bcrypt
+npm install bcrypt
 ```
 
 React frontend will be open on `localhost:3000` and includes hot-reloading.
