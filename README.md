@@ -46,6 +46,11 @@ npm start
 
 The server will be running on localhost:4000/.
 
+To run tests, run
+```bash
+docker exec -it <container-id> python backend_test.py
+```
+
 ## Recommendation Engine
 To recommend chefs to users, we will use a simple user-based collaborative filtering algorithm.
 
@@ -81,4 +86,3 @@ React-router-bootstrap:
 * Implemented to allow React Router to route page to required link without refreshing the browser
 
 Will be running on localhost:3000.
-
