@@ -7,6 +7,10 @@ Discussion 1B
 cd gobble
 docker-compose build
 docker-compose up
+
+# if you're having trouble
+docker-compose build --no-cache
+docker-compose up
 ```
 
 React frontend will be open on `localhost:3000` and includes hot-reloading.

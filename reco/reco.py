@@ -1,3 +1,4 @@
+import sys
 import numpy as np
 import pandas as pd
 import scipy.sparse as sp
@@ -6,19 +7,30 @@ from sortedcontainers import SortedList
 import time
 import json
 
-# sort by val
 class KeyValPair:
   def __init__(self, key, val):
     self.key = key
     self.val = val
 
   def __lt__(self, other):
+    '''
+    Sort by self.val.
+    '''
     return self.val < other.val
 
   def __eq__(self, other):
+    '''
+    Define builtin equality to be equal self.vals.
+    '''
     return self.val == other.val
   
   def is_equal_to(self, some_id):
+    '''
+    Return whether current KeyValPair has same key as supplied argument.
+    
+    @param int some_id key to use to see if current instance has the same key
+    @returns boolean whether some_id is same value as calling instance's key
+    '''
     return self.key == some_id
 
   def __repr__(self):
@@ -27,6 +39,13 @@ class KeyValPair:
 class ChefRecommendationEngine:
 
   def __init__(self, r):
+    '''
+    Initialize recommendation engine. Load cold start dataset. Preprocess and create similarity matrix and ratings matrix.
+
+    @param r redis cache instance
+    @returns void 
+    '''
+
     self.redis_cache = r
     df_ratings = pd.read_csv('./ratings2.csv')
 
@@ -50,12 +69,13 @@ class ChefRecommendationEngine:
 
     self.recs = {} # {user_id: [chef_id1, chef_id2, ..., chef_id20]}
     self.update_recs()
-    print(self.recs)
 
   def compute_similarity(self):
     '''
-    Compute pairwise cosine similarity matrix.
-    { user_id: SortedList([KeyValPair(sim_user_id, similarity), ...]) }
+    Compute pairwise cosine similarity matrix for users. Updates member variables.
+    Similarity matrix will be in the form of: { user_id: SortedList([KeyValPair(sim_user_id, similarity), ...]) }
+
+    @returns void
     '''
 
     for user_i in self.user_id_set:
@@ -74,7 +94,12 @@ class ChefRecommendationEngine:
     
   def recompute_similarity(self, user_id, chef_id, rating):
     '''
-    Recompute similarity matrix of only the entries that use user_id.
+    Efficiently recompute the similarity matrix by only updating the relevant user_id/chef_id pairs.
+
+    @param int user_id the user ID associated with the new rating
+    @param int chef_id the chef ID associated with the new rating
+    @param int rating the rating of the chef by the user
+    @returns void, just has a side effect where it updates the similarity matrices
     '''
     is_old_user = user_id in self.similarity_matrix
     print(is_old_user)
@@ -111,7 +136,11 @@ class ChefRecommendationEngine:
 
   def get_top_similar_users(self, user_id, k):
     '''
-    Get top k similar users for given user_id.
+    Compute top k similar users for given user_id.
+
+    @param int user_id the ID of the user to find k similar users for
+    @param int k the number of similar users that will be returned
+    @returns list top_users a list of length k with the user IDs of the similar users
     '''
     top_users = list(map(lambda x: x.key, list(self.similarity_matrix[user_id].islice(0, k, reverse=True))))
     return top_users
@@ -137,7 +166,10 @@ class ChefRecommendationEngine:
 
   def update_recs(self):
     '''
-    Update chef recommendations for each user.
+    Update chef recommendations for each user. Will update in redis and in memory.
+    Format: {user_id: [chef_ids], ..., }
+
+    @returns void
     '''
     for user_id in self.user_id_set:
       sim_users = self.get_top_similar_users(user_id, 10)
@@ -152,6 +184,11 @@ class ChefRecommendationEngine:
     Given user_id with its top k similar users, return top n
     chefs with highest predicted ratings. Does not filter out
     chefs that the user has already rated.
+
+    @param int user_id user to get n chef recommendations for
+    @param int sim_users the list of similar users for user_id
+    @param int n number of chef recommendations to return
+    @returns list top_chefs top n predicted rated chefs for user_id
     '''
     
     summation = None

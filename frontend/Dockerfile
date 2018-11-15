@@ -11,8 +11,6 @@ ENV NODE_ENV $app_env
 RUN mkdir -p /frontend
 WORKDIR /frontend
 COPY ./ ./
-ADD package-lock.json /package-lock.json
-ADD package.json /package.json
 
 RUN npm install
 
