@@ -11,8 +11,7 @@ docker-compose up
 
 React frontend will be open on `localhost:3000` and includes hot-reloading.
 
-Node.js Express backend will be open on `localhost:4000` and won't include hot reloading, yet.
-* Beacuse of that, I think you need to run `docker-compose build --no-cache backend` every time you want to see the changes be reflected in docker.
+Node.js Express backend will be open on `localhost:4000` and also includes hot-reloading.
 
 ### Some Tips
 ctrl+c will close all the containers.
