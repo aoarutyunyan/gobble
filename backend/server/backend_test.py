@@ -25,16 +25,21 @@ def removeData(collection, data):
 regData1 = {'Name': 'testUser1',
         'Password': 'somePassword',
         'PasswordConf': 'somePassword'}
+regData2 = {'Name': 'testUser2',
+        'Password': 'somePassword2',
+        'PasswordConf': 'somePassword2'}
+reviewData1 = {'rating': 4}
 eventData1 = {'title': 'testEvent1',
         'host': None}
 userData1 = {'name': 'testUser1'}
+userData2 = {'name': 'testUser2'}
 
 class TestUserMethods(unittest.TestCase):
 
     def test_register(self):
         r = postEndpoint("/register", regData1)
         self.assertEqual(r.status_code, 200)
-        
+
         removeData(db.users, userData1)
 
     def test_getUsers(self):
@@ -75,6 +80,30 @@ class TestEventMethods(unittest.TestCase):
 
         removeData(db.users, userData1)
         removeData(db.events, eventData1)
+
+class TestReviewMethods(unittest.TestCase):
+
+    def test_createReview(self):
+        r = postEndpoint("/register", regData1)
+        self.assertEqual(r.status_code, 200)
+        reviewData1['Reviewee'] = r.json()['_id']
+
+        r = postEndpoint("/register", regData2)
+        self.assertEqual(r.status_code, 200)
+        reviewData['Reviewer'] = r.json()['_id']
+        eventData1['host'] = r.json()['_id']
+
+        r = postEndpoint("/events", eventData1)
+        self.assertEqual(r.status_code, 200)
+        reviewData1['Event'] = r.json()['_id']
+
+        r = postEndpoint("/reviews", reviewData1)
+        self.assertEqual(r.status_code, 200)
+
+        removeData(db.users, userData1)
+        removeData(db.users, userData2)
+        removeData(db.events, eventData1)
+        removeData(db.reviews, reviewData1)
 
 if __name__ == '__main__':
     unittest.main()
