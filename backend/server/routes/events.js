@@ -12,4 +12,25 @@ router.get('/', function(req, res, next) {
     })
 });
 
+/**
+ * POST new event.
+ */
+router.post('/', function(req, res) {
+    givenEvent = new Event({
+      title: req.body.Title,
+      time: req.body.Time,
+      tags: req.body.Tags,
+      host: req.body.Host,
+      chefs: req.body.Chefs,
+      dishes: req.body.Dishes,
+    });
+
+    if (req.body.Title && req.body.Host) {
+      givenEvent.save(function(err, event) {
+          if (err) throw err;
+          res.json(event);
+      });
+    }
+});
+
 module.exports = router;

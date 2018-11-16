@@ -49,6 +49,19 @@ class Register extends Component {
            </fieldset>
         </FormGroup>
 
+        <FormGroup controlId="email" bsSize="large">
+          <fieldset>
+            <ControlLabel>Email</ControlLabel>
+            <FormControl
+              name='email'
+              type='email'
+              value={this.state.email}
+              component='input'
+              autoComplete='none'
+            />
+          </fieldset>
+        </FormGroup>
+
         <FormGroup controlId="password" bsSize="large">
            <fieldset>
              <ControlLabel>Password</ControlLabel>

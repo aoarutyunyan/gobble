@@ -50,8 +50,9 @@ UserSchema.methods.receiveReview = function (_review) {
     this.save(function(err, user) { if (err) throw err; });
 };
 
-/* Hash password before saving to the database.
-*/
+/**
+ * Hash password before saving to the database.
+ */
 UserSchema.pre('save', function (next) {
   var user = this;
   bcrypt.hash(user.password, 10, function (err, hash){
@@ -63,8 +64,9 @@ UserSchema.pre('save', function (next) {
   })
 });
 
-/* Authenticate input against database
-*/
+/**
+ * Authenticate input against database
+ */
 UserSchema.statics.authenticate = function (name, password, callback) {
   User.findOne({ name: name })
     .exec(function (err, user) {
