@@ -36,9 +36,10 @@ class Register extends Component {
       <div className="Register">
         
       <form onSubmit={handleSubmit(this.onSubmit)}>
+        <FormGroup controlId="name" bsSize="large">
            <fieldset>
-             <label>Name</label>
-             <Field 
+             <ControlLabel>Name</ControlLabel>
+             <FormControl 
                name='name'
                type='text'
                value={this.state.name}
@@ -46,9 +47,12 @@ class Register extends Component {
                autoComplete='none'
              />
            </fieldset>
+        </FormGroup>
+
+        <FormGroup controlId="password" bsSize="large">
            <fieldset>
-             <label>Password</label>
-             <Field 
+             <ControlLabel>Password</ControlLabel>
+             <FormControl 
                name='password'
                type='password'
                value={this.state.password}
@@ -56,9 +60,12 @@ class Register extends Component {
                autoComplete='none'
              />
            </fieldset>
+        </FormGroup>
+
+        <FormGroup controlId="con_password" bsSize="large">
            <fieldset>
-             <label>Confirm Password</label>
-             <Field 
+             <ControlLabel>Confirm Password</ControlLabel>
+             <FormControl 
                name='confirmPassword'
                type='password'
                value={this.state.confirmPassword}
@@ -66,6 +73,8 @@ class Register extends Component {
                autoComplete='none'
              />
            </fieldset>
+        </FormGroup>
+
            <div>
              {this.props.errorMessage}
            </div>
