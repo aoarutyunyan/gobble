@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import store from '../redux';
 import Home from './Home';
 import Register from './Register';
+import NavBar from '../components/NavBar'
 
 
 class Root extends Component {
@@ -12,9 +13,11 @@ class Root extends Component {
       <Provider store={store}>
         <BrowserRouter>
           <div>
+            <NavBar />
             <Switch>
               <Route exact path="/home" render={Home} />
               <Route exact path="/register" render={Register} />
+              <Route component={Home} />
             </Switch>
           </div>
         </BrowserRouter>
