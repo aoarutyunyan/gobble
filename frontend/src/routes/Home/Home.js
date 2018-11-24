@@ -79,8 +79,8 @@ export const Home = () => {
       <div style={description}>Connecting Chefs with Hungry Users Since Fall 2018</div>
       <div style={slogan}>Are you craving a home-cooked meal but don't have the time to cook?<br /> You've come to the right place.</div>
       <div style={button}>
-        <Button theme={theme}>Signup
-          <Link to="/signup"></Link>
+        <Button theme={theme}>
+          <Link to="/register">Signup</Link>
         </Button>
       </div>
     </Content>
