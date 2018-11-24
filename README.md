@@ -86,3 +86,8 @@ React-router-bootstrap:
 * Implemented to allow React Router to route page to required link without refreshing the browser
 
 Will be running on localhost:3000.
+
+### Frontend TODO:
+* Fix styling on home page
+* Fix routing on buttons
+* Register page started but working on design
