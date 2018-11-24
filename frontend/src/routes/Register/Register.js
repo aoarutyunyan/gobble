@@ -1,29 +1,33 @@
-// import React from 'react';
-// import RegisterForm from '../RegisterForm';
-// import Stepper from 'components/Stepper';
-// import styled from 'styled-components';
+import React from 'react';
+import RegisterForm from '../RegisterForm';
+import styled from 'styled-components';
+import { getJpg } from '../../lib/assetsUtils';
 
-// const Content = styled.div`
-//   box-sizing: border-box;
-//   padding-bottom: 100px;
-//   display: grid;
-//   padding: 0 40px;
-// `;
+const Background = styled.div`
+  background: url(${getJpg('bg')})  no-repeat center center fixed;
+  background-size: cover;
+  min-height: calc(100vh - 50px);
+`;
 
-// const Heading = styled.div`
-//   margin: 2em 0 0 0;
-//   font-weight: 700;
-//   font-size: 2em;
-// `;
+const Heading = styled.div`
+  font-weight: 700;
+  font-size: 2em;
+  text-align: center;
+  color: white;
+`;
 
-// const Register = () => {
-//   return (
-//     <Content>
-//       <Stepper currentStep={0} steps={['Account Information', 'Chef Preferences', 'Finish']} />
-//       <Heading>Create an Account</Heading>
-//       <RegisterForm />
-//     </Content>
-//   );
-// };
+const content = {
+  paddingTop: '100px',
+  paddingRight: '20px',
+};
 
-// export default Register;
+const Register = () => {
+  return (
+    <Background style={content}>
+      <Heading>Create an Account</Heading>
+      <RegisterForm />
+    </Background>
+  );
+};
+
+export default Register;
