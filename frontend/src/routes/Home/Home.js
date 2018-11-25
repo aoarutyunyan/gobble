@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { getJpg } from '../../lib/assetsUtils';
 import { Link } from 'react-router-dom';
+import StyledBtn from '../../components/StyledBtn';
 
 const Content = styled.div`
   box-sizing: border-box;
@@ -13,31 +14,6 @@ const Content = styled.div`
   color: white;
 `;
 
-const Button = styled.div`
-  color: ${props => props.theme.main};
-  border: 2px solid ${props => props.theme.main};
-  display: 'flex',
-  justifyContent: 'center',
-  padding: 0.25em 1em;
-  padding-top: 0.9em;
-  border: 2px solid ${props => props.theme.main};
-  border-radius: 3px;
-  grid-template-columns: 200px 200px;
-  grid-column-gap: 2em;
-  text-align: center;
-  height: ${props => props.small ? 40 : 40}px;
-  width: ${props => props.small ? 60 : 120}px;
-
-  &:hover {
-    color: #545C5F;
-  }
-`;
-
-
-const theme = {
-  main: 'white',
-};
-
 const title = {
   display: 'flex',
   justifyContent: 'center',
@@ -45,12 +21,6 @@ const title = {
   paddingTop: '2em', 
   fontWeight: '600', 
   fontSize: '4em',
-};
-
-const button = {
-  display: 'flex',
-  justifyContent: 'center',
-  alignContent: 'center',
 };
 
 const description = {
@@ -78,11 +48,11 @@ export const Home = () => {
       <div style={title}>Gobble</div>
       <div style={description}>Connecting Chefs with Hungry Users Since Fall 2018</div>
       <div style={slogan}>Are you craving a home-cooked meal but don't have the time to cook?<br /> You've come to the right place.</div>
-      <div style={button}>
-        <Button theme={theme}>
-          <Link to="/register">Signup</Link>
-        </Button>
-      </div>
+      <Link to="/register">
+        <StyledBtn theme="pink">
+        Register
+        </StyledBtn>
+      </Link>
     </Content>
   );
 };

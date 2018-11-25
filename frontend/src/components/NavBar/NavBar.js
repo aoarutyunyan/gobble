@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-//import CTABtn from 'components/CTABtn';
+import StyledBtn from '../../components/StyledBtn';
 import { NavLink } from 'react-router-dom';
 //import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { topNavHeight } from '../../lib/stylesConstants';
@@ -10,8 +10,8 @@ import { topNavHeight } from '../../lib/stylesConstants';
 const Title = styled(NavLink)`
   align-self: center;
   justify-self: center;
-  color: #eee;
-  font-size: 1.5rem;
+  color: white;
+  font-size: 1.5em;
   padding-left: 15px;
   box-sizing: border-box;
 `;
@@ -69,26 +69,6 @@ const AccountButton = styled.div`
   }
 `;
 
-const Button = styled.div`
-  color: ${props => props.theme.main};
-  border: 2px solid ${props => props.theme.main};
-  display: 'flex',
-  justifyContent: 'center',
-  padding: 0.25em 1em;
-  padding-top: 0.9em;
-  border: 2px solid ${props => props.theme.main};
-  border-radius: 3px;
-  grid-template-columns: 200px 200px;
-  grid-column-gap: 2em;
-  text-align: center;
-  height: ${props => props.small ? 40 : 40}px;
-  width: ${props => props.small ? 60 : 120}px;
-
-  &:hover {
-    color: #545C5F;
-  }
-`;
-
 const Dropdown = styled.div`
   display: flex;
   justify-content: flex-end;
@@ -110,12 +90,11 @@ const Container = styled.div`
 const StyledNav = styled.div`
   display: grid;
   grid-template-columns: auto 1fr;
-  background-color: #9EA8AD;
+  background-color: #242729;
   width: 100%;
   position: sticky;
   height: ${topNavHeight};
   z-index: 100;
-  box-shadow: 10px 5px 5px #545C5F;
 `;
 
 const Backdrop = styled.div`
@@ -151,6 +130,7 @@ class TopNav extends React.Component {
       <Container>
         <StyledNav>
           <Title  onClick={this.closeDropdown} to="/home">
+            <span role="img" aria-label="turkey" style={{ marginRight: '5px' }}>🦃</span>
             Gobble
           </Title>
 
@@ -164,7 +144,7 @@ class TopNav extends React.Component {
               </AccountButton>
             )}
 
-            {!loggedIn && <Button theme="outlineWhiteBlue">Sign In</Button>}
+            {!loggedIn && <StyledBtn theme="outlineWhiteBlue">Sign In</StyledBtn>}
           </Right>
         </StyledNav>
 

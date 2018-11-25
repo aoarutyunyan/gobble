@@ -1,32 +1,26 @@
 import React from 'react';
 import RegisterForm from '../RegisterForm';
 import styled from 'styled-components';
-import { getJpg } from '../../lib/assetsUtils';
 
-const Background = styled.div`
-  background: url(${getJpg('bg')})  no-repeat center center fixed;
-  background-size: cover;
-  min-height: calc(100vh - 50px);
+const Content = styled.div`
+  display: grid;
+  margin-top: 5em;
+  align-content: center;
+  justify-content: center;
 `;
 
 const Heading = styled.div`
   font-weight: 700;
-  font-size: 2em;
-  text-align: center;
+  font-size: 2.5em;
   color: white;
 `;
 
-const content = {
-  paddingTop: '100px',
-  paddingRight: '20px',
-};
-
 const Register = () => {
   return (
-    <Background style={content}>
+    <Content >
       <Heading>Create an Account</Heading>
       <RegisterForm />
-    </Background>
+    </Content>
   );
 };
 
