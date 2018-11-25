@@ -132,7 +132,7 @@ const formikForm = withFormik({
     setSubmitting(false);
     resetForm();
     updateUser(values);
-    history.push('/preferences');
+    history.push('/tagpref');
   },
 })(SignUpForm);
 

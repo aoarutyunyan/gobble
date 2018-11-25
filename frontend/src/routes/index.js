@@ -5,6 +5,7 @@ import store from '../redux';
 import Home from './Home';
 import Register from './Register';
 import NavBar from '../components/NavBar';
+import TagPref from './TagPref';
 
 
 class Root extends Component {
@@ -17,6 +18,7 @@ class Root extends Component {
             <Switch>
               <Route exact path="/home" render={Home} />
               <Route exact path="/register" render={Register} />
+              <Route exact path="/tagpref" render={TagPref} />
               <Route component={Home} />
             </Switch>
           </div>
