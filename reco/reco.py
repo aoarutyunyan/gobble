@@ -102,7 +102,6 @@ class ChefRecommendationEngine:
     @returns void, just has a side effect where it updates the similarity matrices
     '''
     is_old_user = user_id in self.similarity_matrix
-    print(is_old_user)
     self.similarity_matrix[user_id] = SortedList([])
 
     for user_j in (self.user_id_set - set([user_id])):

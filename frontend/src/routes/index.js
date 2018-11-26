@@ -18,7 +18,7 @@ class Root extends Component {
             <Switch>
               <Route exact path="/home" render={Home} />
               <Route exact path="/register" render={Register} />
-              <Route exact path="/tagpref" render={TagPref} />
+              <Route exact path="/tagpref" component={TagPref} />
               <Route component={Home} />
             </Switch>
           </div>
