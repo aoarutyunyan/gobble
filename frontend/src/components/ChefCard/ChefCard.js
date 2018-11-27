@@ -1,48 +1,82 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import StyledBtn from '../StyledBtn';
+import '../assets/chefimg.jpg';
 
-const Card = styled.div`
-  display: grid;
-  grid-template-rows: 1fr 1fr;
-  grid-column-gap: 20px;
-  background: #242729;
-  color: white;
-  height: 500px;
-  width: 300px;
+import './CardStyle.css';
+
+const ProfileButton = styled.div`
+  padding-top: 10px;
 `;
 
-const ChefDescription = styled.div`
-  text-align: left;
-  color: #242729;
+const NameWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
-const Heading = styled.div`
-  text-align: center;
-  font-size: 18px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  font-weight: 600;
-  overflow: hidden;
-`;
-
-const Tags = styled.div`
+const ProfileImg = styled.img`
+  width: 200px;
+  height: 200px;
+  border: 1px solid blue;
+  padding-top: 2px;
+  display: flex;
+  align-self: center;
+  align-items: center;
 `;
 
 
 const ChefCard = () => {
   return (
-    <Card>
-      <Heading>
-          Name
-      </Heading>
-      <ChefDescription>
-          Description
-      </ChefDescription>
-      <Tags>
-          
-      </Tags>
-    </Card>
+    <div class="ChefGrid">
+      <div class="ChefCard">
+        <NameWrapper>
+          <div class="ChefName">Gordon Ramsay</div>
+        </NameWrapper>
+        <ProfileImg />
+        <div class="ChefTags">Fish<br />Hamburgers<br />Steak</div>
+        <ProfileButton>
+          <Link to="/chefprofile">
+            <StyledBtn theme="pink">
+              Profile
+            </StyledBtn>
+          </Link>
+        </ProfileButton>
+        <Link to="/messagecenter">
+          <StyledBtn theme="pink">
+            Message
+          </StyledBtn>
+        </Link>
+      </div>
+
+      <div class="ChefCard">
+        <div class="ChefName">Gordon Ramsay</div>
+        <div class="ChefTags">Fish<br />Hamburgers<br />Steak</div>
+      </div>
+
+      <div class="ChefCard">
+        <div class="ChefName">Gordon Ramsay</div>
+        <div class="ChefTags">Fish<br />Hamburgers<br />Steak</div>
+      </div>
+
+      <div class="ChefCard">
+        <div class="ChefName">Gordon Ramsay</div>
+        <div class="ChefTags">Fish<br />Hamburgers<br />Steak</div>
+      </div>
+
+      <div class="ChefCard">
+        <div class="ChefName">Gordon Ramsay</div>
+        <div class="ChefTags">Fish<br />Hamburgers<br />Steak</div>
+      </div>
+
+      <div class="ChefCard">
+        <div class="ChefName">Gordon Ramsay</div>
+        <div class="ChefTags">Fish<br />Hamburgers<br />Steak</div>
+      </div>
+
+    </div>
   );
 };
 

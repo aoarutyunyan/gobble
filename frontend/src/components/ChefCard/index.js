@@ -1,3 +1,3 @@
-import ChefCard from './ChefCards';
+import ChefCard from './ChefCard';
 
 export default ChefCard;

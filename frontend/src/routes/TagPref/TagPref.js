@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Select from 'react-select';
+import ChefCard from '../../components/ChefCard';
 
 const Heading = styled.div`
   margin-top: 1em;
@@ -49,6 +50,7 @@ class TagPref extends React.Component {
             </Options>
           </div>
         </Heading>
+        <ChefCard />
       </ListView>
     );
   }

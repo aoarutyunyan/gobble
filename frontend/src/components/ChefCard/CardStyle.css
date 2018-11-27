@@ -1,0 +1,40 @@
+.ChefGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-row-gap: 6em;
+    justify-items: center;
+    align-items: center;
+    padding-top: 70px;
+}
+  
+.ChefCard {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    width: 300px;
+    height: 500px;
+    padding: 30px;
+    border: 2px solid white;
+    color: black;
+    box-sizing: border-box;
+    background-color: white;
+}
+
+.ChefImg {
+    width: 100px;
+    height: 100px;
+    border: 1px solid white;
+}
+  
+.ChefName {
+    font-size: 1.5em;
+    font-weight: 500;
+}
+  
+.ChefTags {
+    padding-top: 10px;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 1.3em;
+}
+  
