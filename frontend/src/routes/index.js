@@ -6,6 +6,7 @@ import Home from './Home';
 import Register from './Register';
 import NavBar from '../components/NavBar';
 import TagPref from './TagPref';
+import ChefProfile from './ChefProfile';
 
 
 class Root extends Component {
@@ -19,6 +20,7 @@ class Root extends Component {
               <Route exact path="/home" render={Home} />
               <Route exact path="/register" render={Register} />
               <Route exact path="/tagpref" component={TagPref} />
+              <Route exact path="/chefprofile" component={ChefProfile} />
               <Route component={Home} />
             </Switch>
           </div>
