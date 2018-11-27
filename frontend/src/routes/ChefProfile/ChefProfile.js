@@ -59,7 +59,7 @@ export const ChefProfile = ({ name, imgName, bio, dishes }) => {
       <ProfileImg />
 
       <MessageBtn>
-        <Link to="/home">
+        <Link to="/messagecenter">
           <StyledBtn theme="pink">
             Message
           </StyledBtn>
@@ -95,7 +95,7 @@ export const ChefProfile = ({ name, imgName, bio, dishes }) => {
           </div>
         </Dishes>
       </div>
-      
+
     </Content>
   );
 }; 
