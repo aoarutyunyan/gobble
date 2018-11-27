@@ -16,11 +16,31 @@ const Options = styled.div`
   width: 50em;
 `;
 
+const ListView = styled.div`
+  margin-bottom: 200px;
+`;
+
 const tags = [
   { label: 'Barbecue', value: 1 },
   { label: 'Christmas', value: 2 },
   { label: 'Fish', value: 3 },
-  { label: 'Thanksgiving', value: 4 },
+  { label: 'Salads', value: 4 },
+  { label: 'Thanksgiving', value: 5 },
+];
+
+const cards = [
+  {
+    name: 'Chef A',
+    tags: ['Barbecue', 'Fish'],
+  },
+  {
+    name: 'Chef B',
+    tags: ['Salads, Thanksgiving'],
+  },
+  {
+    name: 'Chef C',
+    tags: ['Christmas, Fish'],
+  },
 ];
 
 class TagPref extends React.Component {
@@ -31,18 +51,20 @@ class TagPref extends React.Component {
 
   render() {
     return(
-      <Heading>
-        <div>
-          <h1>Choose Tags</h1>
-          <Options>
-            <Select
-              options={tags}
-              isMulti={true}
-              onChange={this.handleChange}
-            />
-          </Options>
-        </div>
-      </Heading>
+      <ListView>
+        <Heading>
+          <div>
+            <h1>Choose Tags</h1>
+            <Options>
+              <Select
+                options={tags}
+                isMulti={true}
+                onChange={this.handleChange}
+              />
+            </Options>
+          </div>
+        </Heading>
+      </ListView>
     );
   }
 };
