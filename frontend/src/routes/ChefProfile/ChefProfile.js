@@ -89,6 +89,3 @@ ChefProfile.propTypes = {
 
 export default ChefProfile;
 
-// background: url(${getJpg('bg')})  no-repeat center center fixed;
-// background-size: cover;
-// min-height: calc(100vh - 50px);
