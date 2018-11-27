@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { getJpg } from '../../lib/assetsUtils';
+import { Link } from 'react-router-dom';
+import StyledBtn from '../../components/StyledBtn';
 
 const Content = styled.div`
   box-sizing: border-box;
@@ -40,6 +42,12 @@ const Dishes = styled.div`
   padding-top: 40px;  
 `;
 
+const MessageBtn = styled.div`
+  align-items: center;
+  display: flex;
+  justify-content: center;
+`;
+
 export const ChefProfile = ({ name, imgName, bio, dishes }) => {
   return(
     <Content>
@@ -47,7 +55,17 @@ export const ChefProfile = ({ name, imgName, bio, dishes }) => {
         {/* { name } */}
         <h1>Gordon Ramsay</h1>
       </Heading>
+
       <ProfileImg />
+
+      <MessageBtn>
+        <Link to="/home">
+          <StyledBtn theme="pink">
+            Message
+          </StyledBtn>
+        </Link>
+      </MessageBtn>
+
       <div>
         <Biography>
           <h2>Chef Bio:</h2>
@@ -63,6 +81,7 @@ export const ChefProfile = ({ name, imgName, bio, dishes }) => {
             such programs as MasterChef and Hotel Hell and opening more restaurants around the globe.
           </div>
         </Biography>
+
         <Dishes>
           <h2>Specialty Dishes:</h2>
 
@@ -76,6 +95,7 @@ export const ChefProfile = ({ name, imgName, bio, dishes }) => {
           </div>
         </Dishes>
       </div>
+      
     </Content>
   );
 }; 
@@ -88,4 +108,3 @@ ChefProfile.propTypes = {
 };
 
 export default ChefProfile;
-
