@@ -28,21 +28,6 @@ const tags = [
   { label: 'Thanksgiving', value: 5 },
 ];
 
-const cards = [
-  {
-    name: 'Chef A',
-    tags: ['Barbecue', 'Fish'],
-  },
-  {
-    name: 'Chef B',
-    tags: ['Salads, Thanksgiving'],
-  },
-  {
-    name: 'Chef C',
-    tags: ['Christmas, Fish'],
-  },
-];
-
 class TagPref extends React.Component {
   
   handleChange = (filters) => {
