@@ -38,16 +38,17 @@ class KeyValPair:
 
 class ChefRecommendationEngine:
 
-  def __init__(self, r):
+  def __init__(self, r, d):
     '''
     Initialize recommendation engine. Load cold start dataset. Preprocess and create similarity matrix and ratings matrix.
 
     @param r redis cache instance
+    @param d initial dataset name
     @returns void 
     '''
 
     self.redis_cache = r
-    df_ratings = pd.read_csv('./ratings2.csv')
+    df_ratings = pd.read_csv(d)
 
     self.user_id_set = set(df_ratings['user_id'].unique().tolist())
     self.max_user_id = df_ratings['user_id'].max() + 10000
