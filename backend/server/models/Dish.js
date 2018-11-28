@@ -1,6 +1,6 @@
 // server/models/Dish.js
-const mongoose = require('mongoose')
-const mongooseTypes = mongoose.Schema.Types
+const mongoose = require('mongoose');
+const mongooseTypes = mongoose.Schema.Types;
 
 let DishSchema = new mongoose.Schema(
     {
@@ -23,4 +23,4 @@ DishSchema.methods.getSchema = function (_name) {
     })
 };
 
-module.exports = mongoose.model('Dish', DishSchema)
+module.exports = mongoose.model('Dish', DishSchema);

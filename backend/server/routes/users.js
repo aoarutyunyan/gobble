@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 mongoose.set('debug', true);
-const User = require('../models/User.js')
+const User = require('../models/User.js');
 
 var express = require('express');
 var router = express.Router();

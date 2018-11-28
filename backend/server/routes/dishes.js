@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 mongoose.set('debug', true);
-const Dish = require('../models/Dish.js')
+const Dish = require('../models/Dish.js');
 
 var express = require('express');
 var router = express.Router();

@@ -18,7 +18,7 @@ router.post('/', function (req, res, next) {
     var userData = {
       name: req.body.Name,
       password: req.body.Password,
-    }
+    };
 
     User.create(userData, function (error, user) {
       if (error) {
@@ -30,6 +30,6 @@ router.post('/', function (req, res, next) {
     });
 
   }
-})
+});
 
 module.exports = router;

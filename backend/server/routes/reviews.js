@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 mongoose.set('debug', true);
-var Review = require('../models/Review.js')
-var User = require('../models/User.js')
+var Review = require('../models/Review.js');
+var User = require('../models/User.js');
 
 var express = require('express');
 var router = express.Router();
@@ -27,7 +27,7 @@ router.post('/', function(req, res) {
 
         User.getUserByID(review.reviewer).then((reviewer) => {
           reviewer.writeReview(review);
-        })
+        });
 
         User.getUserByID(review.reviewee).then((reviewee) => {
           reviewee.receiveReview(reviewee);

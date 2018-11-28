@@ -1,8 +1,8 @@
 // server/models/User.js
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
-const mongooseTypes = mongoose.Schema.Types
-const Review = require('./Review.js')
+const mongooseTypes = mongoose.Schema.Types;
+const Review = require('./Review.js');
 
 let UserSchema = new mongoose.Schema(
     {
@@ -35,7 +35,7 @@ UserSchema.methods.updateUser = function (id, change) {
 };
 
 UserSchema.methods.writeReview = function (_review) {
-    id = _review._id
+    id = _review._id;
     if (!this.outgoingReviews.includes(id)) {
         this.outgoingReviews.push(id)
     }
@@ -43,7 +43,7 @@ UserSchema.methods.writeReview = function (_review) {
 };
 
 UserSchema.methods.receiveReview = function (_review) {
-    id = _review._id
+    id = _review._id;
     if (!this.incomingReviews.includes(id)) {
         this.incomingReviews.push(id)
     }
@@ -85,7 +85,7 @@ UserSchema.statics.authenticate = function (name, password, callback) {
         }
       })
     });
-}
+};
 
-var User = mongoose.model('User', UserSchema)
-module.exports = User
+var User = mongoose.model('User', UserSchema);
+module.exports = User;

@@ -1,6 +1,6 @@
 // server/models/Review.js
-const mongoose = require('mongoose')
-const mongooseTypes = mongoose.Schema.Types
+const mongoose = require('mongoose');
+const mongooseTypes = mongoose.Schema.Types;
 
 let ReviewSchema = new mongoose.Schema(
     {
@@ -17,4 +17,4 @@ ReviewSchema.methods.getReview = function (_event) {
     })
 };
 
-module.exports = mongoose.model('Review', ReviewSchema)
+module.exports = mongoose.model('Review', ReviewSchema);

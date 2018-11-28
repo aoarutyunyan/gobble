@@ -19,4 +19,4 @@ EventSchema.methods.getEvent = function (_title) {
     })
 };
 
-module.exports = mongoose.model('Event', EventSchema)
+module.exports = mongoose.model('Event', EventSchema);

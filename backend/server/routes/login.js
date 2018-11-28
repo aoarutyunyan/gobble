@@ -20,7 +20,7 @@ router.post('/', function (req, res, next) {
     err.status = 400;
     return next(err);
   }
-})
+});
 
 // GET route after registering
 router.get('/', function (req, res, next) {

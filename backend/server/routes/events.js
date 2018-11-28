@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 mongoose.set('debug', true);
-const Event = require('../models/Event.js')
+const Event = require('../models/Event.js');
 
 var express = require('express');
 var router = express.Router();
