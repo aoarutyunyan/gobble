@@ -8,6 +8,7 @@ import NavBar from '../components/NavBar';
 import TagPref from './TagPref';
 import ChefProfile from './ChefProfile';
 import MessageCenter from './MessageCenter';
+import UserProfile from './UserProfile';
 
 
 class Root extends Component {
@@ -22,6 +23,7 @@ class Root extends Component {
               <Route exact path="/register" render={Register} />
               <Route exact path="/tagpref" component={TagPref} />
               <Route exact path="/chefprofile" component={ChefProfile} />
+              <Route exact path="/userprofile" component={UserProfile} />
               <Route exact path="/messagecenter" component={MessageCenter} />
               <Route component={Home} />
             </Switch>
