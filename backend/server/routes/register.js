@@ -15,19 +15,26 @@ router.post('/', function (req, res, next) {
     req.body.Password &&
     req.body.PasswordConf) {
 
-    var userData = {
-      name: req.body.Name,
-      password: req.body.Password,
-    };
+    User.count({}, function(err, count) {
+      if (err) { return err; }
 
-    User.create(userData, function (error, user) {
-      if (error) {
-        return next(error);
-      } else {
-        req.session.userId = user._id;
-        return res.json(user);
+      var userData = {
+        name: req.body.Name,
+        password: req.body.Password,
+        id: count,
       }
-    });
+
+      User.create(userData, function (error, user) {
+        if (error) {
+          return next(error);
+        } else {
+          req.session.userId = user._id;
+          return res.json(user);
+        }
+      });
+    })
+
+
 
   }
 });

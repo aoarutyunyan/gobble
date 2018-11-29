@@ -12,7 +12,8 @@ let UserSchema = new mongoose.Schema(
         incomingReviews: [{ type: mongooseTypes.ObjectId }],
         outgoingReviews: [{ type: mongooseTypes.ObjectId }],
         chef: Boolean,
-        zipcode: Number
+        zipcode: Number,
+        id: Number
     }
 );
 
