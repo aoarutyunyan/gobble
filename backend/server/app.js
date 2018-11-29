@@ -30,19 +30,19 @@ const options = {
     poolSize: 10, // Maintain up to 10 socket connections
     // If not connected, return errors immediately rather than waiting for reconnect
     bufferMaxEntries: 0
-  }
+  };
 
 const connectWithRetry = () => {
-  console.log('MongoDB connection with retry')
+  console.log('MongoDB connection with retry');
   mongoose.connect(url, options).then(()=>{
     console.log('MongoDB is connected')
   }).catch(err=>{
-    console.log('MongoDB connection unsuccessful, retry after 5 seconds.')
+    console.log('MongoDB connection unsuccessful, retry after 5 seconds.');
     setTimeout(connectWithRetry, 5000)
   })
-}
+};
 
-connectWithRetry()
+connectWithRetry();
 
 var indexRouter = require('./routes/index');
 var loginRouter = require('./routes/login');
@@ -51,6 +51,7 @@ var usersRouter = require('./routes/users');
 var eventsRouter = require('./routes/events');
 var reviewsRouter = require('./routes/reviews');
 var dishesRouter = require('./routes/dishes');
+var chefsRouter = require('./routes/chefs');
 
 var app = express();
 app.use(cors());
@@ -82,6 +83,7 @@ app.use('/users', usersRouter);
 app.use('/events', eventsRouter);
 app.use('/reviews', reviewsRouter);
 app.use('/dishes', dishesRouter);
+app.use('/chefs', chefsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

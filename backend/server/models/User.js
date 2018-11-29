@@ -11,7 +11,8 @@ let UserSchema = new mongoose.Schema(
         events: [{ type: mongooseTypes.ObjectId }],
         incomingReviews: [{ type: mongooseTypes.ObjectId }],
         outgoingReviews: [{ type: mongooseTypes.ObjectId }],
-        chef: Boolean
+        chef: Boolean,
+        zipcode: Number
     }
 );
 

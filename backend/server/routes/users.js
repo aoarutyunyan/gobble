@@ -9,7 +9,7 @@ var router = express.Router();
  * GET users listing.
  */
 router.get('/', function(req, res, next) {
-    User.find({}).then(eachOne => {
+    User.find({chef : false}).then(eachOne => {
     res.json(eachOne);
     })
 });
@@ -24,6 +24,8 @@ router.post('/', function(req, res) {
       events: req.body.Events,
       incomingReviews: req.body.IncomingReviews,
       outgoingReviews: req.body.OutgoingReviews,
+        chef: false,
+        zipcode: req.body.ZipCode
     });
 
     if (req.body.Name && req.body.Password && req.body.PasswordConf) {
