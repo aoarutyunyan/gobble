@@ -50,15 +50,14 @@ const MessageBtn = styled.div`
 `;
 
 const Calendar = styled.div`
-  width: 800px;
-  height: 800px;
+  width: 600px;
+  height: 600px;
 `;
 
 const bookings = [
-  new Date(2018, 11, 28),
-  new Date(2018, 11, 30),
-  new Date(2018, 12, 2),
+  new Date(2018, 1, 2),
   new Date(2018, 12, 7),
+  new Date(2018, 12, 30),
 ];
 
 export const ChefProfile = ({ name, imgName, bio, dishes }) => {
