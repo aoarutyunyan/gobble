@@ -29,17 +29,17 @@ const Heading = styled.div`
   align-items: center;
 `;
 
-const Biography = styled.div`
-  text-align: left;
-  padding-left: 40px;
-  padding-right: 40px;
-`;
-
-const Dishes = styled.div`
+const ChefInfo = styled.div`
   text-align: left;
   padding-left: 40px;
   padding-right: 40px;
   padding-top: 40px;  
+`;
+
+const Biography = styled.div`
+  text-align: left;
+  padding-left: 40px;
+  padding-right: 40px;
 `;
 
 const MessageBtn = styled.div`
@@ -82,7 +82,7 @@ export const ChefProfile = ({ name, imgName, bio, dishes }) => {
           </div>
         </Biography>
 
-        <Dishes>
+        <ChefInfo>
           <h2>Specialty Dishes:</h2>
 
           <div>
@@ -93,7 +93,9 @@ export const ChefProfile = ({ name, imgName, bio, dishes }) => {
               <li>Deserts</li>
             </ul>
           </div>
-        </Dishes>
+
+          <h2>Availability:</h2>
+        </ChefInfo>
       </div>
 
     </Content>
@@ -108,3 +110,20 @@ ChefProfile.propTypes = {
 };
 
 export default ChefProfile;
+
+
+
+
+// const Dishes = styled.div`
+//   text-align: left;
+//   padding-left: 40px;
+//   padding-right: 40px;
+//   padding-top: 40px;  
+// `;
+
+// const Availability = styled.div`
+//   text-align: left;
+//   padding-left: 40px;
+//   padding-right: 40px;
+//   padding-top: 40px;  
+// `;
