@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { getJpg } from '../../lib/assetsUtils';
 import { Link } from 'react-router-dom';
 import StyledBtn from '../../components/StyledBtn';
+import BookingCalendar from 'react-booking-calendar';
 
 const Content = styled.div`
   box-sizing: border-box;
@@ -47,6 +48,18 @@ const MessageBtn = styled.div`
   display: flex;
   justify-content: center;
 `;
+
+const Calendar = styled.div`
+  width: 800px;
+  height: 800px;
+`;
+
+const bookings = [
+  new Date(2018, 11, 28),
+  new Date(2018, 11, 30),
+  new Date(2018, 12, 2),
+  new Date(2018, 12, 7),
+];
 
 export const ChefProfile = ({ name, imgName, bio, dishes }) => {
   return(
@@ -95,6 +108,10 @@ export const ChefProfile = ({ name, imgName, bio, dishes }) => {
           </div>
 
           <h2>Availability:</h2>
+          <Calendar>
+            <BookingCalendar bookings={bookings}/>
+          </Calendar>
+
         </ChefInfo>
       </div>
 

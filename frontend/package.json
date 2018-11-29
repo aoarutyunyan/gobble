@@ -17,6 +17,7 @@
     "jest-enzyme": "^7.0.1",
     "multi-select-react": "^0.1.8",
     "react": "^16.6.0",
+    "react-booking-calendar": "^1.0.3",
     "react-css-grid": "^2.0.0-0",
     "react-dom": "^16.6.0",
     "react-paypal-express-checkout": "^1.0.4",
@@ -31,6 +32,7 @@
     "redux-form": "^7.4.2",
     "redux-promise": "^0.6.0",
     "redux-thunk": "^2.3.0",
+    "simple-react-calendar": "^1.7.0",
     "styled-components": "^4.1.1",
     "yup": "^0.26.6"
   },
