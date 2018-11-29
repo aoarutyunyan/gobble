@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import store from '../redux';
 import Home from './Home';
 import Register from './Register';
+import Login from './Login';
 import NavBar from '../components/NavBar';
 import TagPref from './TagPref';
 import ChefProfile from './ChefProfile';
@@ -12,6 +13,7 @@ import UserProfile from './UserProfile';
 
 
 class Root extends Component {
+
   render() {
     return (
       <Provider store={store}>
