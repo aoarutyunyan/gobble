@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import StyledBtn from '../StyledBtn';
+import Rating from './Rating';
 import '../assets/chefimg.jpg';
 
 import './CardStyle.css';
@@ -29,6 +30,7 @@ const ProfileImg = styled.img`
 
 
 const ChefCard = () => {
+
   return (
     <div class="ChefGrid">
       <div class="ChefCard">
@@ -36,7 +38,7 @@ const ChefCard = () => {
           <div class="ChefName">Gordon Ramsay</div>
         </NameWrapper>
         <ProfileImg />
-        <div class="ChefTags">Fish<br />Hamburgers<br />Steak</div>
+        <Rating />
         <ProfileButton>
           <Link to="/chefprofile">
             <StyledBtn theme="pink">
@@ -53,27 +55,22 @@ const ChefCard = () => {
 
       <div class="ChefCard">
         <div class="ChefName">Gordon Ramsay</div>
-        <div class="ChefTags">Fish<br />Hamburgers<br />Steak</div>
       </div>
 
       <div class="ChefCard">
         <div class="ChefName">Gordon Ramsay</div>
-        <div class="ChefTags">Fish<br />Hamburgers<br />Steak</div>
       </div>
 
       <div class="ChefCard">
         <div class="ChefName">Gordon Ramsay</div>
-        <div class="ChefTags">Fish<br />Hamburgers<br />Steak</div>
       </div>
 
       <div class="ChefCard">
         <div class="ChefName">Gordon Ramsay</div>
-        <div class="ChefTags">Fish<br />Hamburgers<br />Steak</div>
       </div>
 
       <div class="ChefCard">
         <div class="ChefName">Gordon Ramsay</div>
-        <div class="ChefTags">Fish<br />Hamburgers<br />Steak</div>
       </div>
 
     </div>
