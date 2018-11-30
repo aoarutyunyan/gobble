@@ -22,6 +22,7 @@ router.post('/', function (req, res, next) {
         name: req.body.Name,
         password: req.body.Password,
         id: count,
+        chef: req.body.Chef,
       }
 
       User.create(userData, function (error, user) {
@@ -33,9 +34,6 @@ router.post('/', function (req, res, next) {
         }
       });
     })
-
-
-
   }
 });
 

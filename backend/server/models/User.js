@@ -11,7 +11,7 @@ let UserSchema = new mongoose.Schema(
         events: [{ type: mongooseTypes.ObjectId }],
         incomingReviews: [{ type: mongooseTypes.ObjectId }],
         outgoingReviews: [{ type: mongooseTypes.ObjectId }],
-        chef: Boolean,
+        chef: { type: Boolean, default: false, required: true },
         zipcode: Number,
         id: Number
     }

@@ -23,10 +23,10 @@ router.post('/', function(req, res) {
       events: req.body.Events,
       incomingReviews: req.body.IncomingReviews,
       outgoingReviews: req.body.OutgoingReviews,
-        chef: false,
-        zipcode: req.body.ZipCode
+      chef: false,
+      zipcode: req.body.ZipCode
     });
-    
+
     givenUser.save(function(err, user) {
         if (err) throw err;
         res.json(user);
