@@ -18,4 +18,8 @@ describe('NavBar', () => {
     expect(wrapper.find('Chefs').length).toBe(0);
   });
 
+  it('Renders without crashing', () => {
+    shallow(<NavBar />);
+  });
+
 });
