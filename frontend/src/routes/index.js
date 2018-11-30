@@ -10,6 +10,7 @@ import TagPref from './TagPref';
 import ChefProfile from './ChefProfile';
 import MessageCenter from './MessageCenter';
 import UserProfile from './UserProfile';
+import UserType from './UserType';
 
 
 class Root extends Component {
@@ -23,6 +24,8 @@ class Root extends Component {
             <Switch>
               <Route exact path="/home" render={Home} />
               <Route exact path="/register" render={Register} />
+              <Route exact path="/login" render ={Login} />
+              <Route exact path="/usertype" component={UserType} />
               <Route exact path="/tagpref" component={TagPref} />
               <Route exact path="/chefprofile" component={ChefProfile} />
               <Route exact path="/userprofile" component={UserProfile} />

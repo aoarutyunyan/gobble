@@ -1,5 +1,5 @@
 import React from 'react';
-// import LoginForm from '../LoginForm';
+import LoginForm from '../LoginForm';
 import styled from 'styled-components';
 
 const Content = styled.div`
@@ -18,8 +18,8 @@ const Heading = styled.div`
 const Login = () => {
   return (
     <Content >
-      <Heading>Login</Heading>
-      {/* <LoginForm /> */}
+      <Heading>Sign In</Heading>
+      <LoginForm />
     </Content>
   );
 };

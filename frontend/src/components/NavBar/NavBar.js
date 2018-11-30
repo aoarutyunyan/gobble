@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import StyledBtn from '../../components/StyledBtn';
 import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 //import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { topNavHeight } from '../../lib/stylesConstants';
 
@@ -144,7 +145,7 @@ class TopNav extends React.Component {
               </AccountButton>
             )}
 
-            {!loggedIn && <StyledBtn theme="outlineWhiteBlue">Sign In</StyledBtn>}
+            {!loggedIn && <Link to="/login"><StyledBtn theme="outlineWhiteBlue">Sign In</StyledBtn></Link>}
           </Right>
         </StyledNav>
 
