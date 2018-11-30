@@ -127,9 +127,6 @@ ChefProfile.propTypes = {
 
 export default ChefProfile;
 
-
-
-
 // const Dishes = styled.div`
 //   text-align: left;
 //   padding-left: 40px;

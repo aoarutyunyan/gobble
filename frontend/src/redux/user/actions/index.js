@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 export const UPDATE_PREFERENCES = 'UPDATE_PREFERENCES';
 export const UPDATE_USER = 'UPDATE_USER';
 
