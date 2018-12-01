@@ -113,7 +113,7 @@ class ChefRecommendationEngine:
         count = self.similarity_matrix[user_j].count(KeyValPair(user_id, prev_sim))
 
         index = 0
-        for sim_pair in self.similarity_matrix[user_j].islice(init_index, count):
+        for sim_pair in self.similarity_matrix[user_j].islice(init_index, init_index+count):
           if sim_pair.is_equal_to(user_id):
             index += init_index
             break
