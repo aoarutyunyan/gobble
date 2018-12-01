@@ -1,11 +1,11 @@
 import { LOAD_USERS_REQUEST, LOAD_USERS_SUCCESS } from '../actions';
 
-const initialState = {
-  isFetching: false,
-  items: [],
-};
+// const initialState = {
+//   isFetching: false,
+//   items: [],
+// };
 
-const users = (state = initialState, action) => {
+const users = (state = [], action) => {
   switch (action.type) {
     case LOAD_USERS_REQUEST:
       return { ...state, isFetching: true };

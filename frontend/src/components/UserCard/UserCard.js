@@ -4,8 +4,6 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import StyledBtn from '../StyledBtn';
-import Rating from './Rating';
-import '../assets/chefimg.jpg';
 import { getJpg } from '../../lib/assetsUtils';
 
 const StyledCard = styled.div`
@@ -62,27 +60,15 @@ const TextIcon = styled(FontAwesomeIcon)`
   margin-right: 10px;
 `;
 
-const StyledRating = styled(Rating)`
-  background: black;
-`;
-
 const Description = styled.div`
   text-align: left;
 `;
 
-const rating = {
-  value: 5,
-};
-
-const ChefCard = ({ id, name, dishes, description, zipcode, email }) => {
+const UserCard = ({ id, name, dishes, description, zipcode, email }) => {
 
   return (
     <StyledCard>
       <StyledName>{name}</StyledName>
-
-      <div style={{ marginTop: '10px', marginBottom: '2em' }}><ProfileImg  src={getJpg('chefimg')}/></div>
-
-      <StyledRating />
 
       <div>
         <StyledName style={{ marginTop: '20px', marginBottom: '20px' }}>DESCRIPTION</StyledName>
@@ -95,10 +81,6 @@ const ChefCard = ({ id, name, dishes, description, zipcode, email }) => {
           Zip Code: {zipcode}
         </ZipCode>
 
-        <Link to="/chefprofile">
-          <CardBtn theme="dark"> <TextIcon style={{ marginLeft: '-15px' }} icon="user" color="#fff" /> <span>Profile</span> </CardBtn>
-        </Link>
-
         <a href={`mailto:${email}`}> <CardBtn theme="outlineBlue"> <TextIcon style={{ marginLeft: '-15px' }} icon="envelope" /> <span>Message</span> </CardBtn></a>
 
       </div>
@@ -107,7 +89,7 @@ const ChefCard = ({ id, name, dishes, description, zipcode, email }) => {
   );
 };
 
-ChefCard.propTypes = {
+UserCard.propTypes = {
   id: PropTypes.number,
   name: PropTypes.string,
   description: PropTypes.string,
@@ -116,4 +98,4 @@ ChefCard.propTypes = {
   email: PropTypes.string,
 };
 
-export default ChefCard;
+export default UserCard;

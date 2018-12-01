@@ -23,7 +23,7 @@ export const loadEventsSucess = json => ({
   events: json,
 });
 
-export const fetchUsers = () => dispatch => {
+export const fetchEvents = () => dispatch => {
   dispatch(loadEventsRequest());
   dispatch(loadEventsSucess(events));
 };

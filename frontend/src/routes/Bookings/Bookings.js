@@ -1,5 +1,5 @@
 import React from 'react';
-import ChefCardList from '../../components/ChefCardList';
+import UserCardList from '../../components/UserCardList';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
@@ -13,7 +13,7 @@ export const Bookings = () => {
   return(
     <Wrapper>
       <h1 style={{ justifyContent: 'center', display: 'flex' }}>Bookings</h1>
-      <ChefCardList booking={true}/>
+      {/* <UserCardList booking={true}/> */}
     </Wrapper>
   );
 };

@@ -1,11 +1,11 @@
 import { LOAD_EVENTS_REQUEST, LOAD_EVENTS_SUCCESS } from '../actions';
 
-const initialState = {
-  isFetching: false,
-  items: [],
-};
+// const initialState = {
+//   isFetching: false,
+//   items: [],
+// };
 
-const events = (state = initialState, action) => {
+const events = (state = [], action) => {
   switch (action.type) {
     case LOAD_EVENTS_REQUEST:
       return { ...state, isFetching: true };

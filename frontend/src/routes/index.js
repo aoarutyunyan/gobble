@@ -9,10 +9,10 @@ import NavBar from '../components/NavBar';
 import Chefs from './Chefs';
 import ChefProfile from './ChefProfile';
 import MessageCenter from './MessageCenter';
-import UserProfile from './UserProfile';
 import UserType from './UserType';
 import Bookings from '../routes/Bookings';
-
+import Users from '../routes/Users';
+import ChefDishes from '../routes/ChefDishes';
 
 class Root extends Component {
 
@@ -29,9 +29,10 @@ class Root extends Component {
               <Route exact path="/usertype" component={UserType} />
               <Route exact path="/chefs" component={Chefs} />
               <Route exact path="/chefprofile" component={ChefProfile} />
-              <Route exact path="/userprofile" component={UserProfile} />
+              <Route exact path="/users" component={Users} />
               <Route exact path="/messagecenter" component={MessageCenter} />
               <Route exact path="/bookings" render={Bookings} />
+              <Route exact path="/chefdishes" component={ChefDishes} />
               <Route component={Home} />
             </Switch>
           </div>
