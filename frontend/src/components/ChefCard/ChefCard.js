@@ -57,15 +57,11 @@ const ChefCard = ({ id, name, dishes, description }) => {
       <Rating />
 
       <Link to="/chefprofile">
-        <CardBtn theme="pink">
-              Profile
-        </CardBtn>
+        <CardBtn theme="pink"> Profile </CardBtn>
       </Link>
 
       <Link to="/messagecenter">
-        <CardBtn theme="outline">
-            Message
-        </CardBtn>
+        <CardBtn theme="outline"> Message </CardBtn>
       </Link>
 
     </StyledCard>
