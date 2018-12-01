@@ -11,6 +11,7 @@ import ChefProfile from './ChefProfile';
 import MessageCenter from './MessageCenter';
 import UserProfile from './UserProfile';
 import UserType from './UserType';
+import Bookings from '../routes/Bookings';
 
 
 class Root extends Component {
@@ -30,6 +31,7 @@ class Root extends Component {
               <Route exact path="/chefprofile" component={ChefProfile} />
               <Route exact path="/userprofile" component={UserProfile} />
               <Route exact path="/messagecenter" component={MessageCenter} />
+              <Route exact path="/bookings" render={Bookings} />
               <Route component={Home} />
             </Switch>
           </div>

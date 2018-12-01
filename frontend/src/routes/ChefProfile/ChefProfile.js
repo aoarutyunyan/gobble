@@ -60,12 +60,20 @@ const bookings = [
   new Date(2018, 12, 30),
 ];
 
-export const ChefProfile = ({ name, imgName, bio, dishes }) => {
+const chef = {
+  name: 'Gordon Ramsay',
+  zipCode: 55555,
+  bio: 'Born in Scotland in 1966, Gordon Ramsay left behind an early athletic career to become a renowned chef in London. By the early 2000s he was making his mark on British TV as the temperamental host of Ramsays Kitchen Nightmares and Hell’s Kitchen, shows that made a successful transition to American audiences. The award-winning chef has since expanded his celebrity brand via such programs as MasterChef and Hotel Hell and opening more restaurants around the globe.',
+  dishes: 'Hamburgers, Fish',
+};
+
+export const ChefProfile = ({ chefs }) => {
+  const { name, zipCode, bio, dishes } = chef;
+
   return(
     <Content>
       <Heading>
-        {/* { name } */}
-        <h1>Gordon Ramsay</h1>
+        <h1>{name}</h1>
       </Heading>
 
       <ProfileImg />
@@ -83,14 +91,8 @@ export const ChefProfile = ({ name, imgName, bio, dishes }) => {
           <h2>Chef Bio:</h2>
 
           <div>
-            {/* { bio } */}
-            Born in Scotland in 1966, Gordon Ramsay left behind an early athletic career to 
-            become a renowned chef in London. 
-            By the early 2000s he was making his mark on British TV as the 
-            temperamental host of Ramsay's Kitchen Nightmares and Hell’s Kitchen, 
-            shows that made a successful transition to American audiences. 
-            The award-winning chef has since expanded his celebrity brand via 
-            such programs as MasterChef and Hotel Hell and opening more restaurants around the globe.
+            Zip Code: {zipCode}
+            <div><br />{bio}</div>
           </div>
         </Biography>
 
@@ -98,17 +100,12 @@ export const ChefProfile = ({ name, imgName, bio, dishes }) => {
           <h2>Specialty Dishes:</h2>
 
           <div>
-            {/* { Dishes } */}
-            <ul>
-              <li>Fish</li>
-              <li>Hamburgers</li>
-              <li>Deserts</li>
-            </ul>
+            {dishes}
           </div>
 
           <h2>Availability:</h2>
           <Calendar>
-            <BookingCalendar bookings={bookings}/>
+            <BookingCalendar clickable={true} bookings={bookings}/>
           </Calendar>
 
         </ChefInfo>
@@ -119,24 +116,7 @@ export const ChefProfile = ({ name, imgName, bio, dishes }) => {
 }; 
 
 ChefProfile.propTypes = {
-  name: PropTypes.string,
-  imgName: PropTypes.string,
-  bio: PropTypes.string,
-  dishes: PropTypes.string,
+  chefs: PropTypes.object,
 };
 
 export default ChefProfile;
-
-// const Dishes = styled.div`
-//   text-align: left;
-//   padding-left: 40px;
-//   padding-right: 40px;
-//   padding-top: 40px;  
-// `;
-
-// const Availability = styled.div`
-//   text-align: left;
-//   padding-left: 40px;
-//   padding-right: 40px;
-//   padding-top: 40px;  
-// `;
