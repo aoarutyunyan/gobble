@@ -91,7 +91,7 @@ const Container = styled.div`
 const StyledNav = styled.div`
   display: grid;
   grid-template-columns: auto 1fr;
-  background-color: #242729;
+  background-color: black;
   width: 100%;
   position: sticky;
   height: ${topNavHeight};

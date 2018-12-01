@@ -9,7 +9,7 @@ import StyledBtn from '../../components/StyledBtn';
 
 const StyledLabel = styled.label`
   text-transform: uppercase;
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: white;
   margin-right: 10px;
 `;
@@ -24,7 +24,7 @@ const TextInput = styled(Field)`
   box-sizing: border-box;
   background: #4E5559;
   border: 2px solid ${props => props.error ? red : '#4E5559'};
-  border-radius: 0.5em;
+  border-radius: 10px;
   padding: 0.2em;
   margin-bottom: 1em;
   height: 40px;
@@ -89,6 +89,11 @@ const SignUpForm = ({ user, values, errors, touched, isSubmitting }) => (
       />
     </div>
 
+    <div>
+      <div><StyledLabel htmlFor="isChef">Are you a chef?</StyledLabel></div>
+      <StyledLabel style={{ textTransform: 'none', marginTop: '1em', marginRight: '1em' }}>Yes</StyledLabel> <Field type="checkbox" name="isChef" />
+    </div>
+
     <StyledBtn style={{ marginTop: '2em', width: '300px' }} theme="pink" disabled={(Object.keys(touched).length === 0 && !values.password) || Object.keys(errors).length !== 0} >
       Submit
     </StyledBtn>
@@ -129,6 +134,7 @@ const formikForm = withFormik({
   handleSubmit(values, {
     setErrors, resetForm, setSubmitting, props: { updateUser, history },
   }) {
+    console.log(values); // isChef is in there
     setSubmitting(false);
     resetForm();
     updateUser(values);

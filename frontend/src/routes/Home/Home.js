@@ -11,7 +11,7 @@ const Content = styled.div`
   background: url(${getJpg('bg')})  no-repeat center center fixed;
   background-size: cover;
   min-height: calc(100vh - 50px);
-  color: white;
+  color: black;
 `;
 
 const Title = styled.div`
@@ -55,7 +55,7 @@ export const Home = () => {
         <div>Connecting Chefs with Hungry Users Since Fall 2018</div>
       </Description>
       <Slogan>
-        <div>Are you craving a home-cooked meal but don't have the time to cook?<br /> You've come to the right place.</div>
+        <div>Craving a home-cooked meal, but don't have the time to cook?<br /> You've come to the right place.</div>
       </Slogan>
       <Link to="/register">
         <StyledBtn theme="pink">
