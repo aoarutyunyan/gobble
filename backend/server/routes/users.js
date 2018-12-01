@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 mongoose.set('debug', true);
 const User = require('../models/User.js');
+const bcrypt = require('bcrypt');
 
 var express = require('express');
 var router = express.Router();
@@ -30,6 +31,20 @@ router.post('/', function(req, res) {
     givenUser.save(function(err, user) {
         if (err) throw err;
         res.json(user);
+    });
+});
+
+/**
+ * PUT: Update a user's password
+ */
+router.put('/password/:id', function(req, res, next) {
+    // var user_id = parseInt(req.params.id);
+    bcrypt.hash(req.body.password, 10, function (err, hash) {
+        if (err) {
+            throw err;
+        } else {
+            User.updateUser(parseInt(req.params.id), { password: hash });
+        }
     });
 });
 

@@ -7,10 +7,12 @@ const Review = require('./Review.js');
 let UserSchema = new mongoose.Schema(
     {
         name: { type: String, required: true, unique: true },
-        password: { type: String, required: true},
+        password: { type: String, required: true },
         events: [{ type: mongooseTypes.ObjectId }],
         incomingReviews: [{ type: mongooseTypes.ObjectId }],
         outgoingReviews: [{ type: mongooseTypes.ObjectId }],
+        dishes: [{ type: String }],
+        tags: [{ type: String }],
         chef: { type: Boolean, default: false, required: true },
         zipcode: Number,
         id: Number
