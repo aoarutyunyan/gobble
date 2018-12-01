@@ -28,18 +28,25 @@ regData1 = {'Name': 'testUser1',
 regData2 = {'Name': 'testUser2',
         'Password': 'somePassword2',
         'PasswordConf': 'somePassword2'}
+
+chefRegData1 = {'Name': 'testChef1',
+        'Password': 'chefPass1',
+        'PasswordConf': 'chefPass1', 
+        'Chef': 1}
+
 reviewData1 = {'rating': 4}
 eventData1 = {'title': 'testEvent1',
         'host': None}
 userData1 = {'name': 'testUser1'}
 userData2 = {'name': 'testUser2'}
+chefData1 = {'name': 'testChef1'}
+
 
 class TestUserMethods(unittest.TestCase):
 
-    def test_register(self):
+    def test_registerUser(self):
         r = postEndpoint("/register", regData1)
         self.assertEqual(r.status_code, 200)
-
         removeData(db.users, userData1)
 
     def test_getUsers(self):
@@ -52,6 +59,26 @@ class TestUserMethods(unittest.TestCase):
         self.assertTrue(foundUser)
 
         removeData(db.users, userData1)
+
+
+class TestChefMethods(unittest.TestCase):
+
+    def test_registerChef(self):
+        r = postEndpoint("/register", chefRegData1)
+        self.assertEqual(r.status_code, 200)
+        removeData(db.users, chefData1)
+
+    def test_getChefs(self):
+        r = postEndpoint("/register", chefRegData1)
+        self.assertEqual(r.status_code, 200)
+        foundChef = False
+        for chef in getEndpoint("/chefs"):
+            if chef['name'] == chefRegData1['Name']:
+                foundChef = True
+
+        self.assertTrue(foundChef)
+        removeData(db.users, chefData1)
+
 
 class TestEventMethods(unittest.TestCase):
 
@@ -90,7 +117,7 @@ class TestReviewMethods(unittest.TestCase):
 
         r = postEndpoint("/register", regData2)
         self.assertEqual(r.status_code, 200)
-        reviewData['Reviewer'] = r.json()['_id']
+        reviewData1['Reviewer'] = r.json()['_id']
         eventData1['host'] = r.json()['_id']
 
         r = postEndpoint("/events", eventData1)
@@ -104,6 +131,7 @@ class TestReviewMethods(unittest.TestCase):
         removeData(db.users, userData2)
         removeData(db.events, eventData1)
         removeData(db.reviews, reviewData1)
+        
 
 if __name__ == '__main__':
-    unittest.main()
+    unittest.main(verbosity=2)

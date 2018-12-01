@@ -6,9 +6,8 @@ var User = require('../models/User.js');
 router.post('/', function (req, res, next) {
   // confirm that user typed same password twice
   if (req.body.Password !== req.body.PasswordConf) {
-    var err = new Error('Passwords do not match.');
-    err.status = 400;
-    return res.json({passwordsMatch: false});
+    res.status(400);
+    return res.send("Passwords do not match.");
   }
 
   if (req.body.Name &&
