@@ -1,18 +1,15 @@
 import { combineReducers, createStore, compose, applyMiddleware } from 'redux';
-import query from './query/reducers';
 import loggedIn from './loggedin/reducers';
 import user from './user/reducers';
 import chefs from './chefs/reducer';
 import chefFilters from './chefFilters/reducer';
 
 const initialState = {
-  query: '',
   loggedIn: false,
   user: {},
   chefFilters: [],
 };
 const reducer = combineReducers({
-  query,
   loggedIn,
   user,
   chefs,
