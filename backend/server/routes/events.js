@@ -15,7 +15,7 @@ router.get('/', function(req, res, next) {
 /**
  * POST new event.
  */
-router.post('/', function(req, res) {
+router.post('/', function(req, res, next) {
     givenEvent = new Event({
       title: req.body.Title,
       time: req.body.Time,
@@ -27,8 +27,11 @@ router.post('/', function(req, res) {
 
     if (req.body.Title && req.body.Host) {
       givenEvent.save(function(err, event) {
-          if (err) throw err;
-          res.json(event);
+          if (err) {
+            return next(err);
+          } else {
+            return res.json(event);
+          }
       });
     }
 });
