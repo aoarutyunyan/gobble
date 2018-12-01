@@ -1,23 +1,23 @@
-import { LOAD_USERS_REQUEST, LOAD_USERS_SUCCESS } from '../actions';
+import { LOAD_EVENTS_REQUEST, LOAD_EVENTS_SUCCESS } from '../actions';
 
 const initialState = {
   isFetching: false,
   items: [],
 };
 
-const users = (state = initialState, action) => {
+const events = (state = initialState, action) => {
   switch (action.type) {
-    case LOAD_USERS_REQUEST:
+    case LOAD_EVENTS_REQUEST:
       return { ...state, isFetching: true };
-    case LOAD_USERS_SUCCESS:
+    case LOAD_EVENTS_SUCCESS:
       return {
         ...state,
         isFetching: false,
-        items: action.users,
+        items: action.events,
       };
     default:
       return state;
   }
 };
 
-export default users;
+export default events;
