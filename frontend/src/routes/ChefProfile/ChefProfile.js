@@ -5,11 +5,11 @@ import { getJpg } from '../../lib/assetsUtils';
 import { Link } from 'react-router-dom';
 import StyledBtn from '../../components/StyledBtn';
 import BookingCalendar from 'react-booking-calendar';
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 
 const Content = styled.div`
   box-sizing: border-box;
   padding-bottom: 100px;
-  color: white;
   flex-direction: column;
   padding: 0 40px;
 `;
@@ -17,7 +17,6 @@ const Content = styled.div`
 const ProfileImg = styled.img`
   width: 200px;
   height: 200px;
-  border: 1px solid blue;
   padding-top: 2px;
   display: flex;
   align-self: center;
@@ -54,6 +53,10 @@ const Calendar = styled.div`
   height: 600px;
 `;
 
+const TextIcon = styled(FontAwesomeIcon)`
+  margin-right: 10px;
+`;
+
 const bookings = [
   new Date(2018, 1, 2),
   new Date(2018, 12, 7),
@@ -67,8 +70,9 @@ const chef = {
   dishes: 'Hamburgers, Fish',
 };
 
-export const ChefProfile = ({ chefs }) => {
-  const { name, zipCode, bio, dishes } = chef;
+export const ChefProfile = ({ match, chefs }) => {
+  const chef = chefs.items.filter(({ id }) => id == match.params.chefId)[0];
+  const { id, name, dishes, description, zipcode, email } = chef;
 
   return(
     <Content>
@@ -76,34 +80,29 @@ export const ChefProfile = ({ chefs }) => {
         <h1>{name}</h1>
       </Heading>
 
-      <ProfileImg />
+      <ProfileImg src={getJpg('chefimg')} />
 
       <MessageBtn>
-        <Link to="/messagecenter">
-          <StyledBtn theme="pink">
-            Message
-          </StyledBtn>
-        </Link>
+        <a href={`mailto:${email}`}> <StyledBtn theme="outlineBlue"> <TextIcon icon="envelope" /> <span>Message</span> </StyledBtn></a>
       </MessageBtn>
 
       <div>
         <Biography>
-          <h2>Chef Bio:</h2>
+          <h2>Bio</h2>
 
           <div>
-            Zip Code: {zipCode}
-            <div><br />{bio}</div>
+            <TextIcon icon="map-marker-alt" />
+            Zip Code: {zipcode}
+            <div><br />{description}</div>
           </div>
         </Biography>
 
         <ChefInfo>
-          <h2>Specialty Dishes:</h2>
+          <h2>Specialty Dishes</h2>
 
-          <div>
-            {dishes}
-          </div>
+          <div> {'tags'} </div>
 
-          <h2>Availability:</h2>
+          <h2>Availability</h2>
           <Calendar>
             <BookingCalendar clickable={true} bookings={bookings}/>
           </Calendar>
@@ -116,7 +115,7 @@ export const ChefProfile = ({ chefs }) => {
 }; 
 
 ChefProfile.propTypes = {
-  chefs: PropTypes.object,
+  chefs: PropTypes.array,
 };
 
 export default ChefProfile;

@@ -27,8 +27,10 @@ class Root extends Component {
               <Route exact path="/register" render={Register} />
               <Route exact path="/login" render ={Login} />
               <Route exact path="/usertype" component={UserType} />
+
               <Route exact path="/chefs" component={Chefs} />
-              <Route exact path="/chefprofile" component={ChefProfile} />
+              <Route exact path="/chefs/:chefId" render={ChefProfile} />
+              
               <Route exact path="/users" component={Users} />
               <Route exact path="/messagecenter" component={MessageCenter} />
               <Route exact path="/bookings" render={Bookings} />
