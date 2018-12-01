@@ -35,6 +35,7 @@ UserSchema.statics.getUserByID = function (id) {
 UserSchema.methods.updateUser = function (id, change) {
     this.findByIdAndUpdate(id, change, function(err, user) {
       if (err) throw err;
+      return user;
     })
 };
 

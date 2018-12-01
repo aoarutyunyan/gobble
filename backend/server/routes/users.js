@@ -43,9 +43,42 @@ router.put('/password/:id', function(req, res, next) {
         if (err) {
             throw err;
         } else {
-            User.updateUser(parseInt(req.params.id), { password: hash });
+            let user = User.updateUser(parseInt(req.params.id), { password: hash });
+            res.json(user);
         }
     });
+});
+
+/**
+ * PUT: Update a user's events
+ */
+router.put('/events/:id', function(req, res, next) {
+   let user = User.updateUser(parseInt(req.params.id), { events: req.body.events });
+   res.json(user);
+});
+
+/**
+ * PUT: Update a user's incoming reviews
+ */
+router.put('/reviews_in/:id', function(req, res, next) {
+    let user = User.updateUser(parseInt(req.params.id), { incomingReviews: req.body.reviews });
+    res.json(user);
+});
+
+/**
+ * PUT: Update a user's outgoing reviews
+ */
+router.put('/reviews_out/:id', function(req, res, next) {
+    let user = User.updateUser(parseInt(req.params.id), { outgoingReviews: req.body.reviews });
+    res.json(user);
+});
+
+/**
+ * PUT: Update a user's zipcode
+ */
+router.put('/zipcode/:id', function(req, res, next) {
+    let user = User.updateUser(parseInt(req.params.id), { zipcode: req.body.zipcode });
+    res.json(user);
 });
 
 module.exports = router;
