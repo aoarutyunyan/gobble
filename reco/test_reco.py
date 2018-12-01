@@ -12,7 +12,7 @@ normal reco control flow:
 
 @pytest.fixture(scope='class')
 def reco(request):
-    request.cls.reco = ChefRecommendationEngine("./testratings.csv")
+    request.cls.reco = ChefRecommendationEngine({}, "./testratings.csv")
 
 @pytest.mark.usefixtures('reco')
 class TestReco():
@@ -34,8 +34,8 @@ class TestReco():
     def test_recomputation(self):
         self.reco.receive_new_rating(1, 5, 10)
         correct_output = [[2, 3, 5, 4],
-                          [5, 1, 1, 4],
-                          [5, 1, 1, 4],
+                          [5, 1, 4, 3],
+                          [5, 1, 4, 2],
                           [5, 2, 3, 1],
                           [4, 2, 3, 1]]
 
