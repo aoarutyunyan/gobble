@@ -1,4 +1,4 @@
-FROM node:latest
+FROM node:11.3.0
 # RUN mkdir -p /usr/src/app
 # WORKDIR /usr/src/app
 RUN wget https://bootstrap.pypa.io/get-pip.py
@@ -7,9 +7,9 @@ RUN pip install pymongo requests
 RUN mkdir -p /api
 WORKDIR /api
 COPY package.json ./
-RUN npm install
+#RUN npm install
 COPY . ./
-RUN npm uninstall bcrypt
-RUN npm install -f bcrypt
+#RUN npm uninstall bcrypt
+#RUN npm install -f bcrypt
 EXPOSE 3000
 CMD [ "npm", "start" ]
