@@ -2,18 +2,28 @@ import { combineReducers, createStore, compose, applyMiddleware } from 'redux';
 import loggedIn from './loggedin/reducers';
 import user from './user/reducers';
 import chefs from './chefs/reducer';
+import users from './users/reducer';
+import events from './events/reducer';
+import ratings from './ratings/reducer';
 import chefFilters from './chefFilters/reducer';
 
 const initialState = {
-  loggedIn: false,
-  user: {},
   chefFilters: [],
+  chefs: [],
+  events: [],
+  loggedIn: false,
+  ratings: [],
+  user: {},
+  users: [],
 };
 const reducer = combineReducers({
-  loggedIn,
-  user,
-  chefs,
   chefFilters,
+  chefs,
+  events,
+  loggedIn,
+  ratings,
+  user,
+  users,
 });
 
 const thunk = store => next => (action) => {
