@@ -9,12 +9,8 @@ import chefFilters from './chefFilters/reducer';
 
 const initialState = {
   chefFilters: [],
-  chefs: [],
-  events: [],
   loggedIn: false,
-  ratings: [],
   user: {},
-  users: [],
 };
 const reducer = combineReducers({
   chefFilters,

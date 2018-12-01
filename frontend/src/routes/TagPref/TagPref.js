@@ -6,7 +6,6 @@ import ChefCardList from '../../components/ChefCardList';
 
 const Heading = styled.div`
   margin-top: 1em;
-  color: white;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -39,16 +38,16 @@ class TagPref extends React.Component {
     return(
       <ListView>
         <Heading>
+
           <div>
-            <h1>Choose Tags</h1>
+            <h1>Search Local Chefs</h1>
+
             <Options>
-              <Select
-                options={tags}
-                isMulti={true}
-                onChange={this.handleChange}
-              />
+              <Select options={tags} isMulti={true} onChange={this.handleChange} />
             </Options>
+
           </div>
+          
         </Heading>
         <ChefCardList />
       </ListView>
