@@ -6,7 +6,7 @@ import Home from './Home';
 import Register from './Register';
 import Login from './Login';
 import NavBar from '../components/NavBar';
-import TagPref from './TagPref';
+import Chefs from './Chefs';
 import ChefProfile from './ChefProfile';
 import MessageCenter from './MessageCenter';
 import UserProfile from './UserProfile';
@@ -27,7 +27,7 @@ class Root extends Component {
               <Route exact path="/register" render={Register} />
               <Route exact path="/login" render ={Login} />
               <Route exact path="/usertype" component={UserType} />
-              <Route exact path="/tagpref" component={TagPref} />
+              <Route exact path="/chefs" component={Chefs} />
               <Route exact path="/chefprofile" component={ChefProfile} />
               <Route exact path="/userprofile" component={UserProfile} />
               <Route exact path="/messagecenter" component={MessageCenter} />

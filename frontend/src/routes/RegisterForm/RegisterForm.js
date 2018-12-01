@@ -138,7 +138,7 @@ const formikForm = withFormik({
     setSubmitting(false);
     resetForm();
     updateUser(values);
-    history.push('/tagpref');
+    history.push('/chefs');
   },
 })(SignUpForm);
 

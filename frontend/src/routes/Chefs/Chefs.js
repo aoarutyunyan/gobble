@@ -28,7 +28,7 @@ const tags = [
   { label: 'Thanksgiving', value: 5 },
 ];
 
-class TagPref extends React.Component {
+class Chefs extends React.Component {
   
   handleChange = (filters) => {
     this.props.updateChefFilters(filters);
@@ -55,8 +55,8 @@ class TagPref extends React.Component {
   }
 };
 
-TagPref.propTypes = {
+Chefs.propTypes = {
   updateChefFilters: PropTypes.func,
 };
 
-export default TagPref;
+export default Chefs;

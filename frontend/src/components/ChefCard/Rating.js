@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import StarRatingComponent from 'react-star-rating-component';
 
-export default class Rating extends Component {
+class Rating extends Component {
   constructor(props) {
     super(props);
    
@@ -27,3 +27,4 @@ export default class Rating extends Component {
     );
   }
 }
+export default Rating;

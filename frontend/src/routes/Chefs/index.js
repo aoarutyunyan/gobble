@@ -1,4 +1,4 @@
-import TagPref from './TagPref';
+import Chefs from './Chefs';
 import { connect } from 'react-redux';
 import { updateChefFilters } from '../../redux/chefFilters/actions';
 
@@ -15,6 +15,6 @@ const mapDispatchToProps = dispatch => ({
 const view = connect(
   mapStateToProps,
   mapDispatchToProps,
-)(TagPref);
+)(Chefs);
 
 export default view;
