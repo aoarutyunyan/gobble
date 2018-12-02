@@ -3,28 +3,29 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const mongooseTypes = mongoose.Schema.Types;
 
-let UserIDSchema = new mongoose.Schema(
+var UserIDSchema = new mongoose.Schema(
     {
         id: Number,
         chef: Boolean
     }
 );
 
-let EventSchema = new mongoose.Schema(
+var EventSchema = new mongoose.Schema(
     {
         title: String,
         time: mongooseTypes.Date,
         tags: [ String ],
-        chef_id: UserIDSchema,
+        //chef_id: UserIDSchema,
+        chef_id: Number,
         dishes: [ String ],
     }
 );
 
-let ReviewSchema = new mongoose.Schema(
+var ReviewSchema = new mongoose.Schema(
     {
         rating: Number,
         // reviewer: UserSchema,
-        subject_id: UserIDSchema
+        subject_id: Number
     }
 );
 
@@ -32,17 +33,17 @@ let ReviewSchema = new mongoose.Schema(
 let UserSchema = new mongoose.Schema(
     {
         id: Number,
-        objectId: mongooseTypes.ObjectId,
         name: { type: String, required: true, unique: true },
         password: { type: String, required: true },
         email: String,
+        chef: { type: Boolean, default: false, required: true },
         zipcode: Number,
         events: [ EventSchema ],
         // incomingReviews: [ ReviewSchema ],
         outgoingReviews: [ ReviewSchema ],
         dishes: [ String ],
         tags: [ String ],
-        chef: { type: Boolean, default: false, required: true }
+        
     }
 );
 
