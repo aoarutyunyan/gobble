@@ -16,6 +16,7 @@ let EventSchema = new mongoose.Schema(
         time: mongooseTypes.Date,
         tags: [ String ],
         chef_id: Number,
+        host_id: Number,
         dishes: [ String ],
     }
 );

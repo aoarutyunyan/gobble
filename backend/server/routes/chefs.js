@@ -28,7 +28,6 @@ router.get('/nearby', function(req, res, next) {
         if (this.readyState === 4 && this.status === 200)
         {
             httpResponse = xhttpRequest.responseText;
-            // console.log(httpResponse);
 
             // Cut the string to get the table we want
             var pos = httpResponse.indexOf('a href=\'/tools/zip-code-lookup.aspx?TYPE=zip2city&ZIP=');
@@ -39,9 +38,6 @@ router.get('/nearby', function(req, res, next) {
                 zipcodeHTML = zipcodeHTML.substring(0, zipcodeHTML.indexOf('</table>'));
             }
 
-            // index 55, length 5
-
-            // console.log(zipcodeHTML);
             var zipcodes = [];
             while (pos !== -1)
             {
@@ -51,17 +47,18 @@ router.get('/nearby', function(req, res, next) {
                 pos = zipcodeHTML.indexOf('a href=\'/tools/zip-code-lookup.aspx?TYPE=zip2city&ZIP=');
                 zipcodeHTML = zipcodeHTML.substring(pos, zipcodeHTML.length - 1);
             }
-            // console.log(zipcodes);
+
+            var localChefs = [];
 
             // Get the appropriate chefs
-            for (var zc of zipcodes)
-            {
-                User.find({zipcode: zc}).then(eachOne => {
-                    res.json(eachOne);
-                }).catch((error) => {
-                    console.log('No chef(s) found in this zipcode');
-                });
+            for (let i = 0; i < zipcodes.length; i++) {
+                var p = User.find({ zipcode: zipcodes[i], chef: true }).then();
+                localChefs.push(p);
             }
+            Promise.all(localChefs).then(function(chefs) {
+                const result = chefs.filter(chef => chef.length > 0);
+                res.json(result);
+            });
         }
     };
     xhttpRequest.open('GET', url, true);
