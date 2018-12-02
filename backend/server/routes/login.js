@@ -4,10 +4,10 @@ var User = require('../models/User.js');
 
 //POST route for logging in
 router.post('/', function (req, res, next) {
-  if (req.body.LoginName && req.body.LoginPassword) {
-    User.authenticate(req.body.LoginName, req.body.LoginPassword, function (error, user) {
+  if (req.body.Email && req.body.Password) {
+    User.authenticate(req.body.Email, req.body.Password, function (error, user) {
       if (error || !user) {
-        var err = new Error('Wrong username or password.');
+        var err = new Error('Wrong email or password.');
         err.status = 401;
         return next(err);
       } else {
