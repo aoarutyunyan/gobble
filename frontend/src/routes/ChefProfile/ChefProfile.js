@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { getJpg } from '../../lib/assetsUtils';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import StyledBtn from '../../components/StyledBtn';
 import BookingCalendar from 'react-booking-calendar';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
@@ -70,9 +70,9 @@ const chef = {
   dishes: 'Hamburgers, Fish',
 };
 
-export const ChefProfile = ({ match, chefs }) => {
+export const ChefProfile = ({ history, match, chefs }) => {
   const chef = chefs.items.filter(({ id }) => id == match.params.chefId)[0];
-  const { id, name, dishes, description, zipcode, email } = chef;
+  const { id, name, tags, dishes, description, zipcode, email } = chef;
 
   return(
     <Content>
@@ -100,11 +100,16 @@ export const ChefProfile = ({ match, chefs }) => {
         <ChefInfo>
           <h2>Specialty Dishes</h2>
 
-          <div> {'tags'} </div>
+          <div> {dishes.map(dish => <div>{dish}</div>)} </div>
 
-          <h2>Availability</h2>
+          <h2>Tags</h2>
+          <div> {tags.map(tag => <div>{tag}</div>)} </div>
+
+          <h2>Boook Me!</h2>
+          <p>Dark blue entries are when I'm busy.</p>
+          <NavLink to={`/chefs/${id}/book`}><StyledBtn theme="pink">Book</StyledBtn></NavLink>
           <Calendar>
-            <BookingCalendar clickable={true} bookings={bookings}/>
+            <BookingCalendar bookings={bookings}/>
           </Calendar>
 
         </ChefInfo>
@@ -116,6 +121,8 @@ export const ChefProfile = ({ match, chefs }) => {
 
 ChefProfile.propTypes = {
   chefs: PropTypes.array,
+  history: PropTypes.object,
+  match: PropTypes.object,
 };
 
 export default ChefProfile;

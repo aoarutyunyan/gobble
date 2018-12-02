@@ -13,6 +13,7 @@ import UserType from './UserType';
 import Bookings from '../routes/Bookings';
 import Users from '../routes/Users';
 import ChefDishes from '../routes/ChefDishes';
+import BookEvent from './BookEvent';
 
 class Root extends Component {
 
@@ -30,6 +31,7 @@ class Root extends Component {
 
               <Route exact path="/chefs" component={Chefs} />
               <Route exact path="/chefs/:chefId" render={ChefProfile} />
+              <Route exact path="/chefs/:chefId/book" render={BookEvent} />
               
               <Route exact path="/users" component={Users} />
               <Route exact path="/messagecenter" component={MessageCenter} />

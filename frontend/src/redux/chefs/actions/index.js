@@ -3,9 +3,9 @@ export const LOAD_CHEFS_SUCCESS = 'LOAD_CHEFS_SUCCESS';
 
 
 const chefs = [
-  { id: 0, tags: ['fish', 'turkey', 'chicken'], description: 'Im a chef', name: 'muh name', zipcode: 55555 },
-  { id: 1, tags: ['fish', 'turkey', 'chicken'], description: 'Im a chef', name: 'muh name', zipcode: 55555 },
-  { id: 2, tags: ['fish', 'turkey', 'chicken', 'Christmas'], description: 'Im a chef', name: 'muh name', zipcode: 55555 },
+  { id: 0, tags: ['fish', 'turkey', 'chicken'], dishes: ['Pasta'],  description: 'Im a chef', name: 'First Last', zipcode: 55555, email: 'asd@asdf.com' },
+  { id: 1, tags: ['fish', 'turkey', 'chicken'], dishes: ['Pasta'], description: 'Im a chef', name: 'Second Last', zipcode: 55555, email: 'asd@asdf.com' },
+  { id: 2, tags: ['fish', 'turkey', 'chicken', 'Christmas'], dishes: ['Pasta'], description: 'Im a chef', name: 'Third Last', zipcode: 55555, email: 'asd@asdf.com' },
 ];
 
 export const loadChefsRequest = () => ({
