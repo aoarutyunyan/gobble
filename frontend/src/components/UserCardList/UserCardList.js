@@ -19,7 +19,7 @@ class UserCardList extends React.Component {
 
     return (
       <List>
-        <UserCard currentRating={3}/>
+        <UserCard name={'username'} currentRating={3}/>
       </List>
     );
   }

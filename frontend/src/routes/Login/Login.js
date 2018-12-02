@@ -4,9 +4,10 @@ import styled from 'styled-components';
 
 const Content = styled.div`
   display: grid;
-  margin-top: 5em;
+  background: #242729;
   align-content: center;
   justify-content: center;
+  min-height: calc(100vh - 50px);
 `;
 
 const Heading = styled.div`
