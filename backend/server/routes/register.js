@@ -10,29 +10,36 @@ router.post('/', function (req, res, next) {
         return res.send("Passwords do not match.");
     }
 
-    if (req.body.Name &&
-        req.body.Password &&
-        req.body.PasswordConf) {
+    if (req.body.name &&
+        req.body.password &&
+        req.body.passwordConf &&
+        req.body.email &&
+        req.body.zipcode) {
 
         User.count({}, function(err, count) {
-             if (err) { return err; }
-        
-             var userData = {
-                 name: req.body.Name,
-                 password: req.body.Password,
-                 id: count,
-                 chef: req.body.Chef,
-             };
-        
-             User.create(userData, function (error, user) {
-                 if (error) {
-                     return next(error);
-                 } else {
-                     req.session.userId = user._id;
-                     return res.json(user);
-                 }
-             });
-         })
+            if (err) { return err; }
+
+            var userData = {
+                name: req.body.name,
+                password: req.body.password,
+                id: count,
+                email: req.body.email,
+                chef: req.body.chef,
+                _id: count,
+                zipcode: req.body.zipcode
+            };
+
+            User.create(userData, function (error, user) {
+                if (error) {
+                    res.status(400).send();
+                } else {
+                    req.session.userId = user._id;
+                    res.json(user);
+                }
+            });
+        })
+    } else {
+        res.status(400).send();
     }
 });
 

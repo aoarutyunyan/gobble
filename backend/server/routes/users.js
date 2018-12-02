@@ -20,8 +20,7 @@ router.get('/', function(req, res, next) {
  */
 
 router.get('/events/:id', function (req, res, next) {
-    const id = { id: parseInt(req.params.id), chef: false };
-    User.findById( id, function (err, user) {
+    User.findById( parseInt(req.params.id), function (err, user) {
        if (err) throw err;
        res.json(user.events);
    });
@@ -31,27 +30,9 @@ router.get('/events/:id', function (req, res, next) {
  * GET all the reviews a user wrote
  */
 router.get('/reviews/:id', function (req, res, next) {
-    const id = { id: parseInt(req.params.id), chef: false };
-    User.findById( id, function (err, user) {
+    User.findById( parseInt(req.params.id), function (err, user) {
         if (err) throw err;
         res.json(user.outgoingReviews);
-    });
-});
-
-/**
- * POST new user.
- */
-router.post('/', function(req, res) {
-    givenUser = new User({
-        name: req.body.name,
-        email: req.body.email,
-        chef: false,
-        zipcode: req.body.zipcode,
-    });
-
-    givenUser.save(function(err, user) {
-        if (err) throw err;
-        res.json(user);
     });
 });
 
@@ -59,14 +40,14 @@ router.post('/', function(req, res) {
  * PUT: Update a user's password
  */
 router.put('/password/:id', function(req, res, next) {
-    const id_num = parseInt(req.params.id);
-    const user_id = { id: id_num, chef: false };
     bcrypt.hash(req.body.password, 10, function (err, hash) {
         if (err) {
             throw err;
         } else {
-            let user = User.updateUser(user_id, { password: hash });
-            res.json(user);
+            User.findOneAndUpdate({ id: parseInt(req.params.id) }, { password: hash }, function (err, user) {
+                if (err) res.status(400).send();
+                res.json(user);
+            });
         }
     });
 });
@@ -75,37 +56,30 @@ router.put('/password/:id', function(req, res, next) {
  * PUT: Update a user's events
  */
 router.put('/events/:id', function(req, res, next) {
-    const user_id = { id: parseInt(req.params.id), chef: false };
-   let user = User.updateUser(user_id, { events: req.body.events });
-   res.json(user);
+    User.findOneAndUpdate({ id: parseInt(req.params.id) }, { events: req.body.events }, function (err, user) {
+        if (err) res.status(400).send();
+        res.json(user);
+    });
 });
-
-/*
-**
- * PUT: Update a user's incoming reviews
- *
-router.put('/reviews_in/:id', function(req, res, next) {
-    let user = User.updateUser(parseInt(req.params.id), { incomingReviews: req.body.reviews });
-    res.json(user);
-});
-*/
 
 /**
- * PUT: Update a user's outgoing reviews
+ * PUT: Update a user's reviews
  */
-router.put('/reviews_out/:id', function(req, res, next) {
-    const user_id = { id: parseInt(req.params.id), chef: false };
-    let user = User.updateUser(user_id, { outgoingReviews: req.body.reviews });
-    res.json(user);
+router.put('/reviews/:id', function(req, res, next) {
+    User.findOneAndUpdate({ id: parseInt(req.params.id) }, { outgoingReviews: req.body.reviews }, function (err, user) {
+        if (err) res.status(400).send();
+        res.json(user);
+    });
 });
 
 /**
  * PUT: Update a user's zipcode
  */
 router.put('/zipcode/:id', function(req, res, next) {
-    const user_id = { id: parseInt(req.params.id), chef: false };
-    let user = User.updateUser(user_id, { zipcode: req.body.zipcode });
-    res.json(user);
+    User.findOneAndUpdate( { id: parseInt(req.params.id) }, { zipcode: req.body.zipcode }, function (err, user) {
+        if (err) res.status(400).send();
+        res.json(user);
+    });
 });
 
 module.exports = router;
