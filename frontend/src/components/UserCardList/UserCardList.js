@@ -22,24 +22,24 @@ class UserCardList extends React.Component {
   render() {
     const userList = [];
     
-    const { users, event, events, chef } = this.props;
+    // const { users, event, events, chef } = this.props;
 
-    if (events.isFetching) {
-      return (<div>fetching</div>);
-    }
+    // if (events.isFetching) {
+    //   return (<div>fetching</div>);
+    // }
 
-    for (const key of Object.keys(users.items)) {
-      if(event) {
-        for (let i = 0; i < events.items.length; i++) {
-          if(events.items[i].userId == key && events.items[i].username == chef.username) {
-            userList.push({ userId: key, ...users.items[key], date: events.items[i] });
-            break;
-          }
-        }
-      } else {
-        userList.push({ userId: key, ...users.items[key] });
-      }
-    }
+    // for (const key of Object.keys(users.items)) {
+    //   if(event) {
+    //     for (let i = 0; i < events.items.length; i++) {
+    //       if(events.items[i].userId == key && events.items[i].username == chef.username) {
+    //         userList.push({ userId: key, ...users.items[key], date: events.items[i] });
+    //         break;
+    //       }
+    //     }
+    //   } else {
+    //     userList.push({ userId: key, ...users.items[key] });
+    //   }
+    // }
     
     return (
       <List>

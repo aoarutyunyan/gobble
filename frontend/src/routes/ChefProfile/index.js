@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 import ChefProfile from './ChefProfile';
 import { withRouter } from 'react-router-dom';
-import { addEvent } from '../../redux/events/actions';
 import { fetchChefs } from '../../redux/chefs/actions';
 
 const mapStateToProps = state => ({
@@ -13,9 +12,6 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   fetchChefs: () => {
     dispatch(fetchChefs());
-  },
-  addEvent: (username, chefId, date) => {
-    dispatch(addEvent(username, chefId, date));
   },
 });
 

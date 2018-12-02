@@ -10,7 +10,6 @@ import Chefs from './Chefs';
 import ChefProfile from './ChefProfile';
 import Bookings from '../routes/Bookings';
 import Users from '../routes/Users';
-import ChefDishes from '../routes/ChefDishes';
 import BookEvent from './BookEvent';
 import AddTags from '../routes/AddTags';
 
@@ -35,7 +34,6 @@ class Root extends Component {
               
               <Route exact path="/users" component={Users} />
               <Route exact path="/bookings" render={Bookings} />
-              <Route exact path="/chefdishes" component={ChefDishes} />
               <Route component={Home} />
             </Switch>
           </div>

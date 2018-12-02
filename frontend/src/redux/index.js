@@ -3,10 +3,7 @@ import loggedIn from './loggedIn/reducer';
 import user from './user/reducers';
 import chefs from './chefs/reducer';
 import users from './users/reducer';
-import events from './events/reducer';
-import ratings from './ratings/reducer';
 import chefFilters from './chefFilters/reducer';
-import chefDishes from './chefDishes/reducer';
 
 const initialState = {
   chefFilters: [],
@@ -14,12 +11,9 @@ const initialState = {
   user: {},
 };
 const reducer = combineReducers({
-  chefDishes,
   chefFilters,
   chefs,
-  events,
   loggedIn,
-  ratings,
   user,
   users,
 });
