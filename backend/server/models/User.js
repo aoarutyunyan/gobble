@@ -2,20 +2,47 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const mongooseTypes = mongoose.Schema.Types;
-const Review = require('./Review.js');
+
+let UserIDSchema = new mongoose.Schema(
+    {
+        id: Number,
+        chef: Boolean
+    }
+);
+
+let EventSchema = new mongoose.Schema(
+    {
+        title: String,
+        time: mongooseTypes.Date,
+        tags: [ String ],
+        chef_id: UserIDSchema,
+        dishes: [ String ],
+    }
+);
+
+let ReviewSchema = new mongoose.Schema(
+    {
+        rating: Number,
+        // reviewer: UserSchema,
+        subject_id: UserIDSchema
+    }
+);
+
 
 let UserSchema = new mongoose.Schema(
     {
+        id: Number,
+        objectId: mongooseTypes.ObjectId,
         name: { type: String, required: true, unique: true },
         password: { type: String, required: true },
-        events: [{ type: mongooseTypes.ObjectId }],
-        incomingReviews: [{ type: mongooseTypes.ObjectId }],
-        outgoingReviews: [{ type: mongooseTypes.ObjectId }],
-        dishes: [{ type: String }],
-        tags: [{ type: String }],
-        chef: { type: Boolean, default: false, required: true },
+        email: String,
         zipcode: Number,
-        id: Number
+        events: [ EventSchema ],
+        // incomingReviews: [ ReviewSchema ],
+        outgoingReviews: [ ReviewSchema ],
+        dishes: [ String ],
+        tags: [ String ],
+        chef: { type: Boolean, default: false, required: true }
     }
 );
 

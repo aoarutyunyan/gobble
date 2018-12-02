@@ -1,6 +1,6 @@
 // server/models/Event.js
-const mongoose = require('mongoose')
-const mongooseTypes = mongoose.Schema.Types
+const mongoose = require('mongoose');
+const mongooseTypes = mongoose.Schema.Types;
 
 let EventSchema = new mongoose.Schema(
     {
