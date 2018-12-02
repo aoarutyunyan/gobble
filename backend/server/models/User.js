@@ -38,6 +38,7 @@ let UserSchema = new mongoose.Schema(
         password: { type: String, required: true },
         email: { type: String, required: true, unique: true },
         zipcode: Number,
+        description: String,
         events: [ EventSchema ],
         // incomingReviews: [ ReviewSchema ],
         outgoingReviews: [ ReviewSchema ],

@@ -37,6 +37,16 @@ router.get('/reviews/:id', function (req, res, next) {
 });
 
 /**
+  * GET a user's description
+  */
+router.get('/description/:id', function (req, res, next) {
+    User.findById( parseInt(req.params.id), function (err, user) {
+        if (err) throw err;
+        res.json(user.description);
+    });
+});
+
+/**
   * GET a user's dishes
   */
 router.get('/dishes/:id', function (req, res, next) {
@@ -69,6 +79,16 @@ router.put('/password/:id', function(req, res, next) {
                 res.json(user);
             });
         }
+    });
+});
+
+/**
+ * PUT: Update a user's description
+ */
+router.put('/description/:id', function(req, res, next) {
+    User.findOneAndUpdate({ id: parseInt(req.params.id) }, { description: req.body.description }, { new: true }, function (err, user) {
+        if (err) res.status(400).send();
+        res.json(user);
     });
 });
 
