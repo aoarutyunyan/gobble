@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { red } from '../../lib/stylesConstants';
 import StyledBtn from '../../components/StyledBtn';
+import { registerUser } from '../../redux/user/actions';
 
 const StyledLabel = styled.label`
   text-transform: uppercase;
@@ -156,7 +157,14 @@ const formikForm = withFormik({
     setSubmitting(false);
     resetForm();
     logIn();
-    updateUser(values);
+    registerUser({
+      name: values.name,
+      password: values.password,
+      passwordConf: values.password,
+      chef: values.isChef,
+      email: values.email,
+      zipcode: values.zipcode,
+    });
     history.push('/chefs');
   },
 })(SignUpForm);
