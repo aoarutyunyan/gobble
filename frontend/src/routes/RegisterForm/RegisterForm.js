@@ -90,6 +90,20 @@ const SignUpForm = ({ user, values, errors, touched, isSubmitting }) => (
     </div>
 
     <div>
+      <div>
+        <StyledLabel htmlFor="zipcode">Zip Code</StyledLabel>
+        {errors.zipcode && (values.zipcode || touched.zipcode) && <StyledErrorLabel htmlFor="zipcode">{errors.zipcode}</StyledErrorLabel>}
+      </div>
+      <TextInput
+        error={errors.zipcode && (values.zipcode|| touched.zipcode)}
+        type="text"
+        name="zipcode"
+        style={{ width: '300px' }}
+        placeholder="Anywhere"
+      />
+    </div>
+
+    <div>
       <div><StyledLabel htmlFor="isChef">Are you a chef?</StyledLabel></div>
       <StyledLabel style={{ textTransform: 'none', marginTop: '1em', marginRight: '1em' }}>Yes</StyledLabel> <Field type="checkbox" name="isChef" />
     </div>
@@ -115,6 +129,7 @@ const formikForm = withFormik({
     return {
       email: (user && user.email) || '',
       username: (user && user.username) || '',
+      zipcode: (user && user.zipcdoe) || '',
       password: '',
     };
   },
@@ -126,17 +141,21 @@ const formikForm = withFormik({
       .string()
       .email('Must be a valid email.')
       .required('Email is required.'),
+    zipcode: yup
+      .string()
+      .required('Zip code is required.'),
     password: yup
       .string()
       .min(8, 'At least 8 characters.')
       .required('Password is required.'),
   }),
   handleSubmit(values, {
-    setErrors, resetForm, setSubmitting, props: { updateUser, history },
+    setErrors, resetForm, setSubmitting, props: { updateUser, history, logIn },
   }) {
     console.log(values); // isChef is in there
     setSubmitting(false);
     resetForm();
+    logIn();
     updateUser(values);
     history.push('/chefs');
   },

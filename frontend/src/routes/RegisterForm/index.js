@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import RegisterForm from './RegisterForm';
 import { withRouter } from 'react-router-dom';
 import { updateUser } from '../../redux/user/actions';
+import { logIn } from '../../redux/loggedIn/actions';
 
 const mapStateToProps = state => ({
   user: state.user,
@@ -10,6 +11,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   updateUser: (user) => {
     dispatch(updateUser(user));
+  },
+  logIn: () => {
+    dispatch(logIn());
   },
 });
 

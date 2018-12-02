@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import NavBar from './NavBar';
 import { withRouter } from 'react-router-dom';
+import { logOut } from '../../redux/loggedIn/actions';
 
 const mapStateToProps = state => ({
   loggedIn: state.loggedIn,
@@ -8,6 +9,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+  logOut: () => {
+    dispatch(logOut());
+  },
 });
 
 const view = withRouter(connect(

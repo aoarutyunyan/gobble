@@ -26,9 +26,9 @@ class ChefCardList extends React.Component {
   }
 
   render() {
-    const { chefFilters, chefs, booking, bookings, user, users, filterIds } = this.props;
+    const { chefFilters, chefs, user, users, filterIds } = this.props;
 
-    const filteredChefs = chefs.filter( ({ id }) => filterIds.includes());
+    // const filteredChefs = chefs.filter( ({ id }) => filterIds.includes());
     const filterList = [];
     
 
@@ -46,7 +46,7 @@ class ChefCardList extends React.Component {
         {chefs.items
           .filter(({ tags }) => numOverlapping(tags, filterList) === chefFilters.length)
           .map(props => (
-            <ChefCard {...props} key={props.chefId} />
+            <ChefCard {...props} currentRating={2} eventDate={'2012'} key={props.chefId} />
           ))}
       </List>
     );

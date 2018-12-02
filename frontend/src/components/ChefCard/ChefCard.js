@@ -39,7 +39,7 @@ const StyledName = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5em;
+  font-size: 1.3em;
   font-weight: 500;
 `;
 
@@ -70,22 +70,19 @@ const Description = styled.div`
   text-align: left;
 `;
 
-const rating = {
-  value: 5,
-};
-
-const ChefCard = ({ id, name, dishes, description, zipcode, email }) => {
+const ChefCard = ({ id, name, description, zipcode, email, currentRating, eventDate }) => {
 
   return (
     <StyledCard>
+      {eventDate && <div style={{ margin: 0 }}>Already scheduled at: {eventDate} </div>}
       <StyledName>{name}</StyledName>
 
       <div style={{ marginTop: '10px', marginBottom: '2em' }}><ProfileImg  src={getJpg('chefimg')}/></div>
 
-      <StyledRating />
+      <StyledRating currentRating={currentRating}/>
 
-      <div>
-        <StyledName style={{ marginTop: '20px', marginBottom: '20px' }}>DESCRIPTION</StyledName>
+      <div style={{ marginBottom: '20px' }}>
+        <StyledName style={{ marginTop: '20px' }}>DESCRIPTION</StyledName>
         <Description>{description}</Description>
       </div>
 
@@ -112,7 +109,6 @@ ChefCard.propTypes = {
   name: PropTypes.string,
   description: PropTypes.string,
   zipcode: PropTypes.string,
-  dishes: PropTypes.array,
   email: PropTypes.string,
 };
 

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import StyledBtn from '../../components/StyledBtn';
 import { NavLink } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-//import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import { topNavHeight } from '../../lib/stylesConstants';
 
 
@@ -125,7 +125,7 @@ class TopNav extends React.Component {
   }
 
   render() {
-    const { loggedIn, user } = this.props;
+    const { loggedIn, user, logOut } = this.props;
     
     return (
       <Container>
@@ -136,12 +136,15 @@ class TopNav extends React.Component {
           </Title>
 
           <Right>
-            {loggedIn && <StyledLink  onClick={this.closeDropdown} to="/providers" activeClassName={activeClassName}>Providers</StyledLink> }
+            {loggedIn && <StyledLink  onClick={this.closeDropdown} to="/chefs" activeClassName={activeClassName}>Chefs</StyledLink> }
 
             { loggedIn && (
               <AccountButton onClick={this.handleAccountClick}>
                 {user.username}
-                {/* <FontAwesomeIcon style={{ marginLeft: '5px' }} icon="caret-down"/> */}
+                <FontAwesomeIcon
+                  style={{ marginLeft: '5px' }}
+                  icon="caret-down"
+                />
               </AccountButton>
             )}
 
@@ -152,7 +155,8 @@ class TopNav extends React.Component {
         {this.state.acctDropdownShown && 
           <Dropdown onClick={this.handleAccountClick}>
             <div style={{ background: '#242729' }}>
-              <StyledLink to="/preferences" activeClassName={'f'}>Settings</StyledLink>
+              <StyledLink style={{ marginBottom: '1em', display: 'block' }} to="/events" activeClassName={'f'}>Events</StyledLink>
+              <StyledLink style={{ marginBottom: '1em', display: 'block' }} onClick={logOut} to="/home" activeClassName={'f'}>Log Out</StyledLink>
             </div>
           </Dropdown>
         }
@@ -165,6 +169,7 @@ class TopNav extends React.Component {
 
 TopNav.propTypes = {
   loggedIn: PropTypes.bool,
+  logOut: PropTypes.func,
 };
 
 export default TopNav;
