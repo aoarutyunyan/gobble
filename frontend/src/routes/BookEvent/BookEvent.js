@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import StyledBtn from '../../components/StyledBtn';
 import { withFormik, Form, Field } from 'formik';
 import * as yup from 'yup';
+import { putData } from '../../lib/assetsUtils';
 
 const Wrapper = styled.div`
   padding: 40px;
@@ -71,6 +72,9 @@ const BookEvent = ({ history, match, chefs, user }) => {
       <h1>Book {name}</h1>
       
       <Form>
+        <div><StyledLabel htmlFor="title" >Title of Event</StyledLabel></div>
+        <TextInput type="text" name="title" placeholder="Create a title" />
+
         <div><StyledLabel htmlFor="eventDate" >Date</StyledLabel></div>
         <DateInput type="date" name="eventDate" placeholder="mm/dd/yyyy" />
 
@@ -90,6 +94,9 @@ BookEvent.propTypes = {
 
 };
 
+const unixTimestamp = (datestring) => { //  / 1000
+  return parseInt((new Date(datestring).getTime()).toFixed(0));
+};
 
 const FormikForm = withFormik({
   mapPropsToValues({ user }) {
@@ -109,15 +116,44 @@ const FormikForm = withFormik({
   }),
   
   handleSubmit(values, {
-    setErrors, resetForm, setSubmitting, props: { history, loggedIn },
+    setErrors, resetForm, setSubmitting, props: { chefs, match, history, loggedIn, user },
   }) {
     setSubmitting(false);
     resetForm();
-    const { dishes } = values;
-    // split dishes by comma, make array, do some POST, then push to new link
+    const { title, dishes, eventDate } = values;
+    const tags = [];
 
-    // const nextLink = loggedIn ? '/providers' : '/signup/finish';
-    // history.push(nextLink);
+    const splitDishes = dishes.split(',');
+
+    const chef = chefs.items.filter(({ id }) => id == match.params.chefId)[0];
+
+    const chefId = match.params.chefId;
+    // PUT FOR user and chef, getting their current event list and appending this new event.
+    const forUser = {
+      title,
+      time: unixTimestamp(eventDate),
+      tags,
+      chef_id: chefId,
+      dishes: splitDishes,
+    };
+
+    const forChef = {
+      title,
+      time: unixTimestamp(eventDate),
+      tags,
+      chef_id: user.id, // act as if chef_id is user id for chefs...
+      dishes: splitDishes,
+    };
+    console.log('eventDate', eventDate);
+    console.log(unixTimestamp(eventDate));
+    user.events.push(forUser);
+    chef.events.push(forChef);
+
+    putData(`http://localhost:4000/users/events/${user.id}`, { events: user.events });
+    putData(`http://localhost:4000/users/events/${chefId}`, { events: chef.events });
+
+    const nextLink = '/events';
+    history.push(nextLink);
   },
 })(BookEvent);
 

@@ -4,9 +4,9 @@ import styled from 'styled-components';
 
 const Content = styled.div`
   display: grid;
-  background: #242729;
   align-content: center;
   justify-content: center;
+  background: #242729;
   min-height: calc(100vh - 50px);
 `;
 

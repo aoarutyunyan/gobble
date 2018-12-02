@@ -20,46 +20,33 @@ const ListView = styled.div`
   margin-bottom: 200px;
 `;
 
-const tags = [
-  { label: 'Barbecue', value: 1 },
-  { label: 'Christmas', value: 2 },
-  { label: 'Fish', value: 3 },
-  { label: 'Salads', value: 4 },
-  { label: 'Thanksgiving', value: 5 },
-];
-
-class Chefs extends React.Component {
-  
-  handleChange = (filters) => {
-    this.props.updateChefFilters(filters);
-  }
+class UserEvents extends React.Component {
 
   render() {
+    const { user } = this.props;
+    // const chefIdList = []; // the ids of the chefs we want to display in chefcardlist
 
-    const chefIdList = []; // the ids of the chefs we want to display in chefcardlist
+    // iterate through events and get a list of chef_IDs...
+    const chefIdList = user.events.map(event => event.chef_id);
 
     return(
       <ListView>
         <Heading>
 
           <div>
-            <h1>Search Local Chefs</h1>
+            <h1>Your Upcoming Events</h1>
 
-            <Options>
-              <Select options={tags} isMulti={true} onChange={this.handleChange} />
-            </Options>
 
           </div>
           
         </Heading>
-        <ChefCardList events={true} chefIdList={chefIdList}/>
+        <ChefCardList event={true} filterIds={chefIdList}/>
       </ListView>
     );
   }
 };
 
-Chefs.propTypes = {
-  updateChefFilters: PropTypes.func,
+UserEvents.propTypes = {
 };
 
-export default Chefs;
+export default UserEvents;

@@ -25,9 +25,8 @@ class ChefCardList extends React.Component {
   }
 
   render() {
-    const { chefFilters, chefs, user, users, filterIds } = this.props;
+    const { chefFilters, chefs, user, users, filterIds, event } = this.props;
 
-    // const filteredChefs = chefs.filter( ({ id }) => filterIds.includes());
     const filterList = [];
     
 
@@ -38,14 +37,40 @@ class ChefCardList extends React.Component {
     if (chefs.isFetching) {
       return (<div>fetching</div>);
     }
-    console.log('chefs', chefs);
+
+    const chefRatings = user.outgoingReviews && user.outgoingReviews.reduce((acc, el) => {
+      acc[el.subject_id] = el.rating; 
+      
+      return acc; 
+    }, {});
+
+    if (event) {
+      const chefList = chefs.items.filter(({ id }) => filterIds.includes(id));
+      
+      const chefEvents = user.events.reduce( (acc, { title, time, chef_id, dishes }) => {
+        acc[chef_id] = { title, time, dishes };
+        
+        return acc;
+      }, {});
+
+      // create a new component to show events
+      return (
+        <List>
+          {chefList
+            .filter(({ tags }) => numOverlapping(tags, filterList) === chefFilters.length)
+            .map(props => (
+              <ChefCard {...props} user={user} currentRating={chefRatings && chefRatings[props.id]} eventDate={`${chefEvents[props.id].time}`} key={props.id} />
+            ))}
+        </List>
+      );
+    }
     
     return (
       <List>
         {chefs.items
           .filter(({ tags }) => numOverlapping(tags, filterList) === chefFilters.length)
           .map(props => (
-            <ChefCard {...props} currentRating={2} eventDate={'2012'} key={props.chefId} />
+            <ChefCard {...props} user={user} currentRating={chefRatings && chefRatings[props.id]} key={props.id} />
           ))}
       </List>
     );

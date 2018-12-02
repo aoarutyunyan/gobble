@@ -39,7 +39,7 @@ export const loginUser = (data) => (dispatch) => {
       error => console.log('An error occurred.', error),
     )
     .then(
-      json => dispatch(loginUserSuccess(json)),
+      json => dispatch(loginUserSuccess(json.user)),
     );
 
 };

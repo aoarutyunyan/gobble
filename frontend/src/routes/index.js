@@ -12,6 +12,7 @@ import Bookings from '../routes/Bookings';
 import Users from '../routes/Users';
 import BookEvent from './BookEvent';
 import AddTags from '../routes/AddTags';
+import UserEvents from './UserEvents';
 
 class Root extends Component {
 
@@ -33,7 +34,7 @@ class Root extends Component {
               <Route exact path="/chefs/:chefId/book" render={BookEvent} />
               
               <Route exact path="/users" component={Users} />
-              <Route exact path="/bookings" render={Bookings} />
+              <Route exact path="/events" component={UserEvents} />
               <Route component={Home} />
             </Switch>
           </div>

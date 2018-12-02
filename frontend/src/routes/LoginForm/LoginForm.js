@@ -9,7 +9,7 @@ import StyledBtn from '../../components/StyledBtn';
 
 const StyledLabel = styled.label`
   text-transform: uppercase;
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: white;
   margin-right: 10px;
 `;
@@ -24,7 +24,7 @@ const TextInput = styled(Field)`
   box-sizing: border-box;
   background: #4E5559;
   border: 2px solid ${props => props.error ? red : '#4E5559'};
-  border-radius: 0.5em;
+  border-radius: 10px;
   padding: 0.2em;
   margin-bottom: 1em;
   height: 40px;
@@ -47,30 +47,16 @@ const LoginForm = ({ user, values, errors, touched, isSubmitting }) => (
   <Form style={{ marginTop: '2em' }}>
     <div>
       <div>
-        <StyledLabel htmlFor="email">Email</StyledLabel>
-        {touched.email && errors.email && <StyledErrorLabel htmlFor="email">{errors.email}</StyledErrorLabel>}
+        <StyledLabel htmlFor="name">Name</StyledLabel>
+        {touched.name && errors.name && <StyledErrorLabel htmlFor="name">{errors.name}</StyledErrorLabel>}
       </div>
       <TextInput
-        error={touched.email && errors.email}
+        autoComplete="name"
+        error={touched.name && errors.name}
         type="text"
-        name="email"
+        name="name"
         style={{ width: '300px' }}
-        placeholder="you@example.com"
-      />
-    </div>
-
-    <div>
-      <div>
-        <StyledLabel htmlFor="username">Username</StyledLabel>
-        {touched.username && errors.username && <StyledErrorLabel htmlFor="username">{errors.username}</StyledErrorLabel>}
-      </div>
-      <TextInput
-        autoComplete="username"
-        error={touched.username && errors.username}
-        type="text"
-        name="username"
-        style={{ width: '300px' }}
-        placeholder="Enter username"
+        placeholder="Create a name"
       />
     </div>
 
@@ -85,7 +71,7 @@ const LoginForm = ({ user, values, errors, touched, isSubmitting }) => (
         type="password"
         name="password"
         style={{ width: '300px' }}
-        placeholder="Enter password"
+        placeholder="Create a password"
       />
     </div>
 
@@ -108,30 +94,30 @@ const formikForm = withFormik({
 
   mapPropsToValues({ user }) {
     return {
-      email: (user && user.email) || '',
-      username: (user && user.username) || '',
+      name: (user && user.name) || '',
       password: '',
     };
   },
   validationSchema: yup.object().shape({
-    username: yup
+    name: yup
       .string()
-      .required('Username is required.'),
-    email: yup
-      .string()
-      .email('Must be a valid email.')
-      .required('Email is required.'),
+      .required('Name is required.'),
     password: yup
       .string()
       .min(8, 'At least 8 characters.')
       .required('Password is required.'),
   }),
   handleSubmit(values, {
-    setErrors, resetForm, setSubmitting, props: { updateUser, history },
+    setErrors, resetForm, setSubmitting, props: { updateUser, history, logIn, loginUser },
   }) {
     setSubmitting(false);
     resetForm();
-    updateUser(values);
+    logIn();
+    const data = {
+      LoginName: values.name,
+      LoginPassword: values.password,
+    };
+    loginUser(data);
     history.push('/chefs');
   },
 })(LoginForm);

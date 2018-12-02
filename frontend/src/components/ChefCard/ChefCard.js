@@ -70,16 +70,16 @@ const Description = styled.div`
   text-align: left;
 `;
 
-const ChefCard = ({ id, name, description, zipcode, email, currentRating, eventDate }) => {
+const ChefCard = ({ id, name, description, zipcode, email, user, currentRating, eventDate }) => {
 
   return (
     <StyledCard>
-      {eventDate && <div style={{ margin: 0 }}>Already scheduled at: {eventDate} </div>}
+      {eventDate && <div style={{ margin: 0 }}>Scheduled at: {eventDate} </div>}
       <StyledName>{name}</StyledName>
 
       <div style={{ marginTop: '10px', marginBottom: '2em' }}><ProfileImg  src={getJpg('chefimg')}/></div>
 
-      <StyledRating currentRating={currentRating}/>
+      <StyledRating user={user} chefId={id} currentRating={currentRating}/>
 
       <div style={{ marginBottom: '20px' }}>
         <StyledName style={{ marginTop: '20px' }}>DESCRIPTION</StyledName>

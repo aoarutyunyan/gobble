@@ -152,7 +152,6 @@ const formikForm = withFormik({
   handleSubmit(values, {
     setErrors, resetForm, setSubmitting, props: { updateUser, history, logIn, registerUser },
   }) {
-    console.log('values', values); // isChef is in there
     setSubmitting(false);
     resetForm();
     logIn();
@@ -164,7 +163,6 @@ const formikForm = withFormik({
       email: values.email,
       zipcode: parseInt(values.zipcode, 10),
     };
-    console.log('data', data);
     registerUser(data);
     history.push('/chefs');
   },
