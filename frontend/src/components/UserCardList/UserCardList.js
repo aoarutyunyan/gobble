@@ -15,38 +15,11 @@ const List = styled.div`
 
 class UserCardList extends React.Component {
 
-  componentDidMount() {
-    this.props.fetchUsers();
-  }
-
   render() {
-    const userList = [];
-    
-    // const { users, event, events, chef } = this.props;
 
-    // if (events.isFetching) {
-    //   return (<div>fetching</div>);
-    // }
-
-    // for (const key of Object.keys(users.items)) {
-    //   if(event) {
-    //     for (let i = 0; i < events.items.length; i++) {
-    //       if(events.items[i].userId == key && events.items[i].username == chef.username) {
-    //         userList.push({ userId: key, ...users.items[key], date: events.items[i] });
-    //         break;
-    //       }
-    //     }
-    //   } else {
-    //     userList.push({ userId: key, ...users.items[key] });
-    //   }
-    // }
-    
     return (
       <List>
-        {userList
-          .map(props => (
-            <UserCard {...props} key={props.userId} />
-          ))}
+        <UserCard currentRating={3}/>
       </List>
     );
   }
@@ -54,7 +27,7 @@ class UserCardList extends React.Component {
 
 UserCardList.propTypes = {
   users: PropTypes.object,
-  fetchUsers: PropTypes.func,
+  user: PropTypes.object,
   event: PropTypes.bool,
 };
 

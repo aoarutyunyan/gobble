@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import StyledBtn from '../StyledBtn';
 import { getJpg } from '../../lib/assetsUtils';
+import Rating from '../ChefCard/Rating';
 
 const StyledCard = styled.div`
   display: grid;
@@ -56,6 +57,10 @@ const CardBtn = styled(StyledBtn)`
   margin-top: 1em;
 `;
 
+const StyledRating = styled(Rating)`
+  background: black;
+`;
+
 const TextIcon = styled(FontAwesomeIcon)`
   margin-right: 10px;
 `;
@@ -64,7 +69,7 @@ const Description = styled.div`
   text-align: left;
 `;
 
-const UserCard = ({ id, name, dishes, description, zipcode, email }) => {
+const UserCard = ({ id, name, dishes, description, zipcode, email, currentRating }) => {
 
   return (
     <StyledCard>
@@ -74,6 +79,8 @@ const UserCard = ({ id, name, dishes, description, zipcode, email }) => {
         <StyledName style={{ marginTop: '20px', marginBottom: '20px' }}>DESCRIPTION</StyledName>
         <Description>{description}</Description>
       </div>
+
+      <StyledRating currentRating={currentRating}/>
 
       <div>
         <ZipCode>

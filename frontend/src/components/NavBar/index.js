@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
 import NavBar from './NavBar';
 import { withRouter } from 'react-router-dom';
-import { logOut } from '../../redux/loggedIn/actions';
+import { logOut } from '../../redux/loggedin/actions';
 
 const mapStateToProps = state => ({
-  loggedIn: state.loggedIn,
+  loggedIn: state.logedIn,
   user: state.user,
 });
 
