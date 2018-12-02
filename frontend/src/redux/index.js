@@ -1,6 +1,6 @@
 import { combineReducers, createStore, compose, applyMiddleware } from 'redux';
-import loggedIn from './loggedin/reducer';
-import user from './user/reducers';
+import loggedIn from './loggedIn/reducer';
+import user from './user/reducer';
 import chefs from './chefs/reducer';
 import users from './users/reducer';
 import chefFilters from './chefFilters/reducer';

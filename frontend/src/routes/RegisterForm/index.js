@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import RegisterForm from './RegisterForm';
 import { withRouter } from 'react-router-dom';
 import { updateUser } from '../../redux/user/actions';
-import { logIn } from '../../redux/loggedin/actions';
+import { logIn } from '../../redux/loggedIn/actions';
 
 const mapStateToProps = state => ({
   user: state.user,
