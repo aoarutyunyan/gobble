@@ -47,16 +47,15 @@ const LoginForm = ({ user, values, errors, touched, isSubmitting }) => (
   <Form style={{ marginTop: '2em' }}>
     <div>
       <div>
-        <StyledLabel htmlFor="name">Name</StyledLabel>
-        {touched.name && errors.name && <StyledErrorLabel htmlFor="name">{errors.name}</StyledErrorLabel>}
+        <StyledLabel htmlFor="email">Email</StyledLabel>
+        {touched.email && errors.email && <StyledErrorLabel htmlFor="email">{errors.email}</StyledErrorLabel>}
       </div>
       <TextInput
-        autoComplete="name"
-        error={touched.name && errors.name}
+        error={touched.email && errors.email}
         type="text"
-        name="name"
+        name="email"
         style={{ width: '300px' }}
-        placeholder="Create a name"
+        placeholder="you@example.com"
       />
     </div>
 
@@ -94,14 +93,15 @@ const formikForm = withFormik({
 
   mapPropsToValues({ user }) {
     return {
-      name: (user && user.name) || '',
+      email: (user && user.email) || '',
       password: '',
     };
   },
   validationSchema: yup.object().shape({
-    name: yup
+    email: yup
       .string()
-      .required('Name is required.'),
+      .email()
+      .required('Email is required.'),
     password: yup
       .string()
       .min(8, 'At least 8 characters.')
@@ -114,8 +114,8 @@ const formikForm = withFormik({
     resetForm();
     logIn();
     const data = {
-      LoginName: values.name,
-      LoginPassword: values.password,
+      Email: values.email,
+      Password: values.password,
     };
     loginUser(data);
     history.push('/chefs');
