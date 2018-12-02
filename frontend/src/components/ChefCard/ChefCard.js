@@ -95,7 +95,7 @@ const ChefCard = ({ id, name, dishes, description, zipcode, email }) => {
           Zip Code: {zipcode}
         </ZipCode>
 
-        <Link to="/chefprofile">
+        <Link to={`/chefs/${id}`}>
           <CardBtn theme="dark"> <TextIcon style={{ marginLeft: '-15px' }} icon="user" color="#fff" /> <span>Profile</span> </CardBtn>
         </Link>
 
