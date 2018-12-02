@@ -22,22 +22,24 @@ class ChefCardList extends React.Component {
 
   componentDidMount() {
     this.props.fetchChefs();
-    // this.props.fetchBookings();
+    this.props.fetchUsers();
   }
 
   render() {
-    const chefList = [];
+    const { chefFilters, chefs, booking, bookings, user, users, filterIds } = this.props;
+
+    const filteredChefs = chefs.filter( ({ id }) => filterIds.includes());
     const filterList = [];
     
-    const { chefFilters, chefs, booking, bookings, user } = this.props;
 
     for (const key of Object.keys(chefFilters)) {
       filterList.push(chefFilters[key].label);
     }
 
-    if (chefs.isFetching) {
+    if (chefs.isFetching || users.isFetching) {
       return (<div>fetching</div>);
     }
+    console.log(users);
     
     return (
       <List>

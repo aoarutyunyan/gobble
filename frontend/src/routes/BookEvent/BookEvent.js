@@ -86,6 +86,10 @@ const BookEvent = ({ history, match, chefs, user }) => {
   );
 };
 
+BookEvent.propTypes = {
+
+};
+
 
 const FormikForm = withFormik({
   mapPropsToValues({ user }) {
@@ -111,7 +115,7 @@ const FormikForm = withFormik({
     resetForm();
     const { dishes } = values;
     // split dishes by comma, make array, do some POST, then push to new link
-    
+
     // const nextLink = loggedIn ? '/providers' : '/signup/finish';
     // history.push(nextLink);
   },

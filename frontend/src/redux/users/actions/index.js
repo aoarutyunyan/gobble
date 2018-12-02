@@ -15,7 +15,15 @@ export const loadUsersSuccess = json => ({
   users: json,
 });
 
-export const fetchUsers = () => dispatch => {
+export const fetchUsers = () => (dispatch) => {
   dispatch(loadUsersRequest());
-  dispatch(loadUsersSuccess(users));
+
+  return fetch('http://localhost:4000/users')
+    .then(
+      response => response.json(),
+      error => console.log('An error occurred.', error),
+    )
+    .then(
+      json => dispatch(loadUsersSuccess(json)),
+    );
 };
