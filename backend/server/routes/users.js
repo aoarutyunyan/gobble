@@ -64,7 +64,7 @@ router.put('/password/:id', function(req, res, next) {
         if (err) {
             throw err;
         } else {
-            User.findOneAndUpdate({ id: parseInt(req.params.id) }, { password: hash }, function (err, user) {
+            User.findOneAndUpdate({ id: parseInt(req.params.id) }, { password: hash }, { new: true }, function (err, user) {
                 if (err) res.status(400).send();
                 res.json(user);
             });
@@ -76,7 +76,7 @@ router.put('/password/:id', function(req, res, next) {
  * PUT: Update a user's events
  */
 router.put('/events/:id', function(req, res, next) {
-    User.findOneAndUpdate({ id: parseInt(req.params.id) }, { events: req.body.events }, function (err, user) {
+    User.findOneAndUpdate({ id: parseInt(req.params.id) }, { events: req.body.events }, { new: true }, function (err, user) {
         if (err) res.status(400).send();
         res.json(user);
     });
@@ -86,7 +86,7 @@ router.put('/events/:id', function(req, res, next) {
  * PUT: Update a user's reviews
  */
 router.put('/reviews/:id', function(req, res, next) {
-    User.findOneAndUpdate({ id: parseInt(req.params.id) }, { outgoingReviews: req.body.reviews }, function (err, user) {
+    User.findOneAndUpdate({ id: parseInt(req.params.id) }, { outgoingReviews: req.body.reviews }, { new: true }, function (err, user) {
         if (err) res.status(400).send();
         res.json(user);
     });
@@ -96,7 +96,7 @@ router.put('/reviews/:id', function(req, res, next) {
  * PUT: Update a user's dishes
  */
 router.put('/dishes/:id', function(req, res, next) {
-    User.findOneAndUpdate({ id: parseInt(req.params.id) }, { dishes: req.body.dishes }, function (err, user) {
+    User.findOneAndUpdate({ id: parseInt(req.params.id) }, { dishes: req.body.dishes }, { new: true }, function (err, user) {
         if (err) res.status(400).send();
         res.json(user);
     });
@@ -106,7 +106,7 @@ router.put('/dishes/:id', function(req, res, next) {
  * PUT: Update a user's tags
  */
 router.put('/tags/:id', function(req, res, next) {
-    User.findOneAndUpdate({ id: parseInt(req.params.id) }, { tags: req.body.tags }, function (err, user) {
+    User.findOneAndUpdate({ id: parseInt(req.params.id) }, { tags: req.body.tags }, { new: true },function (err, user) {
         if (err) res.status(400).send();
         res.json(user);
     });
@@ -116,7 +116,7 @@ router.put('/tags/:id', function(req, res, next) {
  * PUT: Update a user's zipcode
  */
 router.put('/zipcode/:id', function(req, res, next) {
-    User.findOneAndUpdate( { id: parseInt(req.params.id) }, { zipcode: req.body.zipcode }, function (err, user) {
+    User.findOneAndUpdate( { id: parseInt(req.params.id) }, { zipcode: req.body.zipcode }, { new: true }, function (err, user) {
         if (err) res.status(400).send();
         res.json(user);
     });
