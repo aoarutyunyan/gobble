@@ -37,6 +37,26 @@ router.get('/reviews/:id', function (req, res, next) {
 });
 
 /**
+  * GET a user's dishes
+  */
+router.get('/dishes/:id', function (req, res, next) {
+    User.findById( parseInt(req.params.id), function (err, user) {
+        if (err) throw err;
+        res.json(user.dishes);
+    });
+});
+
+/**
+  * GET a user's tags
+  */
+router.get('/tags/:id', function (req, res, next) {
+    User.findById( parseInt(req.params.id), function (err, user) {
+        if (err) throw err;
+        res.json(user.tags);
+    });
+});
+
+/**
  * PUT: Update a user's password
  */
 router.put('/password/:id', function(req, res, next) {
@@ -67,6 +87,26 @@ router.put('/events/:id', function(req, res, next) {
  */
 router.put('/reviews/:id', function(req, res, next) {
     User.findOneAndUpdate({ id: parseInt(req.params.id) }, { outgoingReviews: req.body.reviews }, function (err, user) {
+        if (err) res.status(400).send();
+        res.json(user);
+    });
+});
+
+/**
+ * PUT: Update a user's dishes
+ */
+router.put('/dishes/:id', function(req, res, next) {
+    User.findOneAndUpdate({ id: parseInt(req.params.id) }, { dishes: req.body.dishes }, function (err, user) {
+        if (err) res.status(400).send();
+        res.json(user);
+    });
+});
+
+/**
+ * PUT: Update a user's tags
+ */
+router.put('/tags/:id', function(req, res, next) {
+    User.findOneAndUpdate({ id: parseInt(req.params.id) }, { tags: req.body.tags }, function (err, user) {
         if (err) res.status(400).send();
         res.json(user);
     });

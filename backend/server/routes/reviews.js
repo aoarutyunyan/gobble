@@ -9,7 +9,7 @@ var router = express.Router();
 /* GET reviews listing. */
 router.get('/', function(req, res, next) {
     Review.find({}).then(eachOne => {
-    res.json(eachOne);
+      res.json(eachOne);
     })
 });
 
@@ -17,23 +17,23 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res) {
     givenReview = new Review({
       rating: req.body.Rating,
-      event: req.body.Event,
-      reviewer: req.body.Reviewer,
-      reviewee: req.body.Reviewee,
+      //reviewer: req.body.Reviewer,
+      reviewee: req.body.Reviewee
     });
 
-    givenReview.save(function(err, review) {
-        if (err) throw err;
+    //givenReview.save(function(err, review) {
+      givenReview.save(function(err, review) {
+        if (err) return res.send(err); //throw err;
 
-        User.getUserByID(review.reviewer).then((reviewer) => {
+        /*User.getUserByID(review.reviewer).then((reviewer) => {
           reviewer.writeReview(review);
-        });
+        });*/
 
-        User.getUserByID(review.reviewee).then((reviewee) => {
+        /*User.getUserByID(review.reviewee).then((reviewee) => {
           reviewee.receiveReview(reviewee);
-        });
+        });*/
 
-        res.json(review);
+        res.json(givenReview);
     });
 });
 
