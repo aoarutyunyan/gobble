@@ -33,7 +33,7 @@ export const registerUserSuccess = json => ({
 export const loginUser = (data) => (dispatch) => {
   dispatch(loginUserRequest());
 
-  return postData('http://localhost:4000/register', data)
+  return postData('http://localhost:4000/login', data)
     .then(
       response => response.json(),
       error => console.log('An error occurred.', error),
@@ -47,7 +47,7 @@ export const loginUser = (data) => (dispatch) => {
 export const registerUser = (data) => (dispatch) => {
   dispatch(registerUserRequest());
 
-  return postData('http://localhost:4000/login', data)
+  return postData('http://localhost:4000/register', data)
     .then(
       response => response.json(),
       error => console.log('An error occurred.', error),

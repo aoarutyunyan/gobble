@@ -140,7 +140,7 @@ class TopNav extends React.Component {
 
             { loggedIn && (
               <AccountButton onClick={this.handleAccountClick}>
-                {user.username}
+                {user.name}
                 <FontAwesomeIcon
                   style={{ marginLeft: '5px' }}
                   icon="caret-down"

@@ -18,7 +18,7 @@ export const loadUsersSuccess = json => ({
 export const fetchUsers = () => (dispatch) => {
   dispatch(loadUsersRequest());
 
-  return fetch('http://localhost:4000/users')
+  return fetch('http://localhost:4000/users/')
     .then(
       response => response.json(),
       error => console.log('An error occurred.', error),

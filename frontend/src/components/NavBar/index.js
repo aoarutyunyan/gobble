@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { logOut } from '../../redux/loggedIn/actions';
 
 const mapStateToProps = state => ({
-  loggedIn: state.logedIn,
+  loggedIn: state.loggedIn,
   user: state.user,
 });
 

@@ -22,11 +22,12 @@ export const loadChefsSuccess = json => ({
 //   dispatch(loadChefsSuccess(chefs));
 // };
 
+const url = 'http://localhost:4000/chefs/nearby?zipcode=$&radius=50';
 
 export const fetchChefs = (zipcode) => (dispatch) => {
   dispatch(loadChefsRequest());
 
-  return fetch(`http://localhost:4000/chefs/nearby?zipcode=${zipcode}&radius=50`)
+  return fetch('http://localhost:4000/chefs')
     .then(
       response => response.json(),
       error => console.log('An error occurred.', error),

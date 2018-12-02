@@ -22,7 +22,6 @@ class ChefCardList extends React.Component {
 
   componentDidMount() {
     this.props.fetchChefs();
-    this.props.fetchUsers();
   }
 
   render() {
@@ -36,10 +35,10 @@ class ChefCardList extends React.Component {
       filterList.push(chefFilters[key].label);
     }
 
-    if (chefs.isFetching || users.isFetching) {
+    if (chefs.isFetching) {
       return (<div>fetching</div>);
     }
-    console.log(users);
+    console.log('chefs', chefs);
     
     return (
       <List>

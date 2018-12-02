@@ -6,7 +6,6 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { red } from '../../lib/stylesConstants';
 import StyledBtn from '../../components/StyledBtn';
-import { registerUser } from '../../redux/user/actions';
 
 const StyledLabel = styled.label`
   text-transform: uppercase;
@@ -62,16 +61,16 @@ const SignUpForm = ({ user, values, errors, touched, isSubmitting }) => (
 
     <div>
       <div>
-        <StyledLabel htmlFor="username">Username</StyledLabel>
-        {touched.username && errors.username && <StyledErrorLabel htmlFor="username">{errors.username}</StyledErrorLabel>}
+        <StyledLabel htmlFor="name">Name</StyledLabel>
+        {touched.name && errors.name && <StyledErrorLabel htmlFor="name">{errors.name}</StyledErrorLabel>}
       </div>
       <TextInput
-        autoComplete="username"
-        error={touched.username && errors.username}
+        autoComplete="name"
+        error={touched.name && errors.name}
         type="text"
-        name="username"
+        name="name"
         style={{ width: '300px' }}
-        placeholder="Create a username"
+        placeholder="Create a name"
       />
     </div>
 
@@ -129,15 +128,15 @@ const formikForm = withFormik({
   mapPropsToValues({ user }) {
     return {
       email: (user && user.email) || '',
-      username: (user && user.username) || '',
+      name: (user && user.name) || '',
       zipcode: (user && user.zipcdoe) || '',
       password: '',
     };
   },
   validationSchema: yup.object().shape({
-    username: yup
+    name: yup
       .string()
-      .required('Username is required.'),
+      .required('Name is required.'),
     email: yup
       .string()
       .email('Must be a valid email.')
@@ -151,20 +150,22 @@ const formikForm = withFormik({
       .required('Password is required.'),
   }),
   handleSubmit(values, {
-    setErrors, resetForm, setSubmitting, props: { updateUser, history, logIn },
+    setErrors, resetForm, setSubmitting, props: { updateUser, history, logIn, registerUser },
   }) {
-    console.log(values); // isChef is in there
+    console.log('values', values); // isChef is in there
     setSubmitting(false);
     resetForm();
     logIn();
-    registerUser({
+    const data = {
       name: values.name,
       password: values.password,
       passwordConf: values.password,
-      chef: values.isChef,
+      chef: values.isChef || false,
       email: values.email,
-      zipcode: values.zipcode,
-    });
+      zipcode: parseInt(values.zipcode, 10),
+    };
+    console.log('data', data);
+    registerUser(data);
     history.push('/chefs');
   },
 })(SignUpForm);
