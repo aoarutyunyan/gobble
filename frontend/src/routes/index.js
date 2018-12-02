@@ -14,6 +14,7 @@ import Bookings from '../routes/Bookings';
 import Users from '../routes/Users';
 import ChefDishes from '../routes/ChefDishes';
 import BookEvent from './BookEvent';
+import AddTags from '../routes/AddTags';
 
 class Root extends Component {
 
@@ -28,6 +29,8 @@ class Root extends Component {
               <Route exact path="/register" render={Register} />
               <Route exact path="/login" render ={Login} />
               <Route exact path="/usertype" component={UserType} />
+
+              <Route exact path="/addtags" component={AddTags} />
 
               <Route exact path="/chefs" component={Chefs} />
               <Route exact path="/chefs/:chefId" render={ChefProfile} />
