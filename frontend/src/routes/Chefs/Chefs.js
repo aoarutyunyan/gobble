@@ -21,11 +21,28 @@ const ListView = styled.div`
 `;
 
 const tags = [
-  { label: 'Barbecue', value: 1 },
-  { label: 'Christmas', value: 2 },
-  { label: 'Fish', value: 3 },
-  { label: 'Salads', value: 4 },
-  { label: 'Thanksgiving', value: 5 },
+  { label: 'Thanksgiving', value: 1 },
+  { label: 'Italian', value: 2 },
+  { label: 'Christmas', value: 3 },
+  { label: 'dessert', value: 4 },
+  { label: 'French', value: 5 },
+  { label: 'pastries', value: 6 },
+  { label: 'Mexican', value: 7 },
+  { label: 'poultry', value: 8 },
+  { label: 'Chinese', value: 9 },
+  { label: 'fusion', value: 10 },
+  { label: 'alcohol', value: 11 },
+  { label: 'Mediterranean', value: 12 },
+  { label: 'vegetarian', value: 13 },
+  { label: 'different', value: 14 },
+  { label: 'Japanese', value: 15 },
+  { label: 'seafood', value: 16 },
+  { label: 'Southern', value: 17 },
+  { label: 'comfort food', value: 18 },
+  { label: 'summer', value: 19 },
+  { label: 'block party', value: 20 },
+  { label: 'grill', value: 21 },
+  { label: 'experimental', value: 22 },
 ];
 
 class Chefs extends React.Component {

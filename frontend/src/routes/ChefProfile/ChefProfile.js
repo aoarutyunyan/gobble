@@ -62,13 +62,7 @@ export const ChefProfile = ({ history, match, chefs }) => {
   const { id, name, tags, dishes, events, description, zipcode, email } = chef;
   console.log('chef', chefs);
   console.log('events', events);
-  const bookings = events.map(event => {
-    const splitDate = event.date.split('-').map(unit => parseInt(unit, 10));
-    
-    return new Date(splitDate[0], splitDate[1], splitDate[2]);
-
-  },
-  );
+  const bookings = events.map(event => new Date(`${event.date} 00:000`));
 
   console.log('bookings', bookings);
 

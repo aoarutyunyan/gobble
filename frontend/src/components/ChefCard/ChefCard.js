@@ -74,7 +74,7 @@ const ChefCard = ({ id, name, description, zipcode, email, user, currentRating, 
 
   return (
     <StyledCard>
-      {eventDate && <div style={{ margin: 0 }}>Scheduled at: {eventDate} </div>}
+      {eventDate && <div style={{ margin: 0 }}>Scheduled on: {eventDate} </div>}
       <StyledName>{name}</StyledName>
 
       <div style={{ marginTop: '10px', marginBottom: '2em' }}><ProfileImg  src={getJpg('chefimg')}/></div>

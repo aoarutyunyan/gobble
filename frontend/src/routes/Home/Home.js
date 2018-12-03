@@ -57,7 +57,7 @@ export const Home = ({ loggedIn }) => {
           <div>Gobble</div>
         </Title>
         <Description>
-          <div>Connecting Chefs with Hungry Users Since Fall 2018</div>
+          <div>Gets chefs to cook for you in the comfort of your own home.</div>
         </Description>
         <Slogan>
           <div>Craving a home-cooked meal, but don't have the time to cook?<br /> You've come to the right place.</div>

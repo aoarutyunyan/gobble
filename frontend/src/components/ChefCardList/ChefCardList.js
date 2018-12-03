@@ -65,7 +65,7 @@ class ChefCardList extends React.Component {
           {chefList
             .filter(({ tags }) => numOverlapping(tags, filterList) === chefFilters.length)
             .map(props => (
-              <ChefCard {...props} user={user} currentRating={chefRatings && chefRatings[props.id]} eventDate={`${chefEvents[props.id].time}`} key={props.id} />
+              <ChefCard {...props} user={user} currentRating={chefRatings && chefRatings[props.id]} eventDate={`${new Date(chefEvents[props.id].time).toISOString().split('T')[0]}`} key={props.id} />
             ))}
         </List>
       );
