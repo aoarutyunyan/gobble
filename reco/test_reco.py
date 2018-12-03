@@ -40,6 +40,17 @@ class TestReco():
         # each user has correct top 4 similar users
         check_correct_sim_users(self.reco, correct_output, 4)
 
+    def test_initial_top_chefs(self):
+        correct_output = [[1, 4, 3, 2],
+                          [1, 4, 3, 2],
+                          [1, 3, 2, 4],
+                          [1, 4, 3, 2],
+                          [1, 3, 4, 2]]
+
+        for user in self.reco.user_id_set:
+            top_sim = self.reco.get_top_similar_users(user, 4)
+            assert(self.reco.get_top_recs(user, top_sim, 4) == correct_output[user - 1])
+
     def test_new_rating(self):
         self.reco.receive_new_rating(1, 5, 10)
         correct_output = [[2, 3, 5, 4],
