@@ -56,7 +56,7 @@ class UserEvents extends React.Component {
                 {chefIdList.length === 0 && <div style={{ color: 'blue' }}>No Upcoming events.</div>}
               </div>
             </Heading>
-            <EventCard user={user} />
+            <EventCard name={user.name} dishes={user.dishes} eventDate={'12/02/2018'} />
           </ListView>
         </Event>
       );
