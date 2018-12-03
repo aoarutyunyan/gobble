@@ -24,12 +24,12 @@ def check_correct_sim_users(reco, correct, n):
             assert(reco.get_top_similar_users(user, n) == correct[i])
             i += 1
 
+def print_top_users(self, n):
+    for user in sorted(list(self.reco.user_id_set)):
+        print(user, self.reco.get_top_similar_users(user, n))
+
 @pytest.mark.usefixtures('reco')
 class TestReco():
-    def print_top_users(self):
-        for user in self.reco.user_id_set:
-            print(user, self.reco.get_top_similar_users(user, 4))
-
     def test_initial_top_users(self):
         correct_output = [[2, 3, 5, 4],
                           [5, 1, 4, 3],
@@ -64,10 +64,6 @@ class TestReco():
 
 @pytest.mark.usefixtures('reco_comp')
 class TestRecomputationUnit():
-    def print_top_users(self):
-        for user in self.reco.user_id_set:
-            print(self.reco.get_top_similar_users(user, 6))
-
     def test_init(self):
         correct_output = [[6, 7, 3, 2, 4],
                           [1, 7, 6, 4, 3],
@@ -129,12 +125,12 @@ class TestRecomputationUnit():
     def test_max_id_user(self):
         self.reco.receive_new_rating(20000, 3, 5)
 
-        correct_output = [[2, 1, 7, 6, 4, 3],
-                          [6, 7, 3, 20000, 2, 4],
+        correct_output = [[6, 7, 3, 20000, 2, 4],
                           [20000, 1, 7, 6, 4, 3],
                           [6, 7, 1, 20000, 4, 2],
                           [20000, 7, 6, 3, 2, 1],
                           [7, 3, 1, 20000, 4, 2],
-                          [6, 3, 1, 20000, 4, 2]]
+                          [6, 3, 1, 20000, 4, 2],
+                          [2, 1, 7, 6, 4, 3]]
 
         check_correct_sim_users(self.reco, correct_output, 6)
