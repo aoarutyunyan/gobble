@@ -8,8 +8,8 @@ import StyledBtn from '../StyledBtn';
 const StyledCard = styled.div`
   display: grid;
   grid-template-rows: auto auto auto 1fr;
-  width: 300px;
-  height: 500px;
+  width: 250px;
+  height: 450px;
   padding: 30px;
   border: 2px solid gray;
   color: black;
@@ -61,14 +61,18 @@ const Host = styled.div`
   padding-top: 5px;
 `;
 
+const Date = styled.div`
+  text-align: center;
+  padding-top: 5px;
+`;
+
 // display event title, dishes, date
 
 
-const EventCard = ({ id, name, title, dishes, eventDate }) => {
+const EventCard = ({ id, name, title, user, dishes, eventDate }) => {
 
   return (
     <StyledCard>
-      {eventDate && <div style={{ margin: 0 }}>This event is on: {eventDate} </div>}
       <StyledName>{title}</StyledName>
 
       <div>
@@ -82,9 +86,8 @@ const EventCard = ({ id, name, title, dishes, eventDate }) => {
       </div>
 
       <div>
-        <Link to={`/chefs/${id}`}>
-          <CardBtn theme="dark" style={{ justifyContent: 'center', alignItems: 'center', alignContent: 'center' }}> <TextIcon style={{ marginLeft: '-15px' }} icon="user" color="#fff" /> <span>Chef Profile</span> </CardBtn>
-        </Link>
+        <StyledName style={{ marginTop: '20px' }}>EVENT DATE</StyledName>
+        <Date>{eventDate}</Date>
       </div>
 
     </StyledCard>
