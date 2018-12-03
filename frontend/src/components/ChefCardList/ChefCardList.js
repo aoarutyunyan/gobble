@@ -29,6 +29,7 @@ const EventList = styled.div`
   @media (max-width: 1000px) {
     grid-template-columns: 1fr;
     grid-row-gap: 2em;
+  }
 `;
 
 const numOverlapping = (list1, list2) => {
@@ -83,7 +84,7 @@ class ChefCardList extends React.Component {
             .filter(({ tags }) => numOverlapping(tags, filterList) === chefFilters.length)
             .map(props => (
               <React.Fragment>
-                <EventCard {...props} user={user} dishes={event_dishes} eventDate={`${new Date(chefEvents[props.id].time).toISOString().split('T')[0]}`}/>
+                <EventCard {...props} user={user} dishes={chefEvents[props.id].dishes} eventDate={`${new Date(chefEvents[props.id].time).toISOString().split('T')[0]}`}/>
                 <ChefCard {...props} user={user} currentRating={chefRatings && chefRatings[props.id]} eventDate={`${new Date(chefEvents[props.id].time).toISOString().split('T')[0]}`} key={props.id} />
               </React.Fragment>
             ))}

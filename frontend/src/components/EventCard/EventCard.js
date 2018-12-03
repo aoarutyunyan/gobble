@@ -76,7 +76,7 @@ const EventCard = ({ id, name, title, user, dishes, eventDate }) => {
       <StyledName>{title}</StyledName>
 
       <div>
-        <StyledName style={{ paddingTop: '20px' }}>EVENT HOST</StyledName>
+        <StyledName style={{ paddingTop: '20px' }}>EVENT CHEF</StyledName>
         <Host>{name}</Host>
       </div>
 

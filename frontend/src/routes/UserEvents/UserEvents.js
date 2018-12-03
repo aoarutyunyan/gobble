@@ -37,6 +37,7 @@ const ListView = styled.div`
 class UserEvents extends React.Component {
 
   render() {
+    
     const { user } = this.props;
     // const chefIdList = []; // the ids of the chefs we want to display in chefcardlist
 
@@ -77,6 +78,7 @@ class UserEvents extends React.Component {
 };
 
 UserEvents.propTypes = {
+  fetchUsers: PropTypes.func,
 };
 
 export default UserEvents;
