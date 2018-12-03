@@ -33,7 +33,7 @@ router.post('/', function(req, res) {
             //reviewee.receiveReview(review);
 
             Producer = kafka.Producer,
-            client = new kafka.Client(),
+            client = new kafka.KafkaClient({kafkaHost: '127.0.0.1:9092'}),
             producer = new Producer(client);
 
             userId = new kafka.KeyedMessage('userId', req.body.Reviewer)
@@ -41,9 +41,7 @@ router.post('/', function(req, res) {
             ratingMessage = new kafka.KeyedMessage('rating', req.body.Rating)
 
             producer.send([{ topic: 'rating',
-                      userId,
-                      chefId,
-                      ratingMessage
+                    messages: `{"userId": ${req.body.Reviewer}, "chefId": ${req.body.Reviewee}, "rating": ${req.body.Rating}}`,
                     }], function (err, data) {
               console.log(data);
 
