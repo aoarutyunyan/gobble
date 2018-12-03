@@ -27,6 +27,9 @@ router.post('/', function (req, res, next) {
                 chef: req.body.chef,
                 _id: count,
                 zipcode: req.body.zipcode
+                description: req.body.description,
+                dishes: req.body.dishes,
+                tags: req.body.tags
             };
 
             User.create(userData, function (error, user) {
