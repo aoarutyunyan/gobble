@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { red } from '../../lib/stylesConstants';
 import StyledBtn from '../../components/StyledBtn';
+import { putData } from '../../lib/assetsUtils';
 
 const StyledLabel = styled.label`
   text-transform: uppercase;
@@ -43,34 +44,20 @@ const TextInput = styled(Field)`
   }
 `;
 
-const LoginForm = ({ user, values, errors, touched, isSubmitting }) => (
+const SettingsForm = ({ user, values, errors, touched, isSubmitting }) => (
   <Form style={{ marginTop: '2em' }}>
-    <div>
-      <div>
-        <StyledLabel htmlFor="email">Email</StyledLabel>
-        {touched.email && errors.email && <StyledErrorLabel htmlFor="email">{errors.email}</StyledErrorLabel>}
-      </div>
-      <TextInput
-        error={touched.email && errors.email}
-        type="text"
-        name="email"
-        style={{ width: '300px' }}
-        placeholder="you@example.com"
-      />
-    </div>
 
     <div>
       <div>
-        <StyledLabel htmlFor="password">Password</StyledLabel>
-        {errors.password && (values.password || touched.password) && <StyledErrorLabel htmlFor="password">{errors.password}</StyledErrorLabel>}
+        <StyledLabel htmlFor="zipcode">Update Zip Code</StyledLabel>
+        {errors.zipcode && (values.zipcode || touched.zipcode) && <StyledErrorLabel htmlFor="zipcode">{errors.zipcode}</StyledErrorLabel>}
       </div>
       <TextInput
-        autoComplete="new-password"
-        error={errors.password && (values.password || touched.password)}
-        type="password"
-        name="password"
+        error={errors.zipcode && (values.zipcode|| touched.zipcode)}
+        type="text"
+        name="zipcode"
         style={{ width: '300px' }}
-        placeholder="Create a password"
+        placeholder="Anywhere"
       />
     </div>
 
@@ -80,7 +67,7 @@ const LoginForm = ({ user, values, errors, touched, isSubmitting }) => (
   </Form>
 );
 
-LoginForm.propTypes = {
+SettingsForm.propTypes = {
   values: PropTypes.object,
   errors: PropTypes.object,
   touched: PropTypes.object,
@@ -93,33 +80,27 @@ const formikForm = withFormik({
 
   mapPropsToValues({ user }) {
     return {
-      email: (user && user.email) || '',
-      password: '',
+      zipcode: (user && user.zipcdoe) || '',
     };
   },
   validationSchema: yup.object().shape({
-    email: yup
+    zipcode: yup
       .string()
-      .email()
-      .required('Email is required.'),
-    password: yup
-      .string()
-      .min(8, 'At least 8 characters.')
-      .required('Password is required.'),
+      .required('Zip code is required.'),
   }),
   handleSubmit(values, {
-    setErrors, resetForm, setSubmitting, props: { updateUser, history, logIn, loginUser },
+    setErrors, resetForm, setSubmitting, props: { updateUser, history, user },
   }) {
     setSubmitting(false);
     resetForm();
-    logIn();
     const data = {
-      Email: values.email,
-      Password: values.password,
+      zipcode: parseInt(values.zipcode, 10),
     };
-    loginUser(data);
-    history.push('/home');
+    putData(`http://localhost:4000/users/zipcode/${user.id}`, data);
+    // updateuser
+    updateUser(data);
+    history.push('/chefs');
   },
-})(LoginForm);
+})(SettingsForm);
 
 export default formikForm;

@@ -13,6 +13,7 @@ import Users from '../routes/Users';
 import BookEvent from './BookEvent';
 import AddTags from '../routes/AddTags';
 import UserEvents from './UserEvents';
+import Settings from './Settings';
 
 class Root extends Component {
 
@@ -28,6 +29,7 @@ class Root extends Component {
               <Route exact path="/login" render ={Login} />
 
               <Route exact path="/addtags" component={AddTags} />
+              <Route exact path="/settings" component={Settings} />
 
               <Route exact path="/chefs" component={Chefs} />
               <Route exact path="/chefs/:chefId" render={ChefProfile} />

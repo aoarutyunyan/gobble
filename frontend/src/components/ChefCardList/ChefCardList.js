@@ -11,6 +11,10 @@ const List = styled.div`
   justify-items: center;
   align-items: center;
   padding-top: 70px;
+
+  @media (max-width: 1000px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const numOverlapping = (list1, list2) => {

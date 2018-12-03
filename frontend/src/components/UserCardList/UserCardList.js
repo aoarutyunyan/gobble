@@ -15,11 +15,30 @@ const List = styled.div`
 
 class UserCardList extends React.Component {
 
+  componentDidMount() {
+    this.props.fetchUsers();
+  }
+
   render() {
+
+    const { users, user } = this.props;
+
+    if (users.isFetching) {
+      return (<div>fetching</div>);
+    }
+
+    const userRatings = user.outgoingReviews && user.outgoingReviews.reduce((acc, el) => {
+      acc[el.subject_id] = el.rating; 
+      
+      return acc; 
+    }, {});
 
     return (
       <List>
-        <UserCard name={'username'} currentRating={3}/>
+        {users.items
+          .map(props => (
+            <UserCard {...props} user={user} currentRating={userRatings && userRatings[props.id]} key={props.id} />
+          ))}
       </List>
     );
   }
@@ -28,6 +47,7 @@ class UserCardList extends React.Component {
 UserCardList.propTypes = {
   users: PropTypes.object,
   user: PropTypes.object,
+  fetchUsers: PropTypes.func,
   event: PropTypes.bool,
 };
 

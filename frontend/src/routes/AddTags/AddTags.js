@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import StyledBtn from '../../components/StyledBtn';
 import { withFormik, Form, Field } from 'formik';
 import * as yup from 'yup';
+import { putData } from '../../lib/assetsUtils';
+import UserCardList from '../../components/UserCardList';
 
 const Wrapper = styled.div`
   padding: 40px;
@@ -81,6 +83,8 @@ const AddTags = () => {
         <div><StyledBtn type="submit" theme="pink">Confirm</StyledBtn></div>
       </Form>
 
+      <UserCardList />
+
     </Wrapper>
   );
 };
@@ -103,17 +107,34 @@ const FormikForm = withFormik({
       .required(),
   }),
   
-  handleSubmit(values, tagValues, {
-    setErrors, resetForm, setSubmitting, props: { history, loggedIn },
+  handleSubmit(values, {
+    setErrors, resetForm, setSubmitting, props: { users, match, history, loggedIn },
   }) {
     setSubmitting(false);
     resetForm();
-    const { dishes } = values;
-    const { tags } = tagValues;
-    // split dishes by comma, make array, do some POST, then push to new link
-    
-    // const nextLink = loggedIn ? '/providers' : '/signup/finish';
-    // history.push(nextLink);
+    const { tags, dishes } = values;
+
+    const splitDishes = dishes.split(',');
+    const splitTags = tags.split(',');
+
+    const user = users.items.filter(({ id }) => id == match.params.userId)[0];
+
+    const chefId = match.params.chefId;
+
+    const forChef = {
+      tags: splitTags,
+      dishes: splitDishes,
+      chefId: user.id,
+    };
+
+    user.dishes.push(splitDishes);
+    user.tags.push(splitTags);
+
+    putData(`http://localhost:4000/users/dishes/${user.id}`, { dishes: user.dishes });
+    putData(`http://localhost:4000/users/tags/${user.id}`, { tags: user.tags });
+
+    const nextLink = '/chefs';
+    history.push(nextLink);
   },
 })(AddTags);
 

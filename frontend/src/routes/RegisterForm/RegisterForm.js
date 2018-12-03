@@ -164,7 +164,8 @@ const formikForm = withFormik({
       zipcode: parseInt(values.zipcode, 10),
     };
     registerUser(data);
-    history.push('/chefs');
+    const nextLink = values.isChef ? '/addtags' : '/chefs';
+    history.push(nextLink);
   },
 })(SignUpForm);
 
