@@ -4,10 +4,11 @@ var request = require('request');
 var redis = require("redis");
 var User = require('../models/User.js');
 
-client = redis.createClient();
-
 router.get('/:id', function (req, res, next) {
   const id = parseInt(req.params.id);
+
+  client = redis.createClient();
+
   client.get(id, function (error, result) {
     if (error) {
       console.log(error)
