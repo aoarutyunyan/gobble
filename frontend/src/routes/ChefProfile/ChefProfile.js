@@ -63,13 +63,6 @@ const bookings = [
   new Date(2018, 12, 30),
 ];
 
-const chef = {
-  name: 'Gordon Ramsay',
-  zipCode: 55555,
-  bio: 'Born in Scotland in 1966, Gordon Ramsay left behind an early athletic career to become a renowned chef in London. By the early 2000s he was making his mark on British TV as the temperamental host of Ramsays Kitchen Nightmares and Hell’s Kitchen, shows that made a successful transition to American audiences. The award-winning chef has since expanded his celebrity brand via such programs as MasterChef and Hotel Hell and opening more restaurants around the globe.',
-  dishes: 'Hamburgers, Fish',
-};
-
 export const ChefProfile = ({ history, match, chefs }) => {
   const chef = chefs.items.filter(({ id }) => id == match.params.chefId)[0];
   const { id, name, tags, dishes, description, zipcode, email } = chef;

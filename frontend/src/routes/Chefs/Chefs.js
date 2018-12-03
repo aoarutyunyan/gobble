@@ -13,7 +13,7 @@ const Heading = styled.div`
 
 const Options = styled.div`
   color: #242729;
-  width: 50em;
+  width: 100%;
 `;
 
 const ListView = styled.div`

@@ -43,25 +43,31 @@ const Slogan = styled.div`
   padding-bottom: 1em;
 `;
 
+const StyledLink = styled(Link)`
+  min-width: 100%;
+`;
+
 
 export const Home = () => {
   
   return (
     <Content>
-      <Title>
-        <div>Gobble</div>
-      </Title>
-      <Description>
-        <div>Connecting Chefs with Hungry Users Since Fall 2018</div>
-      </Description>
-      <Slogan>
-        <div>Craving a home-cooked meal, but don't have the time to cook?<br /> You've come to the right place.</div>
-      </Slogan>
-      <Link to="/register">
-        <StyledBtn theme="pink">
+      <div style={{ height: '50em',  background: '#eeeeee80', borderRadius: '1em' }}>
+        <Title>
+          <div>Gobble</div>
+        </Title>
+        <Description>
+          <div>Connecting Chefs with Hungry Users Since Fall 2018</div>
+        </Description>
+        <Slogan>
+          <div>Craving a home-cooked meal, but don't have the time to cook?<br /> You've come to the right place.</div>
+        </Slogan>
+        <StyledLink to="/register">
+          <StyledBtn style={{ minWidth: '100%', height: '60px' }}theme="pink">
         Register
-        </StyledBtn>
-      </Link>
+          </StyledBtn>
+        </StyledLink>
+      </div>
     </Content>
   );
 };

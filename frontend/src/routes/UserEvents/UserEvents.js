@@ -32,13 +32,10 @@ class UserEvents extends React.Component {
     return(
       <ListView>
         <Heading>
-
           <div>
             <h1>Your Upcoming Events</h1>
-
-
+            {chefIdList.length === 0 && <div style={{ color: 'blue' }}>No upcoming events. Go book one!</div>}
           </div>
-          
         </Heading>
         <ChefCardList event={true} filterIds={chefIdList}/>
       </ListView>

@@ -156,6 +156,7 @@ class TopNav extends React.Component {
           <Dropdown onClick={this.handleAccountClick}>
             <div style={{ background: '#242729' }}>
               <StyledLink style={{ marginBottom: '1em', display: 'block' }} to="/events" activeClassName={'f'}>Events</StyledLink>
+              {user && !user.chef && <StyledLink style={{ marginBottom: '1em', display: 'block' }} to="/settings" activeClassName={'f'}>Settings</StyledLink>}
               <StyledLink style={{ marginBottom: '1em', display: 'block' }} onClick={logOut} to="/home" activeClassName={'f'}>Log Out</StyledLink>
             </div>
           </Dropdown>
