@@ -89,6 +89,21 @@ TODO: set up `docker-compose.yml` for Python, Kafka, and Redis containers
 
 Or you can install Kafka, Redis, and Python 3.6 and `pip install -r requirements.txt` and run it locally.
 
+### Testing
+1. Install pytest, pytest-coverage
+```pip install pytest
+pip install pytest-cov
+```
+2. In reco.py, comment out line 183
+```
+self.redis_cache.set(str(user_id), json.dumps(list(map(int, top_recs))))
+```
+3. Run
+```
+cd gobble/reco
+pytest
+```
+
 ## Frontend Setup
 Run
 
