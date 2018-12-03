@@ -26,7 +26,7 @@ router.post('/', function (req, res, next) {
                 email: req.body.email,
                 chef: req.body.chef,
                 _id: count,
-                zipcode: req.body.zipcode
+                zipcode: req.body.zipcode,
                 description: req.body.description,
                 dishes: req.body.dishes,
                 tags: req.body.tags
