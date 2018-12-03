@@ -13,7 +13,8 @@ const mongooseTypes = mongoose.Schema.Types;
 let EventSchema = new mongoose.Schema(
     {
         title: String,
-        time: mongooseTypes.Date,
+        time: /*mongooseTypes.Date*/Number, // Epoch time
+        date: String,
         tags: [ String ],
         chef_id: Number,
         host_id: Number,

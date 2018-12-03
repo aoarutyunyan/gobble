@@ -21,7 +21,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/events/:id', function (req, res, next) {
     User.findById( parseInt(req.params.id), function (err, user) {
-       if (err) throw err;
+       if (err) res.status(400).send();
        res.json(user.events);
    });
 });
@@ -31,7 +31,7 @@ router.get('/events/:id', function (req, res, next) {
  */
 router.get('/reviews/:id', function (req, res, next) {
     User.findById( parseInt(req.params.id), function (err, user) {
-        if (err) throw err;
+        if (err) res.status(400).send();
         res.json(user.outgoingReviews);
     });
 });
@@ -41,7 +41,7 @@ router.get('/reviews/:id', function (req, res, next) {
   */
 router.get('/description/:id', function (req, res, next) {
     User.findById( parseInt(req.params.id), function (err, user) {
-        if (err) throw err;
+        if (err) res.status(400).send();
         res.json(user.description);
     });
 });
@@ -51,7 +51,7 @@ router.get('/description/:id', function (req, res, next) {
   */
 router.get('/dishes/:id', function (req, res, next) {
     User.findById( parseInt(req.params.id), function (err, user) {
-        if (err) throw err;
+        if (err) res.status(400).send();
         res.json(user.dishes);
     });
 });
@@ -61,7 +61,7 @@ router.get('/dishes/:id', function (req, res, next) {
   */
 router.get('/tags/:id', function (req, res, next) {
     User.findById( parseInt(req.params.id), function (err, user) {
-        if (err) throw err;
+        if (err) res.status(400).send();
         res.json(user.tags);
     });
 });
@@ -72,7 +72,7 @@ router.get('/tags/:id', function (req, res, next) {
 router.put('/password/:id', function(req, res, next) {
     bcrypt.hash(req.body.password, 10, function (err, hash) {
         if (err) {
-            throw err;
+            res.status(400).send();
         } else {
             User.findOneAndUpdate({ id: parseInt(req.params.id) }, { password: hash }, { new: true }, function (err, user) {
                 if (err) res.status(400).send();
@@ -96,7 +96,11 @@ router.put('/description/:id', function(req, res, next) {
  * PUT: Update a user's events
  */
 router.put('/events/:id', function(req, res, next) {
-    User.findOneAndUpdate({ id: parseInt(req.params.id) }, { events: req.body.events }, { new: true }, function (err, user) {
+    let evs = req.body.events;
+    for (let i = 0; i < evs.length; i++) {
+        evs[i].date = new Date(evs[i].time).toISOString().split('T')[0];
+    }
+    User.findOneAndUpdate({ id: parseInt(req.params.id) }, { events: evs }, { new: true }, function (err, user) {
         if (err) res.status(400).send();
         res.json(user);
     });
