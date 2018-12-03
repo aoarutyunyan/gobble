@@ -19,7 +19,7 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res) {
     givenReview = new Review({
       rating: req.body.Rating,
-      //reviewer: req.body.Reviewer,
+      reviewer: req.body.Reviewer,
       reviewee: req.body.Reviewee
     });
 
