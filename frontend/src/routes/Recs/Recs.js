@@ -45,7 +45,7 @@ const tags = [
   { label: 'experimental', value: 22 },
 ];
 
-class Chefs extends React.Component {
+class Recs extends React.Component {
   
   handleChange = (filters) => {
     this.props.updateChefFilters(filters);
@@ -83,10 +83,10 @@ class Chefs extends React.Component {
   }
 };
 
-Chefs.propTypes = {
+Recs.propTypes = {
   updateChefFilters: PropTypes.func,
   fetchRChefs: PropTypes.func,
   user: PropTypes.object,
 };
 
-export default Chefs;
+export default Recs;

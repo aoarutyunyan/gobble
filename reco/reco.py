@@ -159,6 +159,11 @@ class ChefRecommendationEngine:
     else:
       self.ratings_matrix[user_id, chef_id] = rating
 
+    if user_id not in self.user_id_set:
+      self.user_id_set.add(user_id)
+      self.chef_id_set.add(chef_id)
+      self.ratings_matrix[user_id, chef_id] = rating
+    
     self.sparse_ratings_matrix = self.ratings_matrix.tocsr()
 
     self.recompute_similarity(user_id, chef_id, rating)
@@ -174,7 +179,7 @@ class ChefRecommendationEngine:
     for user_id in self.user_id_set:
       sim_users = self.get_top_similar_users(user_id, 10)
       top_recs = self.get_top_recs(user_id, sim_users, 10)
-
+      
       self.redis_cache.set(str(user_id), json.dumps(list(map(int, top_recs))))
       self.recs[user_id] = top_recs
 
