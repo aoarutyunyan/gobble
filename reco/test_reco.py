@@ -19,8 +19,10 @@ def reco_comp(request):
     request.cls.reco = ChefRecommendationEngine({}, "./test_ratings_2.csv")
 
 def check_correct_sim_users(reco, correct, n):
+        i = 0
         for user in sorted(list(reco.user_id_set)):
-            assert(reco.get_top_similar_users(user, n) == correct[user - 1])
+            assert(reco.get_top_similar_users(user, n) == correct[i])
+            i += 1
 
 @pytest.mark.usefixtures('reco')
 class TestReco():
@@ -73,8 +75,6 @@ class TestRecomputationUnit():
                           [7, 6, 3, 2, 1],
                           [7, 3, 1, 4, 2],
                           [6, 3, 1, 4, 2]]
-        print("this one")
-        self.print_top_users()
 
         check_correct_sim_users(self.reco, correct_output, 6)
 
@@ -124,4 +124,17 @@ class TestRecomputationUnit():
                           [7, 3, 1, 4, 2],
                           [6, 3, 1, 4, 2]]
         
+        check_correct_sim_users(self.reco, correct_output, 6)
+
+    def test_max_id_user(self):
+        self.reco.receive_new_rating(20000, 3, 5)
+
+        correct_output = [[2, 1, 7, 6, 4, 3],
+                          [6, 7, 3, 20000, 2, 4],
+                          [20000, 1, 7, 6, 4, 3],
+                          [6, 7, 1, 20000, 4, 2],
+                          [20000, 7, 6, 3, 2, 1],
+                          [7, 3, 1, 20000, 4, 2],
+                          [6, 3, 1, 20000, 4, 2]]
+
         check_correct_sim_users(self.reco, correct_output, 6)
