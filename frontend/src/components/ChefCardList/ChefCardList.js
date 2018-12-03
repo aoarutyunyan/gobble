@@ -51,7 +51,7 @@ class ChefCardList extends React.Component {
     console.log(chefs.items);
 
     if (event) {
-      const chefList = chefs.items.filter(({ id }) => filterIds.includes(id.toString()));
+      const chefList = chefs.items.filter(({ id }) => filterIds.includes(id.toString()) || filterIds.includes(id));
       
       const chefEvents = user.events.reduce( (acc, { title, time, chef_id, dishes }) => {
         acc[chef_id] = { title, time, dishes };

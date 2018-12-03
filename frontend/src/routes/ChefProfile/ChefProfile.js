@@ -57,15 +57,20 @@ const TextIcon = styled(FontAwesomeIcon)`
   margin-right: 10px;
 `;
 
-const bookings = [
-  new Date(2018, 1, 2),
-  new Date(2018, 12, 7),
-  new Date(2018, 12, 30),
-];
-
 export const ChefProfile = ({ history, match, chefs }) => {
   const chef = chefs.items.filter(({ id }) => id == match.params.chefId)[0];
-  const { id, name, tags, dishes, description, zipcode, email } = chef;
+  const { id, name, tags, dishes, events, description, zipcode, email } = chef;
+  console.log('chef', chefs);
+  console.log('events', events);
+  const bookings = events.map(event => {
+    const splitDate = event.date.split('-').map(unit => parseInt(unit, 10));
+    
+    return new Date(splitDate[0], splitDate[1], splitDate[2]);
+
+  },
+  );
+
+  console.log('bookings', bookings);
 
   return(
     <Content>
