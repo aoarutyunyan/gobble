@@ -48,7 +48,7 @@ const StyledLink = styled(Link)`
 `;
 
 
-export const Home = () => {
+export const Home = ({ loggedIn }) => {
   
   return (
     <Content>
@@ -62,11 +62,7 @@ export const Home = () => {
         <Slogan>
           <div>Craving a home-cooked meal, but don't have the time to cook?<br /> You've come to the right place.</div>
         </Slogan>
-        <StyledLink to="/register">
-          <StyledBtn style={{ minWidth: '100%', height: '60px' }}theme="pink">
-        Register
-          </StyledBtn>
-        </StyledLink>
+        {!loggedIn && <StyledLink to="/register"> <StyledBtn style={{ minWidth: '100%', height: '60px' }}theme="pink"> Register </StyledBtn> </StyledLink> }
       </div>
     </Content>
   );

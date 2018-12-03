@@ -118,7 +118,7 @@ const formikForm = withFormik({
       Password: values.password,
     };
     loginUser(data);
-    history.push('/chefs');
+    history.push('/home');
   },
 })(LoginForm);
 
