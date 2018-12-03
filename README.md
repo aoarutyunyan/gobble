@@ -1,6 +1,19 @@
 # CS 130 Project: Gobble
 Discussion 1B
 
+## Local Setup
+- Install mongodb and run `mongod`
+- `cd backend/server; npm install; npm start`
+- `cd frontend; npm install; npm start`
+
+(for recommendations' functionality)
+- Install redis and kafka
+- `redis-server`
+- `bin/zookeeper-server-start.sh config/zookeeper.properties`
+- `bin/kafka-server-start.sh config/server.1.properties`
+- `bin/kafka-topics.sh --create --topic rating --zookeeper localhost:2181 --partitions 1 --replication-factor 1`
+- `cd reco: python flask_server.py`
+
 ## Docker Setup
 1. Download Docker and Docker Compose (if you're on a Mac it's included)
 ```bash
