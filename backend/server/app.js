@@ -9,20 +9,22 @@ var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var cors = require('cors');
 
-const uri = 'db:27017';
-const username = 'root';
-const pass = 'example';
-const url = `mongodb://${username}:${pass}@${uri}`;
+const url = 'mongodb://localhost:27017/gobble'
 
-/*
 mongoose.connect(url, function (err, db) {
  if (err) {
    console.log('Unable to connect to the mongoDB server. Error:', err);
  } else {
    console.log('Connection established to', url);
  }
-});*/
+});
 
+/*const uri = 'db:27017';
+const username = 'root';
+const pass = 'example';
+const url = `mongodb://${username}:${pass}@${uri}`;*/
+
+/*
 const options = {
     autoIndex: false, // Don't build indexes
     reconnectTries: 30, // Retry up to 30 times
@@ -42,7 +44,7 @@ const connectWithRetry = () => {
   })
 };
 
-connectWithRetry();
+connectWithRetry();*/
 
 var indexRouter = require('./routes/index');
 var loginRouter = require('./routes/login');
@@ -52,6 +54,7 @@ var eventsRouter = require('./routes/events');
 var reviewsRouter = require('./routes/reviews');
 var dishesRouter = require('./routes/dishes');
 var chefsRouter = require('./routes/chefs');
+var recommendationsRouter = require('./routes/recommendations');
 
 var app = express();
 app.use(cors());
@@ -84,6 +87,7 @@ app.use('/events', eventsRouter);
 app.use('/reviews', reviewsRouter);
 app.use('/dishes', dishesRouter);
 app.use('/chefs', chefsRouter);
+app.use('/recommendations', recommendationsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

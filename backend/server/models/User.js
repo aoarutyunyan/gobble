@@ -40,7 +40,7 @@ let UserSchema = new mongoose.Schema(
         zipcode: Number,
         description: String,
         events: [ EventSchema ],
-        // incomingReviews: [ ReviewSchema ],
+        //incomingReviews: [ ReviewSchema ],
         outgoingReviews: [ ReviewSchema ],
         dishes: [ String ],
         tags: [ String ],
