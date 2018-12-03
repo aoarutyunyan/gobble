@@ -137,6 +137,7 @@ class TopNav extends React.Component {
 
           <Right>
             {loggedIn && user && !user.chef && <StyledLink  onClick={this.closeDropdown} to="/chefs" activeClassName={activeClassName}>Chefs</StyledLink> }
+            {loggedIn && user && !user.chef && <StyledLink  onClick={this.closeDropdown} to="/recs" activeClassName={activeClassName}>Recs</StyledLink> }
             {loggedIn && user && user.chef &&  <StyledLink  onClick={this.closeDropdown} to="/bookings" activeClassName={activeClassName}>Bookings</StyledLink> }
 
             { loggedIn && (

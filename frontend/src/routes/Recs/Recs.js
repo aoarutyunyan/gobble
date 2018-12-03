@@ -58,10 +58,10 @@ class Chefs extends React.Component {
 
   render() {
     const { recChefs } = this.props;
-    if (recChefs.isFetch) {
+    if (recChefs.isFetching) {
       return (<div>fetching</div>);
     }
-    const filterIds = recChefs.map(chef => chef.id);
+    const filterIds = recChefs.items.map(chef => chef.id);
     
     return(
       <ListView>
