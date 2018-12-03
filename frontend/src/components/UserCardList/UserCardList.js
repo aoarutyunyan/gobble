@@ -6,11 +6,15 @@ import styled from 'styled-components';
 const List = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
   grid-row-gap: 6em;
   justify-items: center;
   align-items: center;
   padding-top: 70px;
+
+  @media (max-width: 1000px) {
+    grid-template-columns: 1fr;
+    grid-row-gap: 2em;
+  }
 `;
 
 class UserCardList extends React.Component {
