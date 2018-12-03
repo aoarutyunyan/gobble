@@ -136,7 +136,8 @@ class TopNav extends React.Component {
           </Title>
 
           <Right>
-            {loggedIn && <StyledLink  onClick={this.closeDropdown} to="/chefs" activeClassName={activeClassName}>Chefs</StyledLink> }
+            {loggedIn && user && !user.chef && <StyledLink  onClick={this.closeDropdown} to="/chefs" activeClassName={activeClassName}>Chefs</StyledLink> }
+            {loggedIn && user && user.chef &&  <StyledLink  onClick={this.closeDropdown} to="/bookings" activeClassName={activeClassName}>Chefs</StyledLink> }
 
             { loggedIn && (
               <AccountButton onClick={this.handleAccountClick}>
@@ -157,6 +158,7 @@ class TopNav extends React.Component {
             <div style={{ background: '#242729' }}>
               <StyledLink style={{ marginBottom: '1em', display: 'block' }} to="/events" activeClassName={'f'}>Events</StyledLink>
               {user && !user.chef && <StyledLink style={{ marginBottom: '1em', display: 'block' }} to="/settings" activeClassName={'f'}>Settings</StyledLink>}
+              {user && user.chef && <StyledLink style={{ marginBottom: '1em', display: 'block' }} to="/addtags" activeClassName={'f'}>Settings</StyledLink>}
               <StyledLink style={{ marginBottom: '1em', display: 'block' }} onClick={logOut} to="/home" activeClassName={'f'}>Log Out</StyledLink>
             </div>
           </Dropdown>
