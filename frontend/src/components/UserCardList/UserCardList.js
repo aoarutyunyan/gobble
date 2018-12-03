@@ -22,11 +22,10 @@ class UserCardList extends React.Component {
   render() {
 
     const { users, user } = this.props;
-
     if (users.isFetching) {
       return (<div>fetching</div>);
     }
-
+    console.log('user', users);
     const userRatings = user.outgoingReviews && user.outgoingReviews.reduce((acc, el) => {
       acc[el.subject_id] = el.rating; 
       

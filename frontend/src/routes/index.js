@@ -34,6 +34,7 @@ class Root extends Component {
               <Route exact path="/chefs" component={Chefs} />
               <Route exact path="/chefs/:chefId" render={ChefProfile} />
               <Route exact path="/chefs/:chefId/book" render={BookEvent} />
+              <Route exact path="/bookings" render={Bookings} />
               
               <Route exact path="/users" component={Users} />
               <Route exact path="/events" component={UserEvents} />

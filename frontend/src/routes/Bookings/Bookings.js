@@ -14,6 +14,7 @@ export const Bookings = () => {
   return(
     <Wrapper>
       <h1 style={{ justifyContent: 'center', display: 'flex' }}>Bookings</h1>
+      <UserCardList />
       <EventCard name={'username'} dishes={'hamburger'} eventDate={'12/1/2018'}/>
     </Wrapper>
   );
