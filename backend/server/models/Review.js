@@ -5,7 +5,7 @@ const mongooseTypes = mongoose.Schema.Types;
 let ReviewSchema = new mongoose.Schema(
     {
         rating: Number,
-        //reviewer: Number,
+        reviewer: Number,
         reviewee: Number
     }
 );

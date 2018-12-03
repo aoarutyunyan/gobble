@@ -19,6 +19,7 @@ const StyledCard = styled.div`
   box-sizing: border-box;
   background-color: white;
   transition: all 0.25s ease-out;
+  justify-items: center;
 
   &:hover {
     box-shadow: 0 10px 20px 0 rgba(168, 182, 191, 0.6);
@@ -32,7 +33,7 @@ const ZipCode = styled.div`
   background: #eee;
   text-align: left;
   font-weight: 400;
-  width: 160px;
+  width: 180px;
 `;
 
 const StyledName = styled.div`
@@ -63,7 +64,7 @@ const TextIcon = styled(FontAwesomeIcon)`
 `;
 
 const StyledRating = styled(Rating)`
-  background: black;
+  justify-self: 'center';
 `;
 
 const Description = styled.div`
@@ -77,7 +78,7 @@ const ChefCard = ({ id, name, description, zipcode, email, user, currentRating, 
       {eventDate && <div style={{ margin: 0 }}>Scheduled on: {eventDate} </div>}
       <StyledName>{name}</StyledName>
 
-      <div style={{ marginTop: '10px', marginBottom: '2em' }}><ProfileImg  src={getJpg('chefimg')}/></div>
+      <div style={{ marginTop: '10px', marginBottom: '2em', alignSelf: 'center', justifySelf: 'center'  }}><ProfileImg  src={getJpg('chefimg')}/></div>
 
       <StyledRating user={user} chefId={id} currentRating={currentRating}/>
 
@@ -86,7 +87,7 @@ const ChefCard = ({ id, name, description, zipcode, email, user, currentRating, 
         <Description>{description}</Description>
       </div>
 
-      <div>
+      <div style={{ display: 'flex', flexDirection: 'column', alignContent: 'center' }}>
         <ZipCode>
           <TextIcon icon="map-marker-alt" />
           Zip Code: {zipcode}

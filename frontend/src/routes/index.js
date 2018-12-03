@@ -14,6 +14,7 @@ import BookEvent from './BookEvent';
 import AddTags from '../routes/AddTags';
 import UserEvents from './UserEvents';
 import Settings from './Settings';
+import Recs from './Recs';
 
 class Root extends Component {
 
@@ -38,6 +39,7 @@ class Root extends Component {
               
               <Route exact path="/users" component={Users} />
               <Route exact path="/events" component={UserEvents} />
+              <Route exact path="/recs" component={Recs} />
               <Route component={Home} />
             </Switch>
           </div>

@@ -11,8 +11,8 @@ r = redis.Redis(
     port=6379,
     password='')
 
-x = ChefRecommendationEngine(r, "./ratings.csv")
-consumer = KafkaConsumer('rating', group_id='0', bootstrap_servers=['0.0.0.0:9092'])
+x = ChefRecommendationEngine(r, "./ratings2.csv")
+consumer = KafkaConsumer('rating', group_id=None, bootstrap_servers=['localhost:9092'])
 app = Flask(__name__)
 
 @app.route('/')
@@ -23,7 +23,7 @@ def index():
   for key, vals in kafkastream().items():
     for val in vals:
       json_val = json.loads(val.value.decode('utf-8'))
-      # print(json_val)
+      print(json_val)
       x.receive_new_rating(json_val['userId'], json_val['chefId'], json_val['rating'])
 
   return ''

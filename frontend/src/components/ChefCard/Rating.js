@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import StarRatingComponent from 'react-star-rating-component';
 import PropTypes from 'prop-types';
-import { putData } from '../../lib/assetsUtils';
+import { putData, postData } from '../../lib/assetsUtils';
 class Rating extends Component {
   constructor(props) {
     super(props);
@@ -14,7 +14,9 @@ class Rating extends Component {
 
     this.setState({ rating: nextValue });
     user.outgoingReviews.push({ rating: nextValue, subject_id: chefId });
+    const kafkaData = { Rating: nextValue, Reviewee: chefId, Reviewer: user.id };
     putData(`http://localhost:4000/users/reviews/${user.id}`, { reviews: user.outgoingReviews });
+    postData('http://localhost:4000/reviews', kafkaData);
   }
 
   render() {

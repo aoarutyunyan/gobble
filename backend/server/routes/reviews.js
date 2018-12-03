@@ -19,7 +19,7 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res) {
     givenReview = new Review({
       rating: req.body.Rating,
-      //reviewer: req.body.Reviewer,
+      reviewer: req.body.Reviewer,
       reviewee: req.body.Reviewee
     });
 
@@ -27,23 +27,21 @@ router.post('/', function(req, res) {
         if (err) return res.send(err); //throw err;
 
         User.getUserByID(review.reviewer).then((reviewer) => {
-          reviewer.writeReview(review);
+          //reviewer.writeReview(review);
 
           User.getUserByID(review.reviewee).then((reviewee) => {
             //reviewee.receiveReview(review);
 
             Producer = kafka.Producer,
-            client = new kafka.Client(),
+            client = new kafka.KafkaClient({kafkaHost: '127.0.0.1:9092'}),
             producer = new Producer(client);
 
-            userId = new kafka.KeyedMessage('userId', reviewer.id),
-            chefId = new kafka.KeyedMessage('chefId', reviewee.id)
+            userId = new kafka.KeyedMessage('userId', req.body.Reviewer)
+            chefId = new kafka.KeyedMessage('chefId', req.body.Reviewee)
             ratingMessage = new kafka.KeyedMessage('rating', req.body.Rating)
 
             producer.send([{ topic: 'rating',
-                      userId,
-                      chefId,
-                      ratingMessage
+                    messages: `{"userId": ${req.body.Reviewer}, "chefId": ${req.body.Reviewee}, "rating": ${req.body.Rating}}`,
                     }], function (err, data) {
               console.log(data);
 
