@@ -70,8 +70,6 @@ const AddTags = () => {
   
   return(
     <Wrapper>
-      {/* {name} */}
-      <h1>asdf</h1>
       
       <Form>      
 

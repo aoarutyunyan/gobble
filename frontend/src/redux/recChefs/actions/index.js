@@ -7,7 +7,7 @@ export const loadRChefsRequest = () => ({
 
 export const loadRChefsSuccess = json => ({
   type: LOAD_RCHEFS_SUCCESS,
-  rChefs: json,
+  recChefs: json,
 });
 
 export const fetchRChefs = (userId) => (dispatch) => {

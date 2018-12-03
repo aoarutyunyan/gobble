@@ -13,7 +13,7 @@ const recChefs = (state = initialState, action) => {
       return {
         ...state,
         isFetching: false,
-        items: action.chefs,
+        items: action.recChefs,
       };
     default:
       return state;
