@@ -116,7 +116,7 @@ const FormikForm = withFormik({
   }),
   
   handleSubmit(values, {
-    setErrors, resetForm, setSubmitting, props: { chefs, match, history, loggedIn, user },
+    setErrors, resetForm, setSubmitting, props: { chefs, match, history, loggedIn, user, updateUser },
   }) {
     setSubmitting(false);
     resetForm();
@@ -148,6 +148,8 @@ const FormikForm = withFormik({
     console.log(unixTimestamp(eventDate));
     user.events.push(forUser);
     chef.events.push(forChef);
+    console.log(user);
+    updateUser(user);
 
     putData(`http://localhost:4000/users/events/${user.id}`, { events: user.events });
     putData(`http://localhost:4000/users/events/${chefId}`, { events: chef.events });

@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import FormikForm from './BookEvent';
 import { withRouter } from 'react-router-dom';
+import { updateUser } from '../../redux/user/actions';
 
 const mapStateToProps = state => ({
   chefFilters: state.chefFilters,
@@ -9,6 +10,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+  updateUser: (user) => {
+    dispatch(updateUser(user));
+  },
 });
 
 const view = withRouter(connect(
