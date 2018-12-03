@@ -75,15 +75,13 @@ const AddTags = () => {
       
       <Form>      
 
-        <div><StyledLabel htmlFor="tags" >Add Tags</StyledLabel></div>
+        <div><StyledLabel htmlFor="tags" >Edit Tags</StyledLabel></div>
         <TextInput type="text" name="tags" placeholder="Tag1,Tag2,Tag3" />
 
-        <div><StyledLabel htmlFor="dishes" >Add Dishes</StyledLabel></div>
+        <div><StyledLabel htmlFor="dishes" >Edit Dishes</StyledLabel></div>
         <TextInput type="text" name="dishes" placeholder="dish1,dish2,dish3" />
         <div><StyledBtn type="submit" theme="pink">Confirm</StyledBtn></div>
       </Form>
-
-      <UserCardList />
 
     </Wrapper>
   );
@@ -93,10 +91,9 @@ const AddTags = () => {
 const FormikForm = withFormik({
   mapPropsToValues({ user }) {
     return {
-      tags: '',  
-      dishes: '',
+      tags: (user && user.tags && user.tags.join(',')), 
+      dishes: (user && user.dishes && user.dishes.join(',')),
     };
-
   },
   validationSchema: yup.object().shape({
     tags: yup
@@ -108,7 +105,7 @@ const FormikForm = withFormik({
   }),
   
   handleSubmit(values, {
-    setErrors, resetForm, setSubmitting, props: { users, match, history, loggedIn },
+    setErrors, resetForm, setSubmitting, props: { chefs, match, history, loggedIn, user },
   }) {
     setSubmitting(false);
     resetForm();
@@ -117,21 +114,18 @@ const FormikForm = withFormik({
     const splitDishes = dishes.split(',');
     const splitTags = tags.split(',');
 
-    const user = users.items.filter(({ id }) => id == match.params.userId)[0];
-
-    const chefId = match.params.chefId;
-
-    const forChef = {
+    const chefTags = {
       tags: splitTags,
-      dishes: splitDishes,
-      chefId: user.id,
+      chef_id: user.id,
     };
 
-    user.dishes.push(splitDishes);
-    user.tags.push(splitTags);
+    const chefDishes = {
+      dishes: splitDishes,
+      chef_id: user.id,
+    };
 
-    putData(`http://localhost:4000/users/dishes/${user.id}`, { dishes: user.dishes });
-    putData(`http://localhost:4000/users/tags/${user.id}`, { tags: user.tags });
+    putData(`http://localhost:4000/users/dishes/${user.id}`, { dishes: chefDishes.dishes });
+    putData(`http://localhost:4000/users/tags/${user.id}`, { tags: chefTags.tags });
 
     const nextLink = '/chefs';
     history.push(nextLink);
