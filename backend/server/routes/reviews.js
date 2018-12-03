@@ -27,7 +27,7 @@ router.post('/', function(req, res) {
         if (err) return res.send(err); //throw err;
 
         User.getUserByID(review.reviewer).then((reviewer) => {
-          reviewer.writeReview(review);
+          //reviewer.writeReview(review);
 
           User.getUserByID(review.reviewee).then((reviewee) => {
             //reviewee.receiveReview(review);
@@ -36,8 +36,8 @@ router.post('/', function(req, res) {
             client = new kafka.Client(),
             producer = new Producer(client);
 
-            userId = new kafka.KeyedMessage('userId', reviewer.id),
-            chefId = new kafka.KeyedMessage('chefId', reviewee.id)
+            userId = new kafka.KeyedMessage('userId', req.body.Reviewer)
+            chefId = new kafka.KeyedMessage('chefId', req.body.Reviewee)
             ratingMessage = new kafka.KeyedMessage('rating', req.body.Rating)
 
             producer.send([{ topic: 'rating',
