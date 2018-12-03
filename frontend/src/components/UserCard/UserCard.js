@@ -67,7 +67,7 @@ const Description = styled.div`
   text-align: left;
 `;
 
-const UserCard = ({ id, name, dishes, description, zipcode, email, currentRating }) => {
+const UserCard = ({ id, name, dishes, user, description, zipcode, email, currentRating }) => {
 
   return (
     <StyledCard>
@@ -78,7 +78,7 @@ const UserCard = ({ id, name, dishes, description, zipcode, email, currentRating
         <Description>{description}</Description>
       </div>
 
-      <StyledRating currentRating={currentRating}/>
+      <StyledRating user={user} currentRating={currentRating}/>
 
       <div>
         <ZipCode>

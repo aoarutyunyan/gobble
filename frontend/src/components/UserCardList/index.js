@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import UserCardList from './UserCardList';
 import { withRouter } from 'react-router-dom';
-// import { fetchEvents } from '../../redux/events/actions';
+import { fetchUsers } from '../../redux/users/actions';
 
 const mapStateToProps = state => ({
   userFilters: state.userFilters,
@@ -11,9 +11,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  // fetchEvents: () => {
-  //   dispatch(fetchEvents());
-  // },
+  fetchUsers: () => {
+    dispatch(fetchUsers());
+  },
 });
 
 const view = withRouter(connect(
