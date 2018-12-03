@@ -1,7 +1,8 @@
 {
 	"info": {
-		"_postman_id": "f9ec6253-dc29-4505-acd9-21134d8bf866",
 		"name": "Gobble_Backend",
+		"_postman_id": "b26b5836-920e-75e4-2b98-a7ecde48461a",
+		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -33,6 +34,7 @@
 					},
 					"response": [
 						{
+							"id": "bbab6a87-6794-4827-a3b4-4f1f7aa02dfd",
 							"name": "/chefs",
 							"originalRequest": {
 								"method": "GET",
@@ -57,6 +59,7 @@
 							"status": "OK",
 							"code": 200,
 							"_postman_previewlanguage": "json",
+							"_postman_previewtype": "html",
 							"header": [
 								{
 									"key": "X-Powered-By",
@@ -127,6 +130,7 @@
 					},
 					"response": [
 						{
+							"id": "91ca5638-8259-41f7-bb51-f885e45e5280",
 							"name": "/chefs/nearby Zipcode:90024, Radius:2",
 							"originalRequest": {
 								"method": "GET",
@@ -161,6 +165,7 @@
 							"status": "OK",
 							"code": 200,
 							"_postman_previewlanguage": "json",
+							"_postman_previewtype": "html",
 							"header": [
 								{
 									"key": "X-Powered-By",
@@ -322,6 +327,7 @@
 					},
 					"response": [
 						{
+							"id": "5d4acb81-bfa8-455b-96f7-da893b2002dc",
 							"name": "/register",
 							"originalRequest": {
 								"method": "POST",
@@ -351,6 +357,7 @@
 							"status": "OK",
 							"code": 200,
 							"_postman_previewlanguage": "json",
+							"_postman_previewtype": "html",
 							"header": [
 								{
 									"key": "X-Powered-By",
@@ -416,6 +423,7 @@
 					},
 					"response": [
 						{
+							"id": "ad20c0c8-5bc1-45af-a435-9e2b0eaafb68",
 							"name": "/register",
 							"originalRequest": {
 								"method": "POST",
@@ -445,6 +453,7 @@
 							"status": "OK",
 							"code": 200,
 							"_postman_previewlanguage": "json",
+							"_postman_previewtype": "html",
 							"header": [
 								{
 									"key": "X-Powered-By",
@@ -510,6 +519,7 @@
 					},
 					"response": [
 						{
+							"id": "2c01dced-4fb3-45dc-bf0f-2528c722a66d",
 							"name": "/register",
 							"originalRequest": {
 								"method": "POST",
@@ -539,6 +549,7 @@
 							"status": "OK",
 							"code": 200,
 							"_postman_previewlanguage": "json",
+							"_postman_previewtype": "html",
 							"header": [
 								{
 									"key": "X-Powered-By",
@@ -604,6 +615,7 @@
 					},
 					"response": [
 						{
+							"id": "4d4f52ed-c7d9-4841-bb5e-5a530d8e5ce5",
 							"name": "/register",
 							"originalRequest": {
 								"method": "POST",
@@ -633,6 +645,7 @@
 							"status": "OK",
 							"code": 200,
 							"_postman_previewlanguage": "json",
+							"_postman_previewtype": "html",
 							"header": [
 								{
 									"key": "X-Powered-By",
@@ -698,6 +711,7 @@
 					},
 					"response": [
 						{
+							"id": "0ccf6ce6-a5fd-454b-9798-c96170c6999d",
 							"name": "/register",
 							"originalRequest": {
 								"method": "POST",
@@ -727,6 +741,7 @@
 							"status": "OK",
 							"code": 200,
 							"_postman_previewlanguage": "json",
+							"_postman_previewtype": "html",
 							"header": [
 								{
 									"key": "X-Powered-By",
@@ -792,6 +807,7 @@
 					},
 					"response": [
 						{
+							"id": "7554bf2c-2b9a-4ac9-b86f-93a6c67ffc70",
 							"name": "/register",
 							"originalRequest": {
 								"method": "POST",
@@ -821,6 +837,7 @@
 							"status": "OK",
 							"code": 200,
 							"_postman_previewlanguage": "json",
+							"_postman_previewtype": "html",
 							"header": [
 								{
 									"key": "X-Powered-By",
@@ -886,6 +903,7 @@
 					},
 					"response": [
 						{
+							"id": "15a471d5-4189-4a10-815f-3c5005686305",
 							"name": "/register",
 							"originalRequest": {
 								"method": "POST",
@@ -915,6 +933,7 @@
 							"status": "OK",
 							"code": 200,
 							"_postman_previewlanguage": "json",
+							"_postman_previewtype": "html",
 							"header": [
 								{
 									"key": "X-Powered-By",
@@ -980,6 +999,7 @@
 					},
 					"response": [
 						{
+							"id": "e65d528b-1236-491f-8ebd-cbc189089c68",
 							"name": "/register",
 							"originalRequest": {
 								"method": "POST",
@@ -1009,6 +1029,7 @@
 							"status": "OK",
 							"code": 200,
 							"_postman_previewlanguage": "json",
+							"_postman_previewtype": "html",
 							"header": [
 								{
 									"key": "X-Powered-By",
@@ -1074,6 +1095,7 @@
 					},
 					"response": [
 						{
+							"id": "6ec7217c-f4a4-4fb5-b0b3-d06c582cd809",
 							"name": "/register",
 							"originalRequest": {
 								"method": "POST",
@@ -1103,6 +1125,7 @@
 							"status": "OK",
 							"code": 200,
 							"_postman_previewlanguage": "json",
+							"_postman_previewtype": "html",
 							"header": [
 								{
 									"key": "X-Powered-By",
@@ -1168,6 +1191,7 @@
 					},
 					"response": [
 						{
+							"id": "c57cd7a1-736a-4dd6-8f87-8a7bb1b1b468",
 							"name": "/register",
 							"originalRequest": {
 								"method": "POST",
@@ -1197,6 +1221,7 @@
 							"status": "OK",
 							"code": 200,
 							"_postman_previewlanguage": "json",
+							"_postman_previewtype": "html",
 							"header": [
 								{
 									"key": "X-Powered-By",
@@ -1262,6 +1287,7 @@
 					},
 					"response": [
 						{
+							"id": "e8a204ec-d5b2-48fe-b089-21214f89564c",
 							"name": "/register",
 							"originalRequest": {
 								"method": "POST",
@@ -1291,6 +1317,7 @@
 							"status": "OK",
 							"code": 200,
 							"_postman_previewlanguage": "json",
+							"_postman_previewtype": "html",
 							"header": [
 								{
 									"key": "X-Powered-By",
@@ -1356,6 +1383,7 @@
 					},
 					"response": [
 						{
+							"id": "7709a786-4c7c-4b6e-893d-da92a676a169",
 							"name": "/register",
 							"originalRequest": {
 								"method": "POST",
@@ -1385,6 +1413,7 @@
 							"status": "OK",
 							"code": 200,
 							"_postman_previewlanguage": "json",
+							"_postman_previewtype": "html",
 							"header": [
 								{
 									"key": "X-Powered-By",
@@ -1450,6 +1479,7 @@
 					},
 					"response": [
 						{
+							"id": "6facd256-613c-40f4-b70e-e5ed6e38f578",
 							"name": "/register",
 							"originalRequest": {
 								"method": "POST",
@@ -1479,6 +1509,7 @@
 							"status": "OK",
 							"code": 200,
 							"_postman_previewlanguage": "json",
+							"_postman_previewtype": "html",
 							"header": [
 								{
 									"key": "X-Powered-By",
@@ -1544,6 +1575,7 @@
 					},
 					"response": [
 						{
+							"id": "9baf9301-710a-4801-be0d-26c564c55e14",
 							"name": "/register",
 							"originalRequest": {
 								"method": "POST",
@@ -1573,6 +1605,7 @@
 							"status": "OK",
 							"code": 200,
 							"_postman_previewlanguage": "json",
+							"_postman_previewtype": "html",
 							"header": [
 								{
 									"key": "X-Powered-By",
@@ -1638,6 +1671,7 @@
 					},
 					"response": [
 						{
+							"id": "dbcc9cc8-493a-4585-b253-fd7e3654de3d",
 							"name": "/register",
 							"originalRequest": {
 								"method": "POST",
@@ -1667,6 +1701,7 @@
 							"status": "OK",
 							"code": 200,
 							"_postman_previewlanguage": "json",
+							"_postman_previewtype": "html",
 							"header": [
 								{
 									"key": "X-Powered-By",
@@ -1732,6 +1767,7 @@
 					},
 					"response": [
 						{
+							"id": "4978b04c-b199-45b3-913d-087d9a847a2d",
 							"name": "/register",
 							"originalRequest": {
 								"method": "POST",
@@ -1761,6 +1797,7 @@
 							"status": "OK",
 							"code": 200,
 							"_postman_previewlanguage": "json",
+							"_postman_previewtype": "html",
 							"header": [
 								{
 									"key": "X-Powered-By",
@@ -1826,6 +1863,7 @@
 					},
 					"response": [
 						{
+							"id": "30d61dc0-3956-4df0-8785-40c3b7fe7b44",
 							"name": "/register",
 							"originalRequest": {
 								"method": "POST",
@@ -1855,6 +1893,7 @@
 							"status": "OK",
 							"code": 200,
 							"_postman_previewlanguage": "json",
+							"_postman_previewtype": "html",
 							"header": [
 								{
 									"key": "X-Powered-By",
@@ -1920,6 +1959,7 @@
 					},
 					"response": [
 						{
+							"id": "ebfc3a1d-718a-48f2-bb24-accc15cad183",
 							"name": "/register",
 							"originalRequest": {
 								"method": "POST",
@@ -1949,6 +1989,7 @@
 							"status": "OK",
 							"code": 200,
 							"_postman_previewlanguage": "json",
+							"_postman_previewtype": "html",
 							"header": [
 								{
 									"key": "X-Powered-By",
@@ -2014,6 +2055,7 @@
 					},
 					"response": [
 						{
+							"id": "a974f38b-d95e-4c90-ac17-45fb2df4277f",
 							"name": "/register",
 							"originalRequest": {
 								"method": "POST",
@@ -2043,6 +2085,7 @@
 							"status": "OK",
 							"code": 200,
 							"_postman_previewlanguage": "json",
+							"_postman_previewtype": "html",
 							"header": [
 								{
 									"key": "X-Powered-By",
@@ -2108,6 +2151,7 @@
 					},
 					"response": [
 						{
+							"id": "bcdfe531-8b19-48c3-a51f-6af442af98f9",
 							"name": "/register",
 							"originalRequest": {
 								"method": "POST",
@@ -2137,6 +2181,7 @@
 							"status": "OK",
 							"code": 200,
 							"_postman_previewlanguage": "json",
+							"_postman_previewtype": "html",
 							"header": [
 								{
 									"key": "X-Powered-By",
@@ -2202,6 +2247,7 @@
 					},
 					"response": [
 						{
+							"id": "98fb2824-53e1-4d69-ad49-f54b4dc8fe9d",
 							"name": "/register",
 							"originalRequest": {
 								"method": "POST",
@@ -2231,6 +2277,7 @@
 							"status": "OK",
 							"code": 200,
 							"_postman_previewlanguage": "json",
+							"_postman_previewtype": "html",
 							"header": [
 								{
 									"key": "X-Powered-By",
@@ -2303,13 +2350,12 @@
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"Rating\": 5,\n    \"Reviewee\": 0\n}"
+							"raw": "{\n    \"Rating\": 5,\n    \"Reviewer\": 1,\n    \"Reviewee\": 0\n}"
 						},
 						"url": {
 							"raw": "http://localhost:4000/reviews/",
@@ -2323,7 +2369,7 @@
 								""
 							]
 						},
-						"description": "# Description\nAdds a new review to the database.\n# Required Body\nRequires JSON in the form of \n```\n{\n    \"Rating\": Number,\n    \"Reviewee\": Number\n}\n```\n# Response Codes\n- ```200 OK``` on success. A JSON object for the new review is returned with the following form:\n```\n{\n    \"rating\": Number,\n    \"reviewee\": Number\n}\n```\n- ```400 Bad Request``` on failure in saving the new review\n\t- e.g., the reviewer does not exist, the reviewee does not exist, etc."
+						"description": "# Description\nAdds a new review to the database.\n# Required Body\nRequires JSON in the form of \n```\n{\n    \"Rating\": Number,\n    \"Reviewer\": Number,\n    \"Reviewee\": Number\n}\n```\n# Response Codes\n- ```200 OK``` on success. A JSON object for the new review is returned with the following form:\n```\n{\n    \"rating\": Number,\n    \"reviewer\": Number,\n    \"reviewee\": Number\n}\n```\n- ```400 Bad Request``` on failure in saving the new review\n\t- e.g., the reviewer does not exist, the reviewee does not exist, etc."
 					},
 					"response": []
 				}
@@ -2357,6 +2403,7 @@
 					},
 					"response": [
 						{
+							"id": "6a36e5b9-c1cd-4480-82ca-3ea9b01a62a5",
 							"name": "/users",
 							"originalRequest": {
 								"method": "GET",
@@ -2381,6 +2428,7 @@
 							"status": "OK",
 							"code": 200,
 							"_postman_previewlanguage": "json",
+							"_postman_previewtype": "html",
 							"header": [
 								{
 									"key": "X-Powered-By",
@@ -2448,6 +2496,7 @@
 					},
 					"response": [
 						{
+							"id": "31aae5c8-8090-4eb7-84b0-ddb0ec99e260",
 							"name": "/users/password/:id",
 							"originalRequest": {
 								"method": "PUT",
@@ -2479,6 +2528,7 @@
 							"status": "OK",
 							"code": 200,
 							"_postman_previewlanguage": "json",
+							"_postman_previewtype": "html",
 							"header": [
 								{
 									"key": "X-Powered-By",
@@ -2546,6 +2596,7 @@
 					},
 					"response": [
 						{
+							"id": "04c44c93-aa4d-4338-9142-9adfc94f4cd4",
 							"name": "/users/events/:id",
 							"originalRequest": {
 								"method": "PUT",
@@ -2577,6 +2628,7 @@
 							"status": "OK",
 							"code": 200,
 							"_postman_previewlanguage": "json",
+							"_postman_previewtype": "html",
 							"header": [
 								{
 									"key": "X-Powered-By",
@@ -2644,6 +2696,7 @@
 					},
 					"response": [
 						{
+							"id": "2c96373f-9f96-4e29-9eac-9765d27f68a7",
 							"name": "/users/reviews_out/:id",
 							"originalRequest": {
 								"method": "PUT",
@@ -2675,6 +2728,7 @@
 							"status": "OK",
 							"code": 200,
 							"_postman_previewlanguage": "json",
+							"_postman_previewtype": "html",
 							"header": [
 								{
 									"key": "X-Powered-By",
@@ -2742,6 +2796,7 @@
 					},
 					"response": [
 						{
+							"id": "347bbb1d-2ab0-4ab9-9210-03839fcb1308",
 							"name": "/users/zipcode/:id",
 							"originalRequest": {
 								"method": "PUT",
@@ -2773,6 +2828,7 @@
 							"status": "OK",
 							"code": 200,
 							"_postman_previewlanguage": "json",
+							"_postman_previewtype": "html",
 							"header": [
 								{
 									"key": "X-Powered-By",
@@ -2840,6 +2896,7 @@
 					},
 					"response": [
 						{
+							"id": "b662470e-7e05-4475-b2da-1756a960dc94",
 							"name": "/users/zipcode/:id",
 							"originalRequest": {
 								"method": "PUT",
@@ -2871,6 +2928,7 @@
 							"status": "OK",
 							"code": 200,
 							"_postman_previewlanguage": "json",
+							"_postman_previewtype": "html",
 							"header": [
 								{
 									"key": "X-Powered-By",
@@ -2938,6 +2996,7 @@
 					},
 					"response": [
 						{
+							"id": "4018f511-7b41-4179-ba5b-3fdd1f23a4fe",
 							"name": "/users/zipcode/:id",
 							"originalRequest": {
 								"method": "PUT",
@@ -2969,6 +3028,7 @@
 							"status": "OK",
 							"code": 200,
 							"_postman_previewlanguage": "json",
+							"_postman_previewtype": "html",
 							"header": [
 								{
 									"key": "X-Powered-By",
@@ -3062,6 +3122,7 @@
 					},
 					"response": [
 						{
+							"id": "edd9821f-83e8-4980-a17f-1a8980f613e5",
 							"name": "/users/events/:id",
 							"originalRequest": {
 								"method": "GET",
@@ -3087,6 +3148,7 @@
 							"status": "OK",
 							"code": 200,
 							"_postman_previewlanguage": "json",
+							"_postman_previewtype": "html",
 							"header": [
 								{
 									"key": "X-Powered-By",
@@ -3148,6 +3210,7 @@
 					},
 					"response": [
 						{
+							"id": "8dfbf492-22ee-4be9-a3fc-a830371ac96e",
 							"name": "/users/reviews/:id",
 							"originalRequest": {
 								"method": "GET",
@@ -3173,6 +3236,7 @@
 							"status": "OK",
 							"code": 200,
 							"_postman_previewlanguage": "json",
+							"_postman_previewtype": "html",
 							"header": [
 								{
 									"key": "X-Powered-By",
@@ -3234,6 +3298,7 @@
 					},
 					"response": [
 						{
+							"id": "0b17bba0-9389-4491-9328-9e57b7697f53",
 							"name": "/users/reviews/:id",
 							"originalRequest": {
 								"method": "GET",
@@ -3259,6 +3324,7 @@
 							"status": "OK",
 							"code": 200,
 							"_postman_previewlanguage": "json",
+							"_postman_previewtype": "html",
 							"header": [
 								{
 									"key": "X-Powered-By",
@@ -3320,6 +3386,7 @@
 					},
 					"response": [
 						{
+							"id": "ddc32532-d490-47a0-b0f8-4343e8cbb2a7",
 							"name": "/users/reviews/:id",
 							"originalRequest": {
 								"method": "GET",
@@ -3345,6 +3412,7 @@
 							"status": "OK",
 							"code": 200,
 							"_postman_previewlanguage": "json",
+							"_postman_previewtype": "html",
 							"header": [
 								{
 									"key": "X-Powered-By",
@@ -3468,6 +3536,34 @@
 							]
 						},
 						"description": "# Description\nLogs user in.\n# Required Body\nRequires JSON in the form of \n```\n{\n\t\"LoginName\": string,\n\t\"LoginPassword\": string\n}\n```\n# Response Codes\n- ```200 OK``` on success. A JSON object is returned with the following form:\n```\n\t{\n\t\t\"auth\": true,\n\t    {\n\t        \"id\": Number,\n\t        \"_id\": Number,\n\t        \"name\": String,\n\t        \"password\": String,\n\t        \"email\": String,\n\t        \"zipcode\": Number,\n\t        \"events\": [ Event ],\n\t        \"outgoingReviews\": [ Review ],\n\t        \"dishes\": [ String ],\n\t        \"tags\": [ String ],\n\t        \"chef\": Boolean,\n\t        \"description\": String\n\t    }\n\t}\n```\n- ```400 All fields required.``` if not all fields filled\n- ```401 Wrong username or password.``` if either of the credentials is wrong"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Recommendations",
+			"description": "Chef recommendations for a User based on past reviews",
+			"item": [
+				{
+					"name": "/recommendations/:id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:4000/recommendations/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"recommendations",
+								"1"
+							]
+						},
+						"description": "# Description\nReturns a list of recommended Chefs for the user with `id`\n\n# Authorization\nNone\n# Request Parameters\n```id```: The user's id\n# Response Format\n- ```200 OK``` on success. Each chef JSON object has the following form:\n```\n  {\n      \"id\": Number,\n      \"_id\": Number,\n      \"name\": String,\n      \"password\": String,\n      \"email\": String,\n      \"zipcode\": Number,\n      \"events\": [ Event ],\n      \"outgoingReviews\": [ Review ],\n      \"dishes\": [ String ],\n      \"tags\": [ String ],\n      \"chef\": Boolean,\n      \"description\": String\n  }\n```"
 					},
 					"response": []
 				}
